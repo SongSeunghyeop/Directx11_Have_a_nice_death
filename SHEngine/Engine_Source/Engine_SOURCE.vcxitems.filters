@@ -28,151 +28,148 @@
     <Filter Include="Resource\Resources">
       <UniqueIdentifier>{62ccc597-e793-4dc8-bb94-8bebe3a31dcf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Renderer">
-      <UniqueIdentifier>{0e900890-53a4-49ab-a49f-ef5e855d6309}</UniqueIdentifier>
-    </Filter>
     <Filter Include="GameObject">
-      <UniqueIdentifier>{890e6588-5cf0-4a8e-bf55-94ae3d1ec785}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObject\Component">
-      <UniqueIdentifier>{9a2e05b1-2176-4f1f-99b9-e9b34ef985f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObject\Component\Script">
-      <UniqueIdentifier>{e2e68040-3f95-4f07-b77a-22a799c10daf}</UniqueIdentifier>
+      <UniqueIdentifier>{af651059-edb0-4ccd-8ef7-f59c1b6ef038}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene">
-      <UniqueIdentifier>{ffd05c30-d9f6-4449-b774-f2c419a8cb41}</UniqueIdentifier>
+      <UniqueIdentifier>{db1bc228-d664-4765-83ad-b46ce0fb2f12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component">
+      <UniqueIdentifier>{a6bcc474-e4ed-4dbb-acab-44b6d0a33a1c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene\Layer">
-      <UniqueIdentifier>{8e087c01-e5fd-4805-bbbe-8f3b05db8673}</UniqueIdentifier>
+      <UniqueIdentifier>{378ed743-7e31-4ea5-b7b5-ee63da7707d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Script">
+      <UniqueIdentifier>{3ed63022-e9ae-4729-a64b-7b0a9080542b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)JNSEngine.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)SHEngine.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsEnums.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shEnums.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMath.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMath.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsApplication.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h">
       <Filter>High Level Interface</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsEntity.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shEntity.h">
       <Filter>Common\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsInput.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shInput.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsTime.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shTime.h">
       <Filter>Common\Time</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsResource.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shResource.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsResources.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shResources.h">
       <Filter>Resource\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphics.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsRenderer.h">
-      <Filter>Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsShader.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsMesh.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shShader.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMesh.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsGameObject.h">
-      <Filter>GameObject</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shConstantBuffer.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsComponent.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsScript.h">
-      <Filter>GameObject\Component\Script</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h">
+      <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsSceneManager.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)jnsLayer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shLayer.h">
       <Filter>Scene\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shSceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shScript.h">
+      <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMath.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
       <Filter>Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsApplication.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsEntity.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shEntity.cpp">
       <Filter>Common\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsInput.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shInput.cpp">
       <Filter>Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsTime.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shTime.cpp">
       <Filter>Common\Time</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsResource.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shResource.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsResources.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shResources.cpp">
       <Filter>Resource\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsGraphicDevice_Dx11.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsRenderer.cpp">
-      <Filter>Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsMesh.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsShader.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMesh.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsConstantBuffer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shShader.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsGameObject.cpp">
-      <Filter>GameObject</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shConstantBuffer.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsComponent.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp">
       <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsScript.cpp">
-      <Filter>GameObject\Component\Script</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp">
+      <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsSceneManager.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)jnsLayer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shLayer.cpp">
       <Filter>Scene\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shSceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shScript.cpp">
+      <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)jnsMath.inl">
+    <None Include="$(MSBuildThisFileDirectory)shMath.inl">
       <Filter>Common\Math</Filter>
     </None>
   </ItemGroup>
