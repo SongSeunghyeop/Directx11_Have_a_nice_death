@@ -25,6 +25,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMeshRenderer.h" />
@@ -50,6 +51,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMeshRenderer.cpp" />

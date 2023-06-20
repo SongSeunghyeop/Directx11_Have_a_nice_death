@@ -1,9 +1,9 @@
 #include "shResource.h"
 
-
 namespace sh
 {
-	Resource::Resource()
+	Resource::Resource(const enums::eResourceType type)
+		: mType(type)
 	{
 
 	}

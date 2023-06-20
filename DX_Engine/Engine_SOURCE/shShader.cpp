@@ -4,9 +4,11 @@
 namespace sh
 {
 	Shader::Shader()
-		: mInputLayout(nullptr)
+		: Resource(enums::eResourceType::Shader)
+		, mInputLayout(nullptr)
 		, mTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
 	{
+
 	}
 
 	Shader::~Shader()

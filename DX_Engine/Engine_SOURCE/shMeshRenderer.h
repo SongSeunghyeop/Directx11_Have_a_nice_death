@@ -1,7 +1,7 @@
 #pragma once
 #include "shComponent.h"
 #include "shMesh.h"
-#include "shShader.h"
+#include "shMaterial.h"
 
 namespace sh
 {
@@ -16,8 +16,11 @@ namespace sh
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetMesh(Mesh* mesh) { mMesh = mesh; }
+		void SetMaterial(Material* material) { mMaterial = material; };
+
 	private:
 		Mesh* mMesh;
-		Shader* mShader;
+		Material* mMaterial;
 	};
 }

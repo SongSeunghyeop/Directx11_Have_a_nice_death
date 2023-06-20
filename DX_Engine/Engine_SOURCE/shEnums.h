@@ -21,4 +21,13 @@ namespace sh::enums
 		UI,
 		End,
 	};
+
+	enum class eResourceType
+	{
+		Texture,
+		Shader,
+		Material,
+		Mesh,
+		End,
+	};
 }

@@ -21,7 +21,6 @@ cbuffer Transform : register(b0)
     //float4 Scale;
 }
 
-
 VSOut main(VSIn In)
 {
     VSOut Out = (VSOut) 0.0f;

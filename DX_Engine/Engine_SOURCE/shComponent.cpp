@@ -1,6 +1,5 @@
 #include "shComponent.h"
 
-
 namespace sh
 {
 	Component::Component(eComponentType type)

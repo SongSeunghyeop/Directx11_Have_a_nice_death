@@ -6,6 +6,8 @@
 #include "shConstantBuffer.h"
 
 using namespace sh::math;
+using namespace sh::graphics;
+
 namespace renderer
 {
 	struct Vertex
@@ -16,9 +18,7 @@ namespace renderer
 	};
 
 	extern Vertex vertexes[];
-	extern sh::Mesh* mesh;
-	extern sh::Shader* shader;
-	extern sh::graphics::ConstantBuffer* constantBuffer;
+	extern sh::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	void Initialize();
 	void Release();

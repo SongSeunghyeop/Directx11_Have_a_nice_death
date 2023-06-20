@@ -1,6 +1,5 @@
 #include "shEntity.h"
 
-
 namespace sh
 {
 	Entity::Entity()

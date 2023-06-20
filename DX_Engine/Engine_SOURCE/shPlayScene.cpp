@@ -3,7 +3,8 @@
 #include "shPlayScene.h"
 #include "shTransform.h"
 #include "shMeshRenderer.h"
-
+#include "shResources.h"
+#include "shMesh.h"
 
 namespace sh
 {
@@ -17,7 +18,9 @@ namespace sh
 	{
 		GameObject* player = new GameObject();
 		AddGameObject(eLayerType::Player, player);
-		player->AddComponent<MeshRenderer>();
+		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
 
 		//GameObject* player2 = new GameObject();
 		//AddGameObject(eLayerType::Player, player2);
