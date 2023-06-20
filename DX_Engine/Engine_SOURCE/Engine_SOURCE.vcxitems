@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{ef382c18-c456-428f-9c15-458a51343df7}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shConstantBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGraphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMeshRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DX_Engine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPlayScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shScript.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shTransform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shConstantBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMesh.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPlayScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shScript.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shTransform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)shMath.inl" />
+  </ItemGroup>
+</Project>
