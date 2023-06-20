@@ -54,146 +54,144 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YamYamEngine.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)DX_Engine.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaEnums.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shEnums.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMath.h">
       <Filter>Common\Math</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h">
       <Filter>High Level Interface</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shEntity.h">
       <Filter>Common\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shInput.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTime.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shTime.h">
       <Filter>Common\Time</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shResource.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shResources.h">
       <Filter>Resource\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphics.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shShader.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMesh.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shConstantBuffer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shLayer.h">
       <Filter>Scene\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaScript.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaScene.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shScene.h">
       <Filter>Scene\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shSceneManager.h">
       <Filter>Scene\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayScene.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTransform.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPlayScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shTransform.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMeshRenderer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)shMeshRenderer.h">
       <Filter>GameObject\Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTexture.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMaterial.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shTexture.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
       <Filter>Common\Math</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shEntity.cpp">
       <Filter>Common\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shInput.cpp">
       <Filter>Input</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTime.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shTime.cpp">
       <Filter>Common\Time</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shResource.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shResources.cpp">
       <Filter>Resource\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMesh.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shShader.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shConstantBuffer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp">
       <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shLayer.cpp">
       <Filter>Scene\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaScript.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaScene.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shScene.cpp">
       <Filter>Scene\Base</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaSceneManager.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shSceneManager.cpp">
       <Filter>Scene\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayScene.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTransform.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPlayScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shTransform.cpp">
       <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMeshRenderer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shMeshRenderer.cpp">
       <Filter>GameObject\Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTexture.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMaterial.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
+    <None Include="$(MSBuildThisFileDirectory)shMath.inl">
       <Filter>Common\Math</Filter>
     </None>
   </ItemGroup>

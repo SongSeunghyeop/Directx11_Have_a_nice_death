@@ -151,6 +151,11 @@
     <Image Include="Editor_Window.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="C:\Users\tmdgu\OneDrive\Desktop\YamYamEngine\Engine_SOURCE\shMath.inl">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
