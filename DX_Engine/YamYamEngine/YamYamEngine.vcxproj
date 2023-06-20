@@ -24,7 +24,6 @@
     <ProjectGuid>{75e637f6-8e03-4459-b01b-0edc06f8761f}</ProjectGuid>
     <RootNamespace>YamYamEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>DX_Engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -153,12 +152,7 @@
     <ClInclude Include="framework.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DX_Engine.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="C:\Users\tmdgu\OneDrive\Desktop\Directx\Haveanicedeath\DX_Engine\Engine_SOURCE\shMath.inl">
-      <FileType>Document</FileType>
-    </None>
+    <ClCompile Include="YamYamEngine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
