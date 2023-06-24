@@ -126,6 +126,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)shTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMaterial.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCamera.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCameraScript.h">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
@@ -191,6 +197,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)shTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMaterial.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCamera.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCameraScript.cpp">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)shMath.inl">

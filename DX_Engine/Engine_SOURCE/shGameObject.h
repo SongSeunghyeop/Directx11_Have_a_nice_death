@@ -1,6 +1,7 @@
 #pragma once
 #include "shEntity.h"
 #include "shComponent.h"
+#include "shScript.h"
 
 namespace sh
 {
@@ -33,6 +34,13 @@ namespace sh
 					return component;
 			}
 
+			for (Script* script : mScripts)
+			{
+				component = dynamic_cast<T*>(script);
+				if (component != nullptr)
+					return component;
+			}
+
 			return nullptr;
 		}
 
@@ -40,14 +48,20 @@ namespace sh
 		T* AddComponent()
 		{
 			T* comp = new T();
-			
+
 			Component* buff
 				= dynamic_cast<Component*>(comp);
+			Script* script
+				= dynamic_cast<Script*>(buff);
 
 			if (buff == nullptr)
 				return nullptr;
 
-			mComponents.push_back(buff);
+			if (script == nullptr)
+				mComponents.push_back(buff);
+			else
+				mScripts.push_back(script);
+
 			comp->SetOwner(this);
 
 			return comp;
@@ -56,5 +70,6 @@ namespace sh
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
+		std::vector<Script*> mScripts;
 	};
 }

@@ -15,6 +15,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCameraScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h" />
@@ -43,6 +45,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp" />

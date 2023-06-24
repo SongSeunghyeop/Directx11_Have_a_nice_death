@@ -28,6 +28,8 @@ namespace sh
 
 		mMesh->BindBuffer();
 		mMaterial->Binds();
-		mMesh->Render();
+		mMesh->Render(); //DrawIndex
+
+		mMaterial->Clear();
 	}
 }
