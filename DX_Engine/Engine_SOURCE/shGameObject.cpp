@@ -13,28 +13,15 @@ namespace sh
 
 	GameObject::~GameObject()
 	{
-		for (Component* comp : mComponents)
-		{
-			if (comp == nullptr)
-				continue;
 
-			delete comp;
-			comp = nullptr;
-		}
-
-		for (Script* script : mScripts)
-		{
-			if (script == nullptr)
-				continue;
-
-			delete script;
-			script = nullptr;
-		}
 	}
 
 	void GameObject::Initialize()
 	{
-
+		for (Component* comp : mComponents)
+		{
+			comp->Initialize();
+		}
 	}
 
 	void GameObject::Update()
@@ -74,6 +61,20 @@ namespace sh
 		for (Script* script : mScripts)
 		{
 			script->Render();
+		}
+	}
+
+	void GameObject::Release()
+	{
+		for (Component* comp : mComponents)
+		{
+			delete comp;
+		}
+		//상수버퍼로 위치정보 크기정보, 색깔, 업데이트 해줘야한다.
+
+		for (Script* script : mScripts)
+		{
+			delete script;
 		}
 	}
 }

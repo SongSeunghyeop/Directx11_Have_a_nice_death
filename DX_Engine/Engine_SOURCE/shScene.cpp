@@ -13,7 +13,10 @@ namespace sh
 
 	void Scene::Initialize()
 	{
-		
+		for (Layer& layer : mLayers)
+		{
+			layer.Initialize();
+		}
 	}
 
 	void Scene::Update()
@@ -38,11 +41,21 @@ namespace sh
 			layer.Render();
 		}
 	}
+
+	void Scene::Release()
+	{
+		for (Layer& layer : mLayers)
+		{
+			layer.Release();
+		}
+	}
 	void Scene::OnEnter()
 	{
+
 	}
 	void Scene::OnExit()
 	{
+
 	}
 	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
 	{

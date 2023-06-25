@@ -20,6 +20,7 @@ namespace sh::enums
 		Player,
 		Monster,
 		UI,
+		BackGround,
 		End,
 	};
 

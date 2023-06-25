@@ -371,7 +371,7 @@ namespace sh::graphics
 		GetClientRect(hWnd, &winRect);
 		mViewPort =
 		{
-			0.0f, 0.0f
+			  0.0f, 0.0f
 			, (float)(winRect.right - winRect.left)
 			, (float)(winRect.bottom - winRect.top)
 			, 0.0f, 1.0f

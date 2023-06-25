@@ -1,7 +1,6 @@
 #include "shSceneManager.h"
 #include "shPlayScene.h"
 
-
 namespace sh
 {
 	Scene* SceneManager::mActiveScene = nullptr;
@@ -32,6 +31,7 @@ namespace sh
 	{
 		for (auto iter : mScenes)
 		{
+			iter.second->Release();
 			delete iter.second;
 			iter.second = nullptr;
 		}

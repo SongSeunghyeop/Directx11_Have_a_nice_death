@@ -4,6 +4,7 @@
 #include "Editor_Window.h"
 #include "shApplication.h"
 #include "shRenderer.h"
+#include "shSceneManager.h"
 
 sh::Application application;
 
@@ -27,6 +28,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    //_CrtSetBreakAlloc(382);
 
     // TODO: 여기에 코드를 입력합니다.
 
@@ -65,6 +69,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     renderer::Release();
+    sh::SceneManager::Release();
+
     return (int) msg.wParam;
 }
 
@@ -89,7 +95,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITORWINDOW));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_EDITORWINDOW);
+    wcex.lpszMenuName   = NULL;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -118,7 +124,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
-   application.SetWindow(hWnd, 1600, 900);
+   application.SetWindow(hWnd, 1540, 800);
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 

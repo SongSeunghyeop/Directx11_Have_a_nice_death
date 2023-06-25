@@ -11,6 +11,10 @@ namespace sh
 	}
 	void Layer::Initialize()
 	{
+		for (GameObject* gameObj : mGameObjects)
+		{
+			gameObj->Initialize();
+		}
 	}
 	void Layer::Update()
 	{
@@ -30,8 +34,15 @@ namespace sh
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			//gameObj->LateUpdate();
 			gameObj->Render();
+		}
+	}
+	void Layer::Release()
+	{
+		for (GameObject* gameObj : mGameObjects)
+		{
+			gameObj->Release();
+			delete gameObj;
 		}
 	}
 	void Layer::AddGameObject(GameObject* gameObj)

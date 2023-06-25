@@ -15,8 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shLobby.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shCamera.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)shCameraScript.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCameraController.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h" />
@@ -32,6 +33,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DX_Engine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPlayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPlayerController.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shPlayScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shResource.h" />
@@ -45,8 +49,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shLobby.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shCamera.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)shCameraScript.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp" />
@@ -59,6 +64,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPlayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPlayerController.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shPlayScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shResource.cpp" />

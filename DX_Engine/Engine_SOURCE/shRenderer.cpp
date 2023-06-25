@@ -11,6 +11,9 @@ namespace renderer
 	sh::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 
+	std::shared_ptr<Shader> shader;
+	std::shared_ptr<Shader> spriteShader;
+
 	void SetupState()
 	{
 		// Input layout 정점 구조 정보를 넘겨줘야한다.
@@ -37,7 +40,7 @@ namespace renderer
 		arrLayout[2].SemanticName = "TEXCOORD";
 		arrLayout[2].SemanticIndex = 0;
 
-		std::shared_ptr<Shader> shader = sh::Resources::Find<Shader>(L"TriangleShader");
+		shader = sh::Resources::Find<Shader>(L"TriangleShader");
 		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -87,64 +90,56 @@ namespace renderer
 
 	void LoadShader()
 	{
-		std::shared_ptr<Shader> shader = std::make_shared<Shader>();
+		shader = std::make_shared<Shader>();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 		sh::Resources::Insert(L"TriangleShader", shader);
 
-		std::shared_ptr<Shader> spriteShader = std::make_shared<Shader>();
+		spriteShader = std::make_shared<Shader>();
 		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		sh::Resources::Insert(L"SpriteShader", spriteShader);
+	}
 
-		{
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+	void LoadSprites()
+	{
+		std::shared_ptr<Texture> Player_texture
+			= Resources::Load<Texture>(L"Death", L"..\\Resources\\Texture\\Death.png");
 
-			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			spriteMateiral->SetShader(spriteShader);
-			spriteMateiral->SetTexture(texture);
-			Resources::Insert(L"SpriteMaterial", spriteMateiral);
-		}
+		std::shared_ptr<Texture> Lobby_texture
+			= Resources::Load<Texture>(L"LobbyBG", L"..\\Resources\\Texture\\LobbyBG.png");
 
-		{
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			spriteMateiral->SetShader(spriteShader);
-			spriteMateiral->SetTexture(texture);
-			Resources::Insert(L"SpriteMaterial02", spriteMateiral);
-		}
+		sh::Resources::MakeMaterial(Player_texture, spriteShader, L"PlayerMaterial");
+		sh::Resources::MakeMaterial(Lobby_texture, spriteShader, L"LobbyMaterial");
 	}
 
 	void Initialize()
 	{
-		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].pos = Vector3(-1.0f, 1.0f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 		vertexes[0].uv = Vector2(0.0f, 0.0f);
 
-		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		vertexes[1].pos = Vector3(1.0f, 1.0f, 0.0f);
 		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
 		vertexes[1].uv = Vector2(1.0f, 0.0f);
 
-		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].pos = Vector3(1.0f, -1.0f, 0.0f);
 		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 		vertexes[2].uv = Vector2(1.0f, 1.0f);
 
-		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].pos = Vector3(-1.0f, -1.0f, 0.0f);
 		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 		vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		LoadBuffer();
 		LoadShader();
+		LoadSprites();
 		SetupState();
 
-		std::shared_ptr<Texture> texture
-			= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-		texture
-			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+		/*std::shared_ptr<Texture> texture
+			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Lo.png");
 
-		texture->BindShader(eShaderStage::PS, 0);
+		texture->BindShader(eShaderStage::PS, 0);*/
 	}
 
 	void Release()

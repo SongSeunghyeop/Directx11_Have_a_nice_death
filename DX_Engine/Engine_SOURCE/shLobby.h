@@ -3,11 +3,11 @@
 
 namespace sh
 {
-	class Layer
+	class Lobby : public GameObject
 	{
 	public:
-		Layer();
-		~Layer();
+		Lobby();
+		virtual ~Lobby();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -15,9 +15,8 @@ namespace sh
 		virtual void Render();
 		virtual void Release();
 
-		void AddGameObject(GameObject* gameObj);
-		
 	private:
-		std::vector<GameObject*> mGameObjects;
+		MeshRenderer *Lobby_MR;
 	};
 }
+

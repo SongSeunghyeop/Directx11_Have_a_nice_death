@@ -7,7 +7,9 @@ namespace sh
 {
 	MeshRenderer::MeshRenderer()
 		: Component(eComponentType::MeshRenderer)
-	{
+		, mMesh(Resources::Find<Mesh>(L"RectMesh"))
+	{ 
+
 	}
 	MeshRenderer::~MeshRenderer()
 	{
@@ -31,5 +33,9 @@ namespace sh
 		mMesh->Render(); //DrawIndex
 
 		mMaterial->Clear();
+	}
+	void MeshRenderer::Release()
+	{
+		
 	}
 }

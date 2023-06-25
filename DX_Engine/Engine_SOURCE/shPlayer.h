@@ -1,13 +1,14 @@
 #pragma once
 #include "shGameObject.h"
+#include "shPlayerController.h"
 
 namespace sh
 {
-	class Layer
+	class Player : public GameObject
 	{
 	public:
-		Layer();
-		~Layer();
+		Player();
+		virtual ~Player();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -15,9 +16,9 @@ namespace sh
 		virtual void Render();
 		virtual void Release();
 
-		void AddGameObject(GameObject* gameObj);
-		
 	private:
-		std::vector<GameObject*> mGameObjects;
+		MeshRenderer* Player_MR;
+		PlayerController* Player_CT;
 	};
 }
+

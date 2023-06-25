@@ -32,7 +32,7 @@ namespace sh
 
 	void Transform::LateUpdate()
 	{
-		mWorld = Matrix::Identity;
+		mWorld = Matrix::Identity; // 초기값 단위행렬
 
 		Matrix scale = Matrix::CreateScale(mScale);
 

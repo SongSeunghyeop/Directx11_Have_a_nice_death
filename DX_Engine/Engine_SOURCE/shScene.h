@@ -14,6 +14,7 @@ namespace sh
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+		virtual void Release();
 
 		virtual void OnEnter();
 		virtual void OnExit();

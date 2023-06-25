@@ -49,6 +49,15 @@
     <Filter Include="Scene\Manager">
       <UniqueIdentifier>{3aa709d5-c253-407d-8069-17d7fd213e28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Camera">
+      <UniqueIdentifier>{9835f971-808e-41c2-bb6a-9a6b2f0f28e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Player">
+      <UniqueIdentifier>{f4ffc0b0-e6cd-49be-8985-e91bdca4e78e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\BackGrounds">
+      <UniqueIdentifier>{16e7f74c-33d5-4acc-b9c1-92f152650fdf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -126,11 +135,23 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)shTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMaterial.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCameraController.h">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)shCamera.h">
+      <Filter>GameObject\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPlayer.h">
+      <Filter>GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPlayerController.h">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)shCameraScript.h">
-      <Filter>GameObject\Component\Script</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shLobby.h">
+      <Filter>GameObject\BackGrounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -197,11 +218,20 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)shTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMaterial.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)shCamera.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)shCameraScript.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp">
       <Filter>GameObject\Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCamera.cpp">
+      <Filter>GameObject\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPlayer.cpp">
+      <Filter>GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPlayerController.cpp">
+      <Filter>GameObject\Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shLobby.cpp">
+      <Filter>GameObject\BackGrounds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -32,4 +32,9 @@ namespace sh
 	{
 
 	}
+
+	void Script::Release()
+	{
+
+	}
 }

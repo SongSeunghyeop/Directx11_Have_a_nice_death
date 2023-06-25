@@ -2,6 +2,8 @@
 #include "shEntity.h"
 #include "shComponent.h"
 #include "shScript.h"
+#include "shMeshRenderer.h"
+#include "shResources.h"
 
 namespace sh
 {
@@ -22,6 +24,7 @@ namespace sh
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+		virtual void Release();
 
 		template <typename T>
 		T* GetComponent()
@@ -70,6 +73,7 @@ namespace sh
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
+
 		std::vector<Script*> mScripts;
 	};
 }

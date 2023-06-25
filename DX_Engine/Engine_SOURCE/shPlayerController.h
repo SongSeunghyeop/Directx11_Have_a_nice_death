@@ -3,7 +3,7 @@
 
 namespace sh
 {
-	class CameraScript : public Script
+	class PlayerController : public Script
 	{
 	public:
 		virtual void Update() override;

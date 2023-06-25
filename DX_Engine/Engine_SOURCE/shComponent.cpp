@@ -23,4 +23,8 @@ namespace sh
 	void Component::Render()
 	{
 	}
+	void Component::Release()
+	{
+
+	}
 }

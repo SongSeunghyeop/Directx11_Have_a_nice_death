@@ -1,5 +1,7 @@
 #pragma once
 #include "shResource.h"
+#include "shTexture.h"
+#include "shShader.h"
 
 namespace sh
 {
@@ -53,6 +55,14 @@ namespace sh
 		static void Insert(const std::wstring& key, std::shared_ptr<T> resource)
 		{
 			mResources.insert(std::make_pair(key, resource));
+		}
+
+		static void MakeMaterial(std::shared_ptr<Texture> texture, std::shared_ptr<Shader> shader, std::wstring Material_name)
+		{
+			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			spriteMateiral->SetShader(shader);
+			spriteMateiral->SetTexture(texture);
+			Resources::Insert(Material_name, spriteMateiral);
 		}
 
 	private:

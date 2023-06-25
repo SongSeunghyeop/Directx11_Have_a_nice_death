@@ -1,54 +1,36 @@
 #include "shPlayScene.h"
 #include "shTransform.h"
-#include "shMeshRenderer.h"
-#include "shResources.h"
-#include "shMesh.h"
-#include "shCameraScript.h"
+#include "shCameraController.h"
+#include "shPlayerController.h"
 #include "shCamera.h"
+#include "shPlayer.h"
+#include "shLobby.h"
+#include "shObject.h"
 
 namespace sh
 {
 	PlayScene::PlayScene()
 	{
+
 	}
 	PlayScene::~PlayScene()
 	{
+
 	}
 	void PlayScene::Initialize()
 	{
-		{
-			GameObject* player = new GameObject();
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-			//player->AddComponent<CameraScript>();
-		}
-
-		{
-			GameObject* player = new GameObject();
-			AddGameObject(eLayerType::Player, player);
-			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
-			//player->AddComponent<CameraScript>();
-		}
+		Death = object::Instantiate<Player>(sh::enums::eLayerType::Player);
+		backGround = object::Instantiate<Lobby>(sh::enums::eLayerType::BackGround);
 
 		//Main Camera
 		GameObject* camera = new GameObject();
 		AddGameObject(eLayerType::Player, camera);
-		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		camera->AddComponent<CameraScript>();
+		camera->AddComponent<Camera>();
+		camera->AddComponent<CameraController>();
+		CameraController* cameraCont = camera->GetComponent<CameraController>();
+		cameraCont->setTarget(Death);
 
-		//GameObject* player2 = new GameObject();
-		//AddGameObject(eLayerType::Player, player2);
-		//player2->AddComponent<MeshRenderer>();
-
-		//Transform* tr = player->GetComponent<Transform>();
-		//tr->SetPosition(Vector3(0.5f, 0.5f, 0.0f));
+		Scene::Initialize();
 	}
 
 	void PlayScene::Update()
@@ -64,5 +46,10 @@ namespace sh
 	void PlayScene::Render()
 	{
 		Scene::Render();
+	}
+
+	void PlayScene::Release()
+	{
+		Scene::Release();
 	}
 }
