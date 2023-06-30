@@ -55,9 +55,7 @@ namespace sh
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
 		
-		SceneManager::Render();
-		//renderer::Render();
-		//graphicDevice->Draw();
+		renderer::Render();
 
 		graphicDevice->Present();
 	}

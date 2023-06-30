@@ -44,7 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -149,15 +149,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Engine_SOURCE\shPlayer.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
-    <ClInclude Include="shCameraScript.h" />
-    <ClInclude Include="shPlayScene.h" />
+    <ClInclude Include="shCameraController.h" />
+    <ClInclude Include="shColumn.h" />
+    <ClInclude Include="shLobby.h" />
+    <ClInclude Include="shLobbyScene.h" />
+    <ClInclude Include="shOffice.h" />
+    <ClInclude Include="shPlayerController.h" />
+    <ClInclude Include="shTitle.h" />
+    <ClInclude Include="shTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="shCameraScript.cpp" />
+    <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp" />
+    <ClCompile Include="shCameraController.cpp" />
     <ClCompile Include="DXEngine.cpp" />
-    <ClCompile Include="shPlayScene.cpp" />
+    <ClCompile Include="shColumn.cpp" />
+    <ClCompile Include="shLobby.cpp" />
+    <ClCompile Include="shLobbyScene.cpp" />
+    <ClCompile Include="shOffice.cpp" />
+    <ClCompile Include="shPlayerController.cpp" />
+    <ClCompile Include="shTitle.cpp" />
+    <ClCompile Include="shTitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Update="C:\Users\tmdgu\OneDrive\Desktop\Directx\Haveanicedeath\DXEngine\Engine_SOURCE\shMath.inl">

@@ -37,4 +37,5 @@ namespace renderer
 	void Initialize();
 	void Render();
 	void Release();
+
 }

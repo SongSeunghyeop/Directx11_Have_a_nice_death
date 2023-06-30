@@ -12,6 +12,7 @@ namespace sh
 	{
 
 	}
+
 	void SceneManager::Update()
 	{
 		mActiveScene->Update();
@@ -22,7 +23,7 @@ namespace sh
 	}
 	void SceneManager::Render()
 	{
-		mActiveScene->Render();
+		mActiveScene->Render(); 
 	}
 
 	void SceneManager::Release()
@@ -33,19 +34,6 @@ namespace sh
 			iter.second = nullptr;
 		}
 	}
-
-	//bool SceneManager::CreateScene(std::wstring name, Scene* scene)
-	//{
-	//	std::map<std::wstring, Scene*>::iterator iter
-	//		= mScenes.find(name);
-
-	//	if (iter != mScenes.end())
-	//		return false;
-
-	//	mScenes.insert(std::make_pair(name, scene));
-	//	scene->Initialize();
-	//	return true;
-	//}
 
 	Scene* SceneManager::LoadScene(std::wstring name)
 	{

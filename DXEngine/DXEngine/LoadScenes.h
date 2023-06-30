@@ -1,6 +1,7 @@
 #pragma once
 #include "shSceneManager.h"
-#include "shPlayScene.h"
+#include "shTitleScene.h"
+#include "shLobbyScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\DXEngine.lib")
@@ -16,7 +17,7 @@ namespace sh
 {
 	void InitializeScenes()
 	{
-		//PlayScene* playScene = new PlayScene();
-		SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
+		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 	}
 }

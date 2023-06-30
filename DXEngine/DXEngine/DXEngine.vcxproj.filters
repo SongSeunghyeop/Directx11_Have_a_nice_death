@@ -2,23 +2,65 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="DXEngine.cpp" />
-    <ClCompile Include="shPlayScene.cpp">
+    <ClCompile Include="shLobbyScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="shCameraScript.cpp">
+    <ClCompile Include="shCameraController.cpp">
       <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="shPlayerController.cpp">
+      <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp">
+      <Filter>Contents\Prefabs\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="shLobby.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shTitleScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="shTitle.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shOffice.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shColumn.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="shPlayScene.h">
+    <ClInclude Include="shLobbyScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="shCameraScript.h">
+    <ClInclude Include="shCameraController.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="LoadScenes.h">
       <Filter>Contents\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="shPlayerController.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine_SOURCE\shPlayer.h">
+      <Filter>Contents\Prefabs\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="shLobby.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="shTitle.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shOffice.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shColumn.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +75,15 @@
     </Filter>
     <Filter Include="Contents\Script">
       <UniqueIdentifier>{02a6d4b6-df18-4b04-b5c4-bf97bbaba9ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Prefabs">
+      <UniqueIdentifier>{11f35771-3187-4a36-bf5a-4ff80e77fc52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Prefabs\Player">
+      <UniqueIdentifier>{fc6d448e-4c29-4b88-a0a0-7407a74589d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Prefabs\BackGrounds">
+      <UniqueIdentifier>{7011ff05-13fb-49aa-8165-d0f36fc79305}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

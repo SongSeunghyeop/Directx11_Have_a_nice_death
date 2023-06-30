@@ -8,6 +8,12 @@
 #include "shResources.h"
 #include "LoadScenes.h"
 
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\DXEngine.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\DXEngine.lib")
+#endif
+
 sh::Application application;
 
 #define MAX_LOADSTRING 100
@@ -95,7 +101,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITORWINDOW));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_EDITORWINDOW);
+    wcex.lpszMenuName   = NULL;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 

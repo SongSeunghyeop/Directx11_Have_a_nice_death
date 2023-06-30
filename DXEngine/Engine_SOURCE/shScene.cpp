@@ -13,7 +13,10 @@ namespace sh
 
 	void Scene::Initialize()
 	{
-		
+		for (Layer& layer : mLayers)
+		{
+			layer.Initialize();
+		}
 	}
 
 	void Scene::Update()

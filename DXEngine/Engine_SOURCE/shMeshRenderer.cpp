@@ -2,11 +2,13 @@
 #include "shGameObject.h"
 #include "shTransform.h"
 #include "shRenderer.h"
+#include "shResources.h"
 
 namespace sh
 {
 	MeshRenderer::MeshRenderer()
 		: Component(eComponentType::MeshRenderer)
+		, mMesh(Resources::Find<Mesh>(L"RectMesh"))
 	{
 	}
 	MeshRenderer::~MeshRenderer()

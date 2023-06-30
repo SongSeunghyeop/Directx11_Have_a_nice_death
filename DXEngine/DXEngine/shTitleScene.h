@@ -4,11 +4,11 @@
 
 namespace sh
 {
-	class PlayScene : public Scene
+	class TitleScene : public Scene
 	{
 	public:
-		PlayScene();
-		virtual ~PlayScene();
+		TitleScene();
+		virtual ~TitleScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

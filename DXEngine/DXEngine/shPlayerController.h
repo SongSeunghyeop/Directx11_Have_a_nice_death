@@ -1,15 +1,16 @@
 #pragma once
-//#include "shScript.h"
 #include <shScript.h>
 
 namespace sh
 {
-	class CameraScript : public Script
+	class PlayerController : public Script
 	{
 	public:
 		virtual void Update() override;
 
-	private:
+		void Move();
 
+	private:
+		GameObject* target;
 	};
 }
