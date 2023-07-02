@@ -225,11 +225,27 @@ namespace renderer
 		std::shared_ptr<Texture> Column_texture
 			= Resources::Load<Texture>(L"Column", L"..\\Resources\\Texture\\Column.png");
 
+		std::shared_ptr<Texture> BigRock_texture
+			= Resources::Load<Texture>(L"Big_Rock", L"..\\Resources\\Texture\\Big_Rock.png");
+
+		std::shared_ptr<Texture> Ground_texture
+			= Resources::Load<Texture>(L"Ground", L"..\\Resources\\Texture\\Ground.png");
+
+		std::shared_ptr<Texture> Tree_texture
+			= Resources::Load<Texture>(L"Tree", L"..\\Resources\\Texture\\Tree.png");
+
+		std::shared_ptr<Texture> Wall_texture
+			= Resources::Load<Texture>(L"Wall", L"..\\Resources\\Texture\\Wall.png");
+
 		sh::Material::Make_Material(spriteShader, Player_texture, L"PlayerMaterial");
 		sh::Material::Make_Material(spriteShader, Lobby_texture, L"LobbyMaterial");
 		sh::Material::Make_Material(spriteShader, Office_texture, L"OfficeMaterial");
 		sh::Material::Make_Material(spriteShader, Title_texture, L"TitleMaterial");
 		sh::Material::Make_Material(spriteShader, Column_texture, L"ColumnMaterial");
+		sh::Material::Make_Material(spriteShader, BigRock_texture, L"BigRockMaterial");
+		sh::Material::Make_Material(spriteShader, Ground_texture, L"GroundMaterial");
+		sh::Material::Make_Material(spriteShader, Tree_texture, L"TreeMaterial");
+		sh::Material::Make_Material(spriteShader, Wall_texture, L"WallMaterial");
 	}
 
 	void Initialize()

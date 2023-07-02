@@ -1,33 +1,33 @@
-#include "shLobby.h"
+#include "shGround.h"
 #include "shMeshRenderer.h"
 #include "shTransform.h"
 
 namespace sh
 {
-	Lobby::Lobby()
+	Ground::Ground()
 	{
 
 	}
-	Lobby::~Lobby()
+	Ground::~Ground()
 	{
 
 	}
-	void Lobby::Initialize()
+	void Ground::Initialize()
 	{
 		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"LobbyMaterial"));
+		mr->SetMaterial(Resources::Find<Material>(L"GroundMaterial"));
 
 		GameObject::Initialize();
 	}
-	void Lobby::Update()
+	void Ground::Update()
 	{
 		GameObject::Update();
 	}
-	void Lobby::LateUpdate()
+	void Ground::LateUpdate()
 	{
 		GameObject::LateUpdate();
 	}
-	void Lobby::Render()
+	void Ground::Render()
 	{
 		GameObject::Render();
 	}

@@ -18,10 +18,11 @@ namespace sh::enums
 	enum class eLayerType
 	{
 		Camera,
+		Structure_F,
 		Player,
 		Monster,
 		UI,
-		Structure, //지형, 건물
+		Structure_B, //지형, 건물
 		BackGround,
 		None,
 		End,

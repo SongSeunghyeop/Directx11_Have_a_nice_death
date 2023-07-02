@@ -15,7 +15,7 @@ namespace sh
 
 		targetpos = target->GetComponent<Transform>()->GetPosition();
 
-		Vector3 CameraPos = Vector3(0, 0, -5);
+		Vector3 CameraPos = Vector3(0, 1, -5);
 
 		tr->SetPosition(targetpos + CameraPos);
 	}

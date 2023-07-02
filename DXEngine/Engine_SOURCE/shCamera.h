@@ -43,6 +43,11 @@ namespace sh
 
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
+
+		void SetCameraType(eProjectionType type)
+		{
+			mType = type;
+		}
 	private:
 		static Matrix View;
 		static Matrix Projection;

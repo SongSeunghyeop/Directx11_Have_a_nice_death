@@ -29,6 +29,7 @@ namespace sh
 		AddGameObject(eLayerType::Player, camera);
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
+		cameraComp->SetCameraType(Camera::eProjectionType::OrthoGraphic);
 		cameraComp->TurnLayerMask(eLayerType::BackGround, false);
 
 		Scene::Initialize();

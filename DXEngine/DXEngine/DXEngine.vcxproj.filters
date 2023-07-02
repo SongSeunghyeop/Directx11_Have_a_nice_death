@@ -29,6 +29,18 @@
     <ClCompile Include="shColumn.cpp">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
+    <ClCompile Include="shRock.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shGround.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shTree.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shWall.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -60,6 +72,18 @@
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
     <ClInclude Include="shColumn.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shRock.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shGround.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shTree.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shWall.h">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
   </ItemGroup>

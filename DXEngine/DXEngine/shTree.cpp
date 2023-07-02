@@ -1,33 +1,33 @@
-#include "shLobby.h"
+#include "shTree.h"
 #include "shMeshRenderer.h"
 #include "shTransform.h"
 
 namespace sh
 {
-	Lobby::Lobby()
+	Tree::Tree()
 	{
 
 	}
-	Lobby::~Lobby()
+	Tree::~Tree()
 	{
 
 	}
-	void Lobby::Initialize()
+	void Tree::Initialize()
 	{
 		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"LobbyMaterial"));
+		mr->SetMaterial(Resources::Find<Material>(L"TreeMaterial"));
 
 		GameObject::Initialize();
 	}
-	void Lobby::Update()
+	void Tree::Update()
 	{
 		GameObject::Update();
 	}
-	void Lobby::LateUpdate()
+	void Tree::LateUpdate()
 	{
 		GameObject::LateUpdate();
 	}
-	void Lobby::Render()
+	void Tree::Render()
 	{
 		GameObject::Render();
 	}

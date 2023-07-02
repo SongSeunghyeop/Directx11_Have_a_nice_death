@@ -16,7 +16,6 @@ namespace sh
 	{
 		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
 		mr->SetMaterial(Resources::Find<Material>(L"PlayerMaterial"));
-		this->GetComponent<Transform>()->SetScale(Vector3(0.6f, 0.6f, 0.6f));
 
 		GameObject::Initialize();
 	}
