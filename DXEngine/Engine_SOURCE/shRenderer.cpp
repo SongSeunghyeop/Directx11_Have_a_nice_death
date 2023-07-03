@@ -237,6 +237,24 @@ namespace renderer
 		std::shared_ptr<Texture> Wall_texture
 			= Resources::Load<Texture>(L"Wall", L"..\\Resources\\Texture\\Wall.png");
 
+		std::shared_ptr<Texture> Pillar_texture
+			= Resources::Load<Texture>(L"Pillar", L"..\\Resources\\Texture\\Pillar.png");
+
+		std::shared_ptr<Texture> CircleStair_texture
+			= Resources::Load<Texture>(L"CircleStair", L"..\\Resources\\Texture\\CircleStair.png");
+
+		std::shared_ptr<Texture> BossChair_texture
+			= Resources::Load<Texture>(L"BossChair", L"..\\Resources\\Texture\\BossChair.png");
+
+		std::shared_ptr<Texture> BossDesk_texture
+			= Resources::Load<Texture>(L"BossDesk", L"..\\Resources\\Texture\\BossDesk.png");
+
+		std::shared_ptr<Texture> StairR_texture
+			= Resources::Load<Texture>(L"Stair_R", L"..\\Resources\\Texture\\Stair_R.png");
+
+		std::shared_ptr<Texture> SupportDesk_texture
+			= Resources::Load<Texture>(L"SupportDesk", L"..\\Resources\\Texture\\SupportDesk.png");
+
 		sh::Material::Make_Material(spriteShader, Player_texture, L"PlayerMaterial");
 		sh::Material::Make_Material(spriteShader, Lobby_texture, L"LobbyMaterial");
 		sh::Material::Make_Material(spriteShader, Office_texture, L"OfficeMaterial");
@@ -246,6 +264,12 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, Ground_texture, L"GroundMaterial");
 		sh::Material::Make_Material(spriteShader, Tree_texture, L"TreeMaterial");
 		sh::Material::Make_Material(spriteShader, Wall_texture, L"WallMaterial");
+		sh::Material::Make_Material(spriteShader, Pillar_texture, L"PillarMaterial");
+		sh::Material::Make_Material(spriteShader, CircleStair_texture, L"CircleStairMaterial");
+		sh::Material::Make_Material(spriteShader, BossChair_texture, L"BossChairMaterial");
+		sh::Material::Make_Material(spriteShader, BossDesk_texture, L"BossDeskMaterial");
+		sh::Material::Make_Material(spriteShader, StairR_texture, L"StairR_Material");
+		sh::Material::Make_Material(spriteShader, SupportDesk_texture, L"SupportDesk_Material");
 	}
 
 	void Initialize()

@@ -41,6 +41,12 @@
     <ClCompile Include="shWall.cpp">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
+    <ClCompile Include="shPillar.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shCircleStair.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -84,6 +90,12 @@
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
     <ClInclude Include="shWall.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shPillar.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shCircleStair.h">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
   </ItemGroup>

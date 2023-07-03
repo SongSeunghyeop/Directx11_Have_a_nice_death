@@ -17,13 +17,13 @@ namespace sh::enums
 
 	enum class eLayerType
 	{
-		Camera,
 		Structure_F,
 		Player,
 		Monster,
 		UI,
 		Structure_B, //지형, 건물
 		BackGround,
+		Camera,
 		None,
 		End,
 	};

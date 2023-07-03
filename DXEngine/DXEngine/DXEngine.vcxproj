@@ -153,11 +153,13 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="shCameraController.h" />
+    <ClInclude Include="shCircleStair.h" />
     <ClInclude Include="shColumn.h" />
     <ClInclude Include="shGround.h" />
     <ClInclude Include="shLobby.h" />
     <ClInclude Include="shLobbyScene.h" />
     <ClInclude Include="shOffice.h" />
+    <ClInclude Include="shPillar.h" />
     <ClInclude Include="shPlayerController.h" />
     <ClInclude Include="shRock.h" />
     <ClInclude Include="shTitle.h" />
@@ -169,11 +171,13 @@
     <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp" />
     <ClCompile Include="shCameraController.cpp" />
     <ClCompile Include="DXEngine.cpp" />
+    <ClCompile Include="shCircleStair.cpp" />
     <ClCompile Include="shColumn.cpp" />
     <ClCompile Include="shGround.cpp" />
     <ClCompile Include="shLobby.cpp" />
     <ClCompile Include="shLobbyScene.cpp" />
     <ClCompile Include="shOffice.cpp" />
+    <ClCompile Include="shPillar.cpp" />
     <ClCompile Include="shPlayerController.cpp" />
     <ClCompile Include="shRock.cpp" />
     <ClCompile Include="shTitle.cpp" />
