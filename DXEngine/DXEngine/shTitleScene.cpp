@@ -1,7 +1,6 @@
 #include "shTitleScene.h"
 #include "shTransform.h"
 #include "shCameraController.h"
-#include "shPlayerController.h"
 #include "shCamera.h"
 #include "shSceneManager.h"
 #include "shTitle.h"

@@ -31,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DXEngine.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shResources.h" />

@@ -6,7 +6,7 @@ namespace sh
 {
 	Lobby::Lobby()
 	{
-
+		this->SetName(L"Lobby");
 	}
 	Lobby::~Lobby()
 	{
@@ -16,6 +16,8 @@ namespace sh
 	{
 		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
 		mr->SetMaterial(Resources::Find<Material>(L"LobbyMaterial"));
+
+
 
 		GameObject::Initialize();
 	}

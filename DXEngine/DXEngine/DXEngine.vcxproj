@@ -160,7 +160,6 @@
     <ClInclude Include="shLobbyScene.h" />
     <ClInclude Include="shOffice.h" />
     <ClInclude Include="shPillar.h" />
-    <ClInclude Include="shPlayerController.h" />
     <ClInclude Include="shRock.h" />
     <ClInclude Include="shTitle.h" />
     <ClInclude Include="shTitleScene.h" />
@@ -178,7 +177,6 @@
     <ClCompile Include="shLobbyScene.cpp" />
     <ClCompile Include="shOffice.cpp" />
     <ClCompile Include="shPillar.cpp" />
-    <ClCompile Include="shPlayerController.cpp" />
     <ClCompile Include="shRock.cpp" />
     <ClCompile Include="shTitle.cpp" />
     <ClCompile Include="shTitleScene.cpp" />

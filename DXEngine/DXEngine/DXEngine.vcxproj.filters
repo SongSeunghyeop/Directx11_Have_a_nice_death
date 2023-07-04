@@ -8,9 +8,6 @@
     <ClCompile Include="shCameraController.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
-    <ClCompile Include="shPlayerController.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp">
       <Filter>Contents\Prefabs\Player</Filter>
     </ClCompile>
@@ -58,9 +55,6 @@
     </ClInclude>
     <ClInclude Include="LoadScenes.h">
       <Filter>Contents\Load</Filter>
-    </ClInclude>
-    <ClInclude Include="shPlayerController.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="..\Engine_SOURCE\shPlayer.h">
       <Filter>Contents\Prefabs\Player</Filter>
