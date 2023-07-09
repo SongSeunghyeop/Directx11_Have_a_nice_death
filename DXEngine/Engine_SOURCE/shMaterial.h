@@ -3,7 +3,6 @@
 #include "shResource.h"
 #include "shShader.h"
 #include "shTexture.h"
-
 namespace sh::graphics
 {
 	class Material : public Resource
@@ -23,10 +22,15 @@ namespace sh::graphics
 		eRenderingMode GetRenderingMode() { return mMode; }
 
 		static void Make_Material(std::shared_ptr<Shader> shader, std::shared_ptr<Texture> texture, std::wstring Materialname);
+
+		math::Vector2 GetTextureSize()
+		{
+			return mTexture->GetSize();
+		}
 	private:
 		std::shared_ptr<Shader> mShader;
 		std::shared_ptr<Texture> mTexture;
-
+		std::shared_ptr<Shader> shader;
 		eRenderingMode mMode;
 	};
 }

@@ -4,10 +4,10 @@
 #include "shMesh.h"
 #include "shShader.h"
 #include "shConstantBuffer.h"
-#include "shCamera.h"
+#include "shCameraController.h"
 
-using namespace sh::math;
 using namespace sh::graphics;
+using namespace sh::math;
 namespace renderer
 {
 	struct Vertex
@@ -32,10 +32,11 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
-	extern std::vector<sh::Camera*> cameras;
+	extern std::vector<sh::CameraController*> cameras;
+	extern std::shared_ptr<sh::Shader> spriteShader;
+	extern std::shared_ptr<sh::Shader> girdShader;
 
 	void Initialize();
 	void Render();
 	void Release();
-
 }

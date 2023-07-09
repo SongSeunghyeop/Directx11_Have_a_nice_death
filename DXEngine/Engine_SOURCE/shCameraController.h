@@ -4,12 +4,12 @@
 
 namespace sh
 {
-	class Camera : public Component
+	class CameraController : public Component
 	{
 	public:
 		enum class eProjectionType
 		{
-			Perpective,
+			Perspective,
 			OrthoGraphic,
 			None,
 		};
@@ -17,8 +17,8 @@ namespace sh
 		static Matrix GetViewMatrix() { return View; }
 		static Matrix GetProjectionMatrix() { return Projection; }
 
-		Camera();
-		~Camera();
+		CameraController();
+		~CameraController();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -44,10 +44,23 @@ namespace sh
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
 
-		void SetCameraType(eProjectionType type)
+		void SetProjectionType(eProjectionType type)
 		{
 			mType = type;
 		}
+		void SetCameraType(std::wstring type)
+		{
+			if (type == L"UI")
+			{
+				cameraType = eComponentType::UICamera;
+			}
+			if (type == L"MAIN")
+			{
+				cameraType = eComponentType::MAINCamera;
+			}
+		}
+
+		float GetSize() { return mSize; }
 	private:
 		static Matrix View;
 		static Matrix Projection;
@@ -65,5 +78,7 @@ namespace sh
 		std::vector<GameObject*> mOpaqueGameObjects;
 		std::vector<GameObject*> mCutOutGameObjects;
 		std::vector<GameObject*> mTransparentGameObjects;
+
+		eComponentType cameraType = eComponentType::MAINCamera;
 	};
 }

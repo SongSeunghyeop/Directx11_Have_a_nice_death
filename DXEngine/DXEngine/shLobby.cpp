@@ -1,6 +1,10 @@
 #include "shLobby.h"
+#include "shLobbyScene.h"
 #include "shMeshRenderer.h"
 #include "shTransform.h"
+#include "shObject.h"
+#include "shBigColumn.h"
+#include "shSmallColumn.h"
 
 namespace sh
 {
@@ -14,10 +18,24 @@ namespace sh
 	}
 	void Lobby::Initialize()
 	{
-		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"LobbyMaterial"));
-
-
+		{
+			GameObject* BossChair
+				= object::Instantiate<GameObject>(Vector4(-0.45f, -2.5f, object::zBackGround,0.6f), eLayerType::Structure_B, L"BossChairMaterial");
+			GameObject* Stair_R
+				= object::Instantiate<GameObject>(Vector4(5.2, -4.9f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"StairR_Material");
+			GameObject* SupportDesk
+				= object::Instantiate<GameObject>(Vector4(-0.2f, -5.5f, object::zBackGround, 0.8f), eLayerType::Structure_B, L"SupportDesk_Material");
+			GameObject* BossDesk
+				= object::Instantiate<GameObject>(Vector4(-0.1f, -3.5f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"BossDeskMaterial");
+		}
+		{
+			BigColumn* column1
+				= object::Instantiate<BigColumn>(Vector4(14.0f, -0.4f, object::zPlayer, 0.9f), eLayerType::Structure_F, L"ColumnMaterial");
+			SmallColumn* column2
+			= object::Instantiate<SmallColumn>(Vector4(7.4f, 2.0f, object::zBackGround, 0.8f), eLayerType::Structure_B, L"ColumnMaterial");
+			SmallColumn* column3
+				= object::Instantiate<SmallColumn>(Vector4(15.0f, 1.7f, object::zBackGround, 0.8f), eLayerType::Structure_B, L"ColumnMaterial");
+		}
 
 		GameObject::Initialize();
 	}

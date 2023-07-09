@@ -42,9 +42,9 @@ namespace sh::math
 	const Vector4 Vector4::UnitW = { 0.f, 0.f, 0.f, 1.f };
 
 	const Matrix Matrix::Identity = { 1.f, 0.f, 0.f, 0.f,
-									  0.f, 1.f, 0.f, 0.f,
-									  0.f, 0.f, 1.f, 0.f,
-									  0.f, 0.f, 0.f, 1.f };
+														0.f, 1.f, 0.f, 0.f,
+												      	0.f, 0.f, 1.f, 0.f,
+									                    0.f, 0.f, 0.f, 1.f };
 
 	const Quaternion Quaternion::Identity = { 0.f, 0.f, 0.f, 1.f };
 

@@ -150,37 +150,37 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Engine_SOURCE\shPlayer.h" />
+    <ClInclude Include="shBigColumn.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
-    <ClInclude Include="shCameraController.h" />
+    <ClInclude Include="shCamera.h" />
     <ClInclude Include="shCircleStair.h" />
-    <ClInclude Include="shColumn.h" />
-    <ClInclude Include="shGround.h" />
+    <ClInclude Include="shLittleColumn.h" />
     <ClInclude Include="shLobby.h" />
     <ClInclude Include="shLobbyScene.h" />
     <ClInclude Include="shOffice.h" />
     <ClInclude Include="shPillar.h" />
+    <ClInclude Include="shPlaza.h" />
     <ClInclude Include="shRock.h" />
-    <ClInclude Include="shTitle.h" />
+    <ClInclude Include="shSmallColumn.h" />
     <ClInclude Include="shTitleScene.h" />
-    <ClInclude Include="shTree.h" />
     <ClInclude Include="shWall.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp" />
-    <ClCompile Include="shCameraController.cpp" />
+    <ClCompile Include="shBigColumn.cpp" />
     <ClCompile Include="DXEngine.cpp" />
+    <ClCompile Include="shCamera.cpp" />
     <ClCompile Include="shCircleStair.cpp" />
-    <ClCompile Include="shColumn.cpp" />
-    <ClCompile Include="shGround.cpp" />
+    <ClCompile Include="shLittleColumn.cpp" />
     <ClCompile Include="shLobby.cpp" />
     <ClCompile Include="shLobbyScene.cpp" />
     <ClCompile Include="shOffice.cpp" />
     <ClCompile Include="shPillar.cpp" />
+    <ClCompile Include="shPlaza.cpp" />
     <ClCompile Include="shRock.cpp" />
-    <ClCompile Include="shTitle.cpp" />
+    <ClCompile Include="shSmallColumn.cpp" />
     <ClCompile Include="shTitleScene.cpp" />
-    <ClCompile Include="shTree.cpp" />
     <ClCompile Include="shWall.cpp" />
   </ItemGroup>
   <ItemGroup>

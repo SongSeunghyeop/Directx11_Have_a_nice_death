@@ -5,9 +5,6 @@
     <ClCompile Include="shLobbyScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="shCameraController.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp">
       <Filter>Contents\Prefabs\Player</Filter>
     </ClCompile>
@@ -17,22 +14,10 @@
     <ClCompile Include="shTitleScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="shTitle.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
     <ClCompile Include="shOffice.cpp">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
-    <ClCompile Include="shColumn.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
     <ClCompile Include="shRock.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="shGround.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="shTree.cpp">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
     <ClCompile Include="shWall.cpp">
@@ -44,14 +29,26 @@
     <ClCompile Include="shCircleStair.cpp">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
+    <ClCompile Include="shPlaza.cpp">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="shCamera.cpp">
+      <Filter>Contents\Prefabs\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="shBigColumn.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="shSmallColumn.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="shLittleColumn.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="shLobbyScene.h">
       <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="shCameraController.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="LoadScenes.h">
       <Filter>Contents\Load</Filter>
@@ -65,22 +62,10 @@
     <ClInclude Include="shTitleScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="shTitle.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
     <ClInclude Include="shOffice.h">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
-    <ClInclude Include="shColumn.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
     <ClInclude Include="shRock.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="shGround.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="shTree.h">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
     <ClInclude Include="shWall.h">
@@ -91,6 +76,21 @@
     </ClInclude>
     <ClInclude Include="shCircleStair.h">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shPlaza.h">
+      <Filter>Contents\Prefabs\BackGrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="shCamera.h">
+      <Filter>Contents\Prefabs\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="shBigColumn.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shSmallColumn.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shLittleColumn.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +114,12 @@
     </Filter>
     <Filter Include="Contents\Prefabs\BackGrounds">
       <UniqueIdentifier>{7011ff05-13fb-49aa-8165-d0f36fc79305}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Prefabs\Camera">
+      <UniqueIdentifier>{83373cff-ecbc-4e2b-bb00-9b5205b33cdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Prefabs\Structures">
+      <UniqueIdentifier>{6728fd76-2c9e-4626-a344-ce4907e73a20}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

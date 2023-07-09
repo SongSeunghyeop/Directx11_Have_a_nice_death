@@ -23,6 +23,10 @@ namespace sh::graphics
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
 
+		math::Vector2 GetSize()
+		{
+			return math::Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height);
+		}
 	private:
 		ScratchImage mImage;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mTexture;

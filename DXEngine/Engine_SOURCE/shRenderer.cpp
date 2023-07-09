@@ -6,6 +6,9 @@ namespace renderer
 {
 	using namespace sh;
 	using namespace sh::graphics;
+
+	std::shared_ptr<Shader> spriteShader;
+
 	Vertex vertexes[4] = {};
 	sh::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
@@ -15,10 +18,8 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
 	
-
 	//
-	std::vector<sh::Camera*> cameras = {};
-	std::shared_ptr<Shader> spriteShader;
+	std::vector<sh::CameraController*> cameras = {};
 	std::shared_ptr<Shader> normalShader;
 
 	void SetupState()
@@ -57,9 +58,10 @@ namespace renderer
 		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, normalShader->GetVSCode()
 			, normalShader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
-		//Sampler State
+		//Sampler State //
 		D3D11_SAMPLER_DESC samplerDesc = {};
 		samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
 		samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP;
@@ -73,6 +75,8 @@ namespace renderer
 		GetDevice()->BindSampler(eShaderStage::PS, 1, samplerState[(UINT)eSamplerType::Anisotropic].GetAddressOf());
 #pragma endregion
 #pragma region Rasterizer State
+		// FillMode = 폴리곤 내부를 어떻게 채울 것인가
+		// CullMode = 어디를 컬링 작업 할 것인가 (Back = 뒷면 제거)
 		D3D11_RASTERIZER_DESC rasterizerDesc = {};
 		rasterizerDesc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
 		rasterizerDesc.CullMode = D3D11_CULL_MODE::D3D11_CULL_BACK;
@@ -97,16 +101,17 @@ namespace renderer
 #pragma region Depth Stencil State
 		D3D11_DEPTH_STENCIL_DESC depthStencilDesc = {};
 
-		//less
+		//less = 깊이가 작은 순서
 		depthStencilDesc.DepthEnable = true;
-		depthStencilDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS;
+		depthStencilDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS_EQUAL;
 		depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 		depthStencilDesc.StencilEnable = false;
 
 		GetDevice()->CreateDepthStencilState(&depthStencilDesc
 			, depthStencilStates[(UINT)eDSType::Less].GetAddressOf());
 
-		//Greater
+
+		//Greater = 깊이가 높은 순서
 		depthStencilDesc.DepthEnable = true;
 		depthStencilDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_GREATER;
 		depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
@@ -126,7 +131,7 @@ namespace renderer
 
 		//None
 		depthStencilDesc.DepthEnable = false;
-		depthStencilDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS;
+		depthStencilDesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS_EQUAL;
 		depthStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
 		depthStencilDesc.StencilEnable = false;
 
@@ -167,21 +172,19 @@ namespace renderer
 			, blendStates[(UINT)eBSType::OneOne].GetAddressOf());
 
 #pragma endregion
-
-
 	}
 
 	void LoadBuffer()
 	{
 		// Vertex Buffer
 		//Mesh 클래스 객체 스마트포인터형 선언 및 생성
-		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
-		Resources::Insert(L"RectMesh", mesh);
+		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();// Mesh 생성
+		Resources::Insert(L"RectMesh", mesh); // 빈 Mesh
 
-		mesh->CreateVertexBuffer(vertexes, 4);
+		mesh->CreateVertexBuffer(vertexes, 4); // 생성한 버텍스 정보 매쉬에 저장
 
-		std::vector<UINT> indexes = {};
-		indexes.push_back(0);
+		std::vector<UINT> indexes = {}; // 인덱스 버퍼
+		indexes.push_back(0); // 순서 저장
 		indexes.push_back(1);
 		indexes.push_back(2);
 
@@ -191,11 +194,11 @@ namespace renderer
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		// Constant Buffer
-		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform);
+		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform); //상수 버퍼
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 	}
 
-	void LoadShader()
+	void LoadShader() // 쉐이더 생성
 	{
 		normalShader = std::make_shared<Shader>();
 		normalShader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
@@ -255,6 +258,7 @@ namespace renderer
 		std::shared_ptr<Texture> SupportDesk_texture
 			= Resources::Load<Texture>(L"SupportDesk", L"..\\Resources\\Texture\\SupportDesk.png");
 
+		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
 		sh::Material::Make_Material(spriteShader, Player_texture, L"PlayerMaterial");
 		sh::Material::Make_Material(spriteShader, Lobby_texture, L"LobbyMaterial");
 		sh::Material::Make_Material(spriteShader, Office_texture, L"OfficeMaterial");
@@ -274,6 +278,7 @@ namespace renderer
 
 	void Initialize()
 	{
+		//정점 생성
 		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 		vertexes[0].uv = Vector2(0.0f, 0.0f);
@@ -298,7 +303,7 @@ namespace renderer
 
 	void Render()
 	{
-		for (Camera* cam : cameras)
+		for (CameraController* cam : cameras)
 		{
 			if (cam == nullptr)
 				continue;

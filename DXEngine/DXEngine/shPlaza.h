@@ -3,11 +3,11 @@
 
 namespace sh
 {
-	class Ground : public GameObject
+	class Plaza : public GameObject
 	{
 	public:
-		Ground();
-		~Ground();
+		Plaza();
+		~Plaza();
 
 		virtual void Initialize();
 		virtual void Update();

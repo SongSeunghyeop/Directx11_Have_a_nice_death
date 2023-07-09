@@ -67,9 +67,6 @@
     <Filter Include="Graphics\ConstantBuffer">
       <UniqueIdentifier>{705c2df3-de1c-4959-9ff4-9a390c613119}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObject\Component\Camera">
-      <UniqueIdentifier>{b0d6c00f-8b80-4c02-ba3e-b0e54c703fc1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource\Texture">
       <UniqueIdentifier>{c223b344-a667-4a0b-9aac-b1db3c722d16}</UniqueIdentifier>
     </Filter>
@@ -81,6 +78,9 @@
     </Filter>
     <Filter Include="Resource\Mesh">
       <UniqueIdentifier>{b2e59455-c2b7-441b-a72d-ecbca16082b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\CameraCotroller">
+      <UniqueIdentifier>{b0d6c00f-8b80-4c02-ba3e-b0e54c703fc1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,10 +162,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shConstantBuffer.h">
       <Filter>Graphics\ConstantBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)shCamera.h">
-      <Filter>GameObject\Component\Camera</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCameraController.h">
+      <Filter>GameObject\Component\CameraCotroller</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)shObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shObject.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
@@ -234,8 +236,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shConstantBuffer.cpp">
       <Filter>Graphics\ConstantBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)shCamera.cpp">
-      <Filter>GameObject\Component\Camera</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp">
+      <Filter>GameObject\Component\CameraCotroller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

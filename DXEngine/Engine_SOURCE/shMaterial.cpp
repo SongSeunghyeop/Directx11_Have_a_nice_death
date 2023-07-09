@@ -1,4 +1,5 @@
 #include "shMaterial.h"
+#include "shRenderer.h"
 
 namespace sh::graphics
 {

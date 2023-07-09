@@ -3,11 +3,11 @@
 
 namespace sh
 {
-	class Title : public GameObject
+	class SmallColumn : public GameObject
 	{
 	public:
-		Title();
-		~Title();
+		SmallColumn();
+		~SmallColumn();
 
 		virtual void Initialize();
 		virtual void Update();

@@ -3,9 +3,6 @@
 
 namespace sh::graphics
 {
-
-
-
 	ConstantBuffer::ConstantBuffer(const eCBType type)
 		: GpuBuffer()
 		, mType(type)

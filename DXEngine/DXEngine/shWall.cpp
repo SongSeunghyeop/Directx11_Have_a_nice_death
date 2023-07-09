@@ -14,9 +14,6 @@ namespace sh
 	}
 	void Wall::Initialize()
 	{
-		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"WallMaterial"));
-
 		GameObject::Initialize();
 	}
 	void Wall::Update()

@@ -13,10 +13,7 @@ namespace sh
 
 	void Scene::Initialize()
 	{
-		for (Layer& layer : mLayers)
-		{
-			layer.Initialize();
-		}
+
 	}
 
 	void Scene::Update()
@@ -39,6 +36,13 @@ namespace sh
 		for (Layer& layer : mLayers)
 		{
 			layer.Render();
+		}
+	}
+	void Scene::Destroy()
+	{
+		for (Layer& layer : mLayers)
+		{
+			layer.Destory();
 		}
 	}
 	void Scene::OnEnter()

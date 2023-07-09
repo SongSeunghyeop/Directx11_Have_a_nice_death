@@ -1,17 +1,10 @@
 #include "shSceneManager.h"
 //#include "shPlayScene.h"
 
-
-
 namespace sh
 {
 	Scene* SceneManager::mActiveScene = nullptr;
 	std::map<std::wstring, Scene*> SceneManager::mScenes;
-
-	void SceneManager::Initialize()
-	{
-
-	}
 
 	void SceneManager::Update()
 	{
@@ -23,7 +16,11 @@ namespace sh
 	}
 	void SceneManager::Render()
 	{
-		mActiveScene->Render(); 
+		
+	}
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
 	}
 
 	void SceneManager::Release()

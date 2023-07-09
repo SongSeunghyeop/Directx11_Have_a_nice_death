@@ -25,6 +25,7 @@ namespace sh
 		Update();
 		LateUpdate();
 		Render();
+		Destroy();
 	}
 
 	void Application::Initialize()
@@ -32,8 +33,8 @@ namespace sh
 		Time::Initiailize();
 		Input::Initialize();
 
+		//매쉬, 버택스, 메터리얼, 텍스쳐 생성, 정점 정보, 샘플러 레이터라이저 등 설정
 		renderer::Initialize();
-		SceneManager::Initialize();
 	}
 
 	void Application::Update()
@@ -54,10 +55,15 @@ namespace sh
 
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
-		
+
 		renderer::Render();
 
 		graphicDevice->Present();
+	}
+
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

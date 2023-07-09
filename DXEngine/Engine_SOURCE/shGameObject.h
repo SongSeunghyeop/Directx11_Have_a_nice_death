@@ -8,7 +8,7 @@ namespace sh
 	class GameObject : public Entity
 	{
 	public:
-		enum eState
+		enum class eState
 		{
 			Active,
 			Paused,
@@ -67,9 +67,21 @@ namespace sh
 			return comp;
 		}
 
+		void SetState(eState state) { mState = state; }
+		eState GetState() { return mState; }
+
+		void setLayerType(enums::eLayerType type)
+		{
+			layerType = type;
+		}
+		enums::eLayerType getLayerType()
+		{
+			return layerType;
+		}
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
+		enums::eLayerType layerType;
 	};
 }

@@ -14,9 +14,6 @@ namespace sh
 	}
 	void CircleStair::Initialize()
 	{
-		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"CircleStairMaterial"));
-
 		GameObject::Initialize();
 	}
 	void CircleStair::Update()

@@ -3,6 +3,7 @@
 #include "shTransform.h"
 #include "shInput.h"
 #include "shTime.h"
+#include "shCameraController.h"
 
 namespace sh
 {
@@ -16,14 +17,11 @@ namespace sh
 	}
 	void Player::Initialize()
 	{
-		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"PlayerMaterial"));
-	
 		GameObject::Initialize();
 	}
 	void Player::Update()
 	{
-		float speed = 3.0f;
+		float speed = 8.0f;
 
 		Transform* tr = GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
@@ -38,7 +36,6 @@ namespace sh
 		}
 
 		tr->SetPosition(pos);
-
 
 		GameObject::Update();
 	}

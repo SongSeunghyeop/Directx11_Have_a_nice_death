@@ -1,11 +1,10 @@
 #include "shTitleScene.h"
 #include "shTransform.h"
-#include "shCameraController.h"
 #include "shCamera.h"
 #include "shSceneManager.h"
-#include "shTitle.h"
 #include "shPlayer.h"
 #include "shInput.h"
+#include "shObject.h"
 
 namespace sh
 {
@@ -19,19 +18,8 @@ namespace sh
 	}
 	void TitleScene::Initialize()
 	{
-		Title* title = new Title();
-		AddGameObject(eLayerType::UI, title);
-		title->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.1f));
-
-	//UI Camera
-		GameObject* camera = new GameObject();
-		AddGameObject(eLayerType::Player, camera);
-		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		cameraComp->SetCameraType(Camera::eProjectionType::OrthoGraphic);
-		cameraComp->TurnLayerMask(eLayerType::BackGround, false);
-
-		Scene::Initialize();
+		GameObject* title = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 0.1f, 0.08f), eLayerType::UI,L"TitleMaterial");
+		Camera* camera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 	}
 
 	void TitleScene::Update()
@@ -51,6 +39,6 @@ namespace sh
 
 	void TitleScene::Render()
 	{
-		Scene::Render();
+	
 	}
 }

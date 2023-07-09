@@ -11,18 +11,19 @@ namespace sh::enums
 		Particle,
 		MeshRenderer,
 		Script,
-		Camera,
-		End,
+		MAINCamera,
+		UICamera
 	};
 
 	enum class eLayerType
 	{
-		Structure_F,
-		Player,
-		Monster,
-		UI,
-		Structure_B, //지형, 건물
 		BackGround,
+		Structure_B,
+		Ground,
+		Monster,
+		Player,
+		Structure_F,
+		UI,
 		Camera,
 		None,
 		End,

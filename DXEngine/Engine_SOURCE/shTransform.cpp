@@ -1,7 +1,7 @@
 #include "shTransform.h"
 #include "shRenderer.h"
 #include "shConstantBuffer.h"
-#include "shCamera.h"
+#include "shCameraController.h"
 
 namespace sh
 {
@@ -32,8 +32,10 @@ namespace sh
 
 	void Transform::LateUpdate()
 	{
+		//월드좌표를 단위행렬로
 		mWorld = Matrix::Identity;
 
+		//현재의 로컬 좌표들을 전부 월드 좌표로 변환
 		Matrix scale = Matrix::CreateScale(mScale);
 
 		Matrix rotation;
@@ -44,15 +46,16 @@ namespace sh
 		Matrix position;
 		position.Translation(mPosition);
 
+		//mWorld에 저장, 나중에 상수버퍼에 전달
 		mWorld = scale * rotation * position;
 
 		mUp = Vector3::TransformNormal(Vector3::Up, rotation);
 		mFoward = Vector3::TransformNormal(Vector3::Forward, rotation);
 		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 
-		if (mParent)
+		if (mParent) // 부모 오브젝트가 있다면 
 		{
-			mWorld *= mParent->mWorld;
+			mWorld *= mParent->mWorld; // 그 부모클래스에 곱해준다 
 		}
 	}
 
@@ -65,9 +68,10 @@ namespace sh
 	{
 		renderer::TransformCB trCB = {};
 		trCB.mWorld = mWorld;
-		trCB.mView = Camera::GetViewMatrix();
-		trCB.mProjection = Camera::GetProjectionMatrix();
+		trCB.mView = CameraController::GetViewMatrix();
+		trCB.mProjection = CameraController::GetProjectionMatrix();
 
+		//
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];
 		cb->SetData(&trCB);
 		cb->Bind(eShaderStage::VS);

@@ -1,4 +1,4 @@
-#include "shCamera.h"
+#include "shCameraController.h"
 #include "shTransform.h"
 #include "shGameObject.h"
 #include "shApplication.h"
@@ -19,16 +19,16 @@ namespace sh
 
 		return true;
 	}
-	Matrix Camera::View = Matrix::Identity;
-	Matrix Camera::Projection = Matrix::Identity;
+	Matrix CameraController::View = Matrix::Identity;
+	Matrix CameraController::Projection = Matrix::Identity;
 
-	Camera::Camera()
-		: Component(eComponentType::Camera)
+	CameraController::CameraController()
+		: Component(cameraType)
 		, mType(eProjectionType::OrthoGraphic)
 		, mAspectRatio(1.0f)
 		, mNear(1.0f)
 		, mFar(1000.0f)
-		, mSize(5.0f)
+		, mSize(1.0f)
 		, mLayerMask{}
 		, mOpaqueGameObjects{}
 		, mCutOutGameObjects{}
@@ -36,30 +36,32 @@ namespace sh
 		, mView(Matrix::Identity)
 		, mProjection(Matrix::Identity)
 	{
-		EnableLayerMasks();
+		DisableLayerMasks();
 	}
 
-	Camera::~Camera()
+	CameraController::~CameraController()
 	{
 	}
 
-	void Camera::Initialize()
+	void CameraController::Initialize()
 	{
 
 	}
 
-	void Camera::Update()
+	void CameraController::Update()
 	{
+
 	}
 
-	void Camera::LateUpdate()
+	void CameraController::LateUpdate()
 	{
+		//카메라는 반대로 움직이므로
 		CreateViewMatrix();
 		CreateProjectionMatrix(mType);
 		RegisterCameraInRenderer();
 	}
 
-	void Camera::Render()
+	void CameraController::Render()
 	{
 		View = mView;
 		Projection = mProjection;
@@ -75,12 +77,13 @@ namespace sh
 		EnableDepthStencilState();
 	}
 
-	bool Camera::CreateViewMatrix()
+	bool CameraController::CreateViewMatrix()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
 
 		// View Translate Matrix
+		// 카메라는 모든 오브젝트와 반대로 움직임
 		mView = Matrix::Identity;
 		mView *= Matrix::CreateTranslation(-pos);
 
@@ -98,8 +101,9 @@ namespace sh
 		return true;
 	}
 
-	bool Camera::CreateProjectionMatrix(eProjectionType type)
+	bool CameraController::CreateProjectionMatrix(eProjectionType type)
 	{
+		//투영 행열을 세팅한다
 		RECT rect = {};
 		GetClientRect(application.GetHwnd(), &rect);
 		float width = rect.right - rect.left;
@@ -108,6 +112,7 @@ namespace sh
 
 		if (type == eProjectionType::OrthoGraphic)
 		{
+			//원근법 적용
 			float OrthorGraphicRatio = mSize / 1000.0f;
 			width *= OrthorGraphicRatio;
 			height *= OrthorGraphicRatio;
@@ -123,18 +128,18 @@ namespace sh
 		return true;
 	}
 
-	void Camera::RegisterCameraInRenderer()
+	void CameraController::RegisterCameraInRenderer()
 	{
 		renderer::cameras.push_back(this);
 	}
 
-	void Camera::TurnLayerMask(eLayerType type, bool enable)
+	void CameraController::TurnLayerMask(eLayerType type, bool enable)
 	{
 		mLayerMask.set((UINT)type, enable);
 	}
 
 
-	void Camera::AlphaSortGameObjects()
+	void CameraController::AlphaSortGameObjects()
 	{
 		mOpaqueGameObjects.clear();
 		mCutOutGameObjects.clear();
@@ -156,7 +161,7 @@ namespace sh
 		}
 	}
 
-	void Camera::ZSortTransparencyGameObjects()
+	void CameraController::ZSortTransparencyGameObjects()
 	{
 		std::sort(mCutOutGameObjects.begin()
 			, mCutOutGameObjects.end()
@@ -166,7 +171,7 @@ namespace sh
 			, CompareZSort);
 	}
 
-	void Camera::DivideAlphaBlendGameObjects(const std::vector<GameObject*> gameObjs)
+	void CameraController::DivideAlphaBlendGameObjects(const std::vector<GameObject*> gameObjs)
 	{
 		for (GameObject* obj : gameObjs)
 		{
@@ -195,7 +200,7 @@ namespace sh
 		}
 	}
 
-	void Camera::RenderOpaque()
+	void CameraController::RenderOpaque()
 	{
 		for (GameObject* gameObj : mOpaqueGameObjects)
 		{
@@ -206,7 +211,7 @@ namespace sh
 		}
 	}
 
-	void Camera::RenderCutOut()
+	void CameraController::RenderCutOut()
 	{
 		for (GameObject* gameObj : mCutOutGameObjects)
 		{
@@ -217,7 +222,7 @@ namespace sh
 		}
 	}
 
-	void Camera::RenderTransparent()
+	void CameraController::RenderTransparent()
 	{
 		for (GameObject* gameObj : mTransparentGameObjects)
 		{
@@ -228,14 +233,14 @@ namespace sh
 		}
 	}
 
-	void Camera::EnableDepthStencilState()
+	void CameraController::EnableDepthStencilState()
 	{
 		Microsoft::WRL::ComPtr<ID3D11DepthStencilState> dsState
 			= renderer::depthStencilStates[(UINT)eDSType::Less];
 		GetDevice()->BindDepthStencilState(dsState.Get());
 	}
 
-	void Camera::DisableDepthStencilState()
+	void CameraController::DisableDepthStencilState()
 	{
 		Microsoft::WRL::ComPtr<ID3D11DepthStencilState> dsState
 			= renderer::depthStencilStates[(UINT)eDSType::None];

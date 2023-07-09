@@ -14,9 +14,6 @@ namespace sh
 	}
 	void Pillar::Initialize()
 	{
-		MeshRenderer* mr = this->AddComponent<MeshRenderer>();
-		mr->SetMaterial(Resources::Find<Material>(L"PillarMaterial"));
-
 		GameObject::Initialize();
 	}
 	void Pillar::Update()

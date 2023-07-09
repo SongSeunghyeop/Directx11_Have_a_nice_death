@@ -2,6 +2,7 @@
 #include "shComponent.h"
 #include "shMesh.h"
 #include "shMaterial.h"
+#include "shShader.h"
 
 namespace sh
 {
@@ -19,6 +20,11 @@ namespace sh
 		void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
 		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
 		std::shared_ptr<Material> GetMaterial() { return mMaterial; }
+
+		Vector2 GetTextureSize()
+		{
+			return mMaterial->GetTextureSize();
+		}
 	private:
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;

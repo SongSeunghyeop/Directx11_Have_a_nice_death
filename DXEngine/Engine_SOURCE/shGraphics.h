@@ -51,6 +51,7 @@ namespace sh::graphics
 	enum class eDSType
 	{
 		Less,
+		LessEqual,
 		Greater,
 		NoWrite,
 		None,
