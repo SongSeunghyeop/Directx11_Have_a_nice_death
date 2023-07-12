@@ -12,6 +12,7 @@ namespace sh
 		Target = NULL;
 		cameraCont = this->AddComponent<CameraController>();
 		CameraType = type;
+		filmingPos = Vector3(0, 1.3, -5);
 	}
 	Camera::~Camera()
 	{
@@ -43,11 +44,12 @@ namespace sh
 	}
 	void Camera::Update()
 	{
-		if (Target != NULL)
+		if (CameraType == L"MAIN")
 		{
 			Transform* Tr = this->GetComponent<Transform>();
 			Vector3 TargetPos = Target->GetComponent<Transform>()->GetPosition();
-			Tr->SetPosition(TargetPos + Vector3(0, 1.2, -5));
+
+			Tr->SetPosition(TargetPos + filmingPos);
 			GameObject::Update();
 		}
 	}

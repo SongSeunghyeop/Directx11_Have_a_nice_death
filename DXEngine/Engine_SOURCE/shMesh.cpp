@@ -11,6 +11,7 @@ namespace sh
 		, mIBDesc{}
 		, mIndexCount(0)
 	{
+
 	}
 
 	Mesh::~Mesh()

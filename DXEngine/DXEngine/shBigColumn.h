@@ -13,7 +13,12 @@ namespace sh
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
+		void setScale(float scale)
+		{
+			Scale = scale;
+		}
 	private:
+		float Scale;
 	};
 }
 

@@ -1,4 +1,5 @@
 #include "shLobbyScene.h"
+#include "shInput.h"
 #include "shTransform.h"
 #include "shCameraController.h"
 #include "shCamera.h"
@@ -8,10 +9,7 @@
 #include "shLobby.h"
 #include "shOffice.h"
 #include "shRock.h"
-#include "shWall.h"
-#include "shPillar.h"
 #include "shPlaza.h"
-#include "shCircleStair.h"
 #include "shMeshRenderer.h"
 
 namespace sh
@@ -26,15 +24,14 @@ namespace sh
 	}
 	void LobbyScene::Initialize()
 	{
-		Player* Death 
-			= object::Instantiate<Player>(Vector4(0.0f, -3.5f, object::zPlayer,0.7f), eLayerType::Player, L"PlayerMaterial");
+		Player* Death
+			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.5f), eLayerType::Player, L"PlayerMaterial");
 		Lobby* lobby 
-			= object::Instantiate<Lobby>(Vector4(0.0f, -2.9f, object::zBackGround, 1.45f), eLayerType::BackGround, L"LobbyMaterial");
-		Plaza* plaza
-			= object::Instantiate<Plaza>(Vector4(18.0f, -6.0f, object::zBackGround,1.45f), eLayerType::Ground, L"GroundMaterial");
+			= object::Instantiate<Lobby>(Vector4(0.0f, -2.9f, object::zBackGround, 1.5f), eLayerType::BackGround, L"LobbyMaterial");
 		Office* office
-			= object::Instantiate<Office>(Vector4(45.0f, -1.5f, object::zBackGround, 1.0f), eLayerType::BackGround, L"OfficeMaterial");
-
+			= object::Instantiate<Office>(Vector4(47.0f, -1.8f, object::zBackGround, 1.0f), eLayerType::BackGround, L"OfficeMaterial");
+		Plaza* plaza
+			= object::Instantiate<Plaza>(Vector4(18.5f, -6.2f, object::zBackGround,1.5f), eLayerType::Ground, L"GroundMaterial");
 
 		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
 		mCamera->SetTarget(Death);
@@ -43,6 +40,11 @@ namespace sh
 
 	void LobbyScene::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::Q))
+		{
+			SceneManager::LoadScene(L"DungeonScene");
+		}
+
 		Scene::Update();
 	}
 

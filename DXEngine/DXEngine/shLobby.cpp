@@ -20,13 +20,13 @@ namespace sh
 	{
 		{
 			GameObject* BossChair
-				= object::Instantiate<GameObject>(Vector4(-0.45f, -2.5f, object::zBackGround,0.6f), eLayerType::Structure_B, L"BossChairMaterial");
+				= object::Instantiate<GameObject>(Vector4(-0.5f, -2.0f, object::zBackGround,0.7f), eLayerType::Structure_B, L"BossChairMaterial");
 			GameObject* Stair_R
-				= object::Instantiate<GameObject>(Vector4(5.2, -4.9f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"StairR_Material");
+				= object::Instantiate<GameObject>(Vector4(7.0, -5.45f, object::zBackGround, 0.7f), eLayerType::Structure_B, L"StairR_Material");
 			GameObject* SupportDesk
-				= object::Instantiate<GameObject>(Vector4(-0.2f, -5.5f, object::zBackGround, 0.8f), eLayerType::Structure_B, L"SupportDesk_Material");
+				= object::Instantiate<GameObject>(Vector4(-0.25f, -5.4f, object::zBackGround, 1.0f), eLayerType::Structure_B, L"SupportDesk_Material");
 			GameObject* BossDesk
-				= object::Instantiate<GameObject>(Vector4(-0.1f, -3.5f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"BossDeskMaterial");
+				= object::Instantiate<GameObject>(Vector4(-0.2f, -3.8f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"BossDeskMaterial");
 		}
 		{
 			BigColumn* column1
@@ -34,7 +34,7 @@ namespace sh
 			SmallColumn* column2
 			= object::Instantiate<SmallColumn>(Vector4(7.4f, 2.0f, object::zBackGround, 0.8f), eLayerType::Structure_B, L"ColumnMaterial");
 			SmallColumn* column3
-				= object::Instantiate<SmallColumn>(Vector4(15.0f, 1.7f, object::zBackGround, 0.8f), eLayerType::Structure_B, L"ColumnMaterial");
+				= object::Instantiate<SmallColumn>(Vector4(15.0f, 2.0f, object::zBackGround, 0.8f), eLayerType::Structure_B, L"ColumnMaterial");
 		}
 
 		GameObject::Initialize();

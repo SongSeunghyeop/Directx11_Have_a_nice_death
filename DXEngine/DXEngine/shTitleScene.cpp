@@ -18,7 +18,7 @@ namespace sh
 	}
 	void TitleScene::Initialize()
 	{
-		GameObject* title = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 0.1f, 0.08f), eLayerType::UI,L"TitleMaterial");
+		GameObject* title = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 0.1f, 0.09f), eLayerType::UI,L"TitleMaterial");
 		Camera* camera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 	}
 
@@ -26,7 +26,7 @@ namespace sh
 	{
 		if (Input::GetKeyDown(eKeyCode::Q))
 		{
-			SceneManager::LoadScene(L"LobbyScene");
+			SceneManager::LoadScene(L"MenuScene");
 		}
 
 		Scene::Update();

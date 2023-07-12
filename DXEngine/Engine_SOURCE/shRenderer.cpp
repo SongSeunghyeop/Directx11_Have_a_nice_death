@@ -211,69 +211,43 @@ namespace renderer
 		sh::Resources::Insert(L"SpriteShader", spriteShader);
 	}
 
-	void LoadSprites()
+	void LoadMaterial()
 	{
-		std::shared_ptr<Texture> Player_texture
-			= Resources::Load<Texture>(L"Player", L"..\\Resources\\Texture\\Death.png");
-
-		std::shared_ptr<Texture> Lobby_texture
-			= Resources::Load<Texture>(L"Lobby", L"..\\Resources\\Texture\\Lobby.png");
-
-		std::shared_ptr<Texture> Office_texture
-			= Resources::Load<Texture>(L"Office", L"..\\Resources\\Texture\\Office.png");
-
-		std::shared_ptr<Texture> Title_texture
-			= Resources::Load<Texture>(L"Title", L"..\\Resources\\Texture\\title.png");
-
-		std::shared_ptr<Texture> Column_texture
-			= Resources::Load<Texture>(L"Column", L"..\\Resources\\Texture\\Column.png");
-
-		std::shared_ptr<Texture> BigRock_texture
-			= Resources::Load<Texture>(L"Big_Rock", L"..\\Resources\\Texture\\Big_Rock.png");
-
-		std::shared_ptr<Texture> Ground_texture
-			= Resources::Load<Texture>(L"Ground", L"..\\Resources\\Texture\\Ground.png");
-
-		std::shared_ptr<Texture> Tree_texture
-			= Resources::Load<Texture>(L"Tree", L"..\\Resources\\Texture\\Tree.png");
-
-		std::shared_ptr<Texture> Wall_texture
-			= Resources::Load<Texture>(L"Wall", L"..\\Resources\\Texture\\Wall.png");
-
-		std::shared_ptr<Texture> Pillar_texture
-			= Resources::Load<Texture>(L"Pillar", L"..\\Resources\\Texture\\Pillar.png");
-
-		std::shared_ptr<Texture> CircleStair_texture
-			= Resources::Load<Texture>(L"CircleStair", L"..\\Resources\\Texture\\CircleStair.png");
-
-		std::shared_ptr<Texture> BossChair_texture
-			= Resources::Load<Texture>(L"BossChair", L"..\\Resources\\Texture\\BossChair.png");
-
-		std::shared_ptr<Texture> BossDesk_texture
-			= Resources::Load<Texture>(L"BossDesk", L"..\\Resources\\Texture\\BossDesk.png");
-
-		std::shared_ptr<Texture> StairR_texture
-			= Resources::Load<Texture>(L"Stair_R", L"..\\Resources\\Texture\\Stair_R.png");
-
-		std::shared_ptr<Texture> SupportDesk_texture
-			= Resources::Load<Texture>(L"SupportDesk", L"..\\Resources\\Texture\\SupportDesk.png");
-
 		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
-		sh::Material::Make_Material(spriteShader, Player_texture, L"PlayerMaterial");
-		sh::Material::Make_Material(spriteShader, Lobby_texture, L"LobbyMaterial");
-		sh::Material::Make_Material(spriteShader, Office_texture, L"OfficeMaterial");
-		sh::Material::Make_Material(spriteShader, Title_texture, L"TitleMaterial");
-		sh::Material::Make_Material(spriteShader, Column_texture, L"ColumnMaterial");
-		sh::Material::Make_Material(spriteShader, BigRock_texture, L"BigRockMaterial");
-		sh::Material::Make_Material(spriteShader, Ground_texture, L"GroundMaterial");
-		sh::Material::Make_Material(spriteShader, Tree_texture, L"TreeMaterial");
-		sh::Material::Make_Material(spriteShader, Wall_texture, L"WallMaterial");
-		sh::Material::Make_Material(spriteShader, Pillar_texture, L"PillarMaterial");
-		sh::Material::Make_Material(spriteShader, CircleStair_texture, L"CircleStairMaterial");
-		sh::Material::Make_Material(spriteShader, BossChair_texture, L"BossChairMaterial");
-		sh::Material::Make_Material(spriteShader, BossDesk_texture, L"BossDeskMaterial");
-		sh::Material::Make_Material(spriteShader, StairR_texture, L"StairR_Material");
-		sh::Material::Make_Material(spriteShader, SupportDesk_texture, L"SupportDesk_Material");
+		sh::Material::Make_Material(spriteShader, L"Death", L"PlayerMaterial");
+		sh::Material::Make_Material(spriteShader, L"Lobby", L"LobbyMaterial");
+		sh::Material::Make_Material(spriteShader, L"Office", L"OfficeMaterial");
+		sh::Material::Make_Material(spriteShader, L"Dungeon_Lobby", L"DungeonLobbyMaterial");
+		sh::Material::Make_Material(spriteShader, L"title", L"TitleMaterial");
+		sh::Material::Make_Material(spriteShader, L"Menu", L"MenuMaterial");
+		sh::Material::Make_Material(spriteShader, L"Column", L"ColumnMaterial");
+		sh::Material::Make_Material(spriteShader, L"Column2", L"Column2Material");
+		sh::Material::Make_Material(spriteShader, L"Column3", L"Column3Material");
+		sh::Material::Make_Material(spriteShader, L"Big_Rock", L"BigRockMaterial");
+		sh::Material::Make_Material(spriteShader, L"Ground", L"GroundMaterial");
+		sh::Material::Make_Material(spriteShader, L"Tree", L"TreeMaterial");
+		sh::Material::Make_Material(spriteShader, L"Wall", L"WallMaterial");
+		sh::Material::Make_Material(spriteShader, L"Pillar", L"PillarMaterial");
+		sh::Material::Make_Material(spriteShader, L"CircleStair", L"CircleStairMaterial");
+		sh::Material::Make_Material(spriteShader, L"BossChair", L"BossChairMaterial");
+		sh::Material::Make_Material(spriteShader, L"BossDesk", L"BossDeskMaterial");
+		sh::Material::Make_Material(spriteShader, L"Stair_R", L"StairR_Material");
+		sh::Material::Make_Material(spriteShader, L"SupportDesk", L"SupportDesk_Material");
+		sh::Material::Make_Material(spriteShader, L"BigSpot", L"BigSpotMaterial");
+		sh::Material::Make_Material(spriteShader, L"Desk", L"DeskMaterial");
+		sh::Material::Make_Material(spriteShader, L"DeskWall", L"DeskWallMaterial");
+		sh::Material::Make_Material(spriteShader, L"Weapons", L"WeaponsMaterial");
+		sh::Material::Make_Material(spriteShader, L"Skull1", L"Skull1Material");
+		sh::Material::Make_Material(spriteShader, L"Skull2", L"Skull2Material");
+		sh::Material::Make_Material(spriteShader, L"Logo", L"LogoMaterial");
+		sh::Material::Make_Material(spriteShader, L"Broken_Elevator", L"Broken_ElevatorMaterial");
+		sh::Material::Make_Material(spriteShader, L"ColumnDown", L"ColumnDownMaterial");
+		sh::Material::Make_Material(spriteShader, L"SquareStone1", L"SquareStone1Material");
+		sh::Material::Make_Material(spriteShader, L"SquareStone2", L"SquareStone2Material");
+		sh::Material::Make_Material(spriteShader, L"SquareStone3", L"SquareStone3Material");
+		sh::Material::Make_Material(spriteShader, L"Corne1", L"Corne1Material");
+		sh::Material::Make_Material(spriteShader, L"Corne2", L"Corne2Material");
+		sh::Material::Make_Material(spriteShader, L"CircleGround", L"CircleGroundMaterial");
 	}
 
 	void Initialize()
@@ -297,7 +271,7 @@ namespace renderer
 
 		LoadBuffer();
 		LoadShader();
-		LoadSprites();
+		LoadMaterial();
 		SetupState();
 	}
 

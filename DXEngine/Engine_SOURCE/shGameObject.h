@@ -78,10 +78,19 @@ namespace sh
 		{
 			return layerType;
 		}
+		Vector2 GetDrainage()
+		{
+			return Drainage;
+		}
+		void SetDrainage(Vector2 v)
+		{
+			Drainage = v;
+		}
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
 		enums::eLayerType layerType;
+		Vector2 Drainage;
 	};
 }

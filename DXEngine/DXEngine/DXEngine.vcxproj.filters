@@ -20,15 +20,6 @@
     <ClCompile Include="shRock.cpp">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
-    <ClCompile Include="shWall.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="shPillar.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="shCircleStair.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
     <ClCompile Include="shPlaza.cpp">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
@@ -41,8 +32,11 @@
     <ClCompile Include="shSmallColumn.cpp">
       <Filter>Contents\Prefabs\Structures</Filter>
     </ClCompile>
-    <ClCompile Include="shLittleColumn.cpp">
-      <Filter>Contents\Prefabs\Structures</Filter>
+    <ClCompile Include="shMenuScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="shDungeonScene.cpp">
+      <Filter>Contents\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,15 +62,6 @@
     <ClInclude Include="shRock.h">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
-    <ClInclude Include="shWall.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="shPillar.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="shCircleStair.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
     <ClInclude Include="shPlaza.h">
       <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
@@ -89,8 +74,11 @@
     <ClInclude Include="shSmallColumn.h">
       <Filter>Contents\Prefabs\Structures</Filter>
     </ClInclude>
-    <ClInclude Include="shLittleColumn.h">
-      <Filter>Contents\Prefabs\Structures</Filter>
+    <ClInclude Include="shMenuScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="shDungeonScene.h">
+      <Filter>Contents\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

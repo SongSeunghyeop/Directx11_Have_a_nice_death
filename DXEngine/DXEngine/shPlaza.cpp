@@ -2,7 +2,7 @@
 #include "shMeshRenderer.h"
 #include "shTransform.h"
 #include "shObject.h"
-#include "shLittleColumn.h"
+#include "shSmallColumn.h"
 
 namespace sh
 {
@@ -16,17 +16,17 @@ namespace sh
 	}
 	void Plaza::Initialize()
 	{
-		LittleColumn* column1
-			= object::Instantiate<LittleColumn>(Vector4(27.5f, 0.4f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"ColumnMaterial");
+		SmallColumn* column1
+			= object::Instantiate<SmallColumn>(Vector4(27.5f, 0.3f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"ColumnMaterial");
 
-		LittleColumn* column2
-			= object::Instantiate<LittleColumn>(Vector4(33.0f, 0.4f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"ColumnMaterial");
+		SmallColumn* column2
+			= object::Instantiate<SmallColumn>(Vector4(33.0f, 0.3f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"ColumnMaterial");
 
 		GameObject* tree
-			= object::Instantiate<GameObject>(Vector4(29.0f, -3.0f, object::zBackGround,1.0f), eLayerType::Structure_B, L"TreeMaterial");
+			= object::Instantiate<GameObject>(Vector4(30.6f, -3.2f, object::zBackGround,1.0f), eLayerType::Structure_F, L"TreeMaterial");
 
-		LittleColumn* column3
-			= object::Instantiate<LittleColumn>(Vector4(34.0f, 0.4f, object::zPlayer, 0.6f), eLayerType::Structure_F, L"ColumnMaterial");
+		SmallColumn* column3
+			= object::Instantiate<SmallColumn>(Vector4(34.0f, 0.4f, object::zPlayer, 0.6f), eLayerType::Structure_F, L"ColumnMaterial");
 
 		GameObject::Initialize();
 	}

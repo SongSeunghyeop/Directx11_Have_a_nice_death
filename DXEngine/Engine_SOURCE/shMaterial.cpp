@@ -35,12 +35,17 @@ namespace sh::graphics
 	{
 		mTexture->Clear();
 	}
-	void Material::Make_Material(std::shared_ptr<Shader> shader, std::shared_ptr<Texture> texture, std::wstring Materialname)
+	void Material::Make_Material(std::shared_ptr<Shader> shader,std::wstring textureName , std::wstring MaterialName)
 	{
-		std::shared_ptr<Material> mateiral = std::make_shared<Material>();
+		std::shared_ptr<Material> mateiral 
+			= std::make_shared<Material>();
+
+		std::shared_ptr<Texture> texture
+			= Resources::Load<Texture>(textureName, L"..\\Resources\\Texture\\" + textureName + L".png");
+
 		mateiral->SetShader(shader);
 		mateiral->SetTexture(texture);
 		mateiral->SetRenderingMode(eRenderingMode::Transparent);
-		Resources::Insert(Materialname, mateiral);
+		Resources::Insert(MaterialName, mateiral);
 	}
 }

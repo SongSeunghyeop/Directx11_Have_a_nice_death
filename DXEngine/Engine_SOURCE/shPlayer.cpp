@@ -24,15 +24,33 @@ namespace sh
 		float speed = 8.0f;
 
 		Transform* tr = GetComponent<Transform>();
-		Vector3 pos = tr->GetPosition();
+		Vector3 pos = tr->GetPosition(); // -14, 77
 
 		if (Input::GetKey(eKeyCode::D))
 		{
+			if (pos.x > 78)
+				speed = 0.0f;
+			else
+				speed = 8.0f;
+
 			pos += Vector3(speed * Time::DeltaTime(), 0, 0);
 		}
 		else if (Input::GetKey(eKeyCode::A))
 		{
+			if (pos.x < -14)
+				speed = 0.0f;
+			else
+				speed = 8.0f;
+
 			pos += Vector3(-speed * Time::DeltaTime(), 0, 0);
+		}
+		else if (Input::GetKey(eKeyCode::W))
+		{
+			pos += Vector3(0, speed * Time::DeltaTime(), 0);
+		}
+		else if (Input::GetKey(eKeyCode::S))
+		{
+			pos += Vector3(0, -speed * Time::DeltaTime(), 0);
 		}
 
 		tr->SetPosition(pos);

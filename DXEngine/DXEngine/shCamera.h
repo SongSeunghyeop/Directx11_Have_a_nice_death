@@ -16,10 +16,16 @@ namespace sh
 		virtual void Render();
 		
 		void SetTarget(GameObject* target);
+		void SetFilmingPos(Vector3 pos)
+		{
+			filmingPos = pos;
+		}
 	private:
 		std::wstring CameraType;
 		CameraController* cameraCont;
 
 		GameObject* Target;
+
+		Vector3 filmingPos;
 	};
 }

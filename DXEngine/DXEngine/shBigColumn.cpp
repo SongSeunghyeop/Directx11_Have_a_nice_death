@@ -17,11 +17,11 @@ namespace sh
 	{
 		Transform* TR = this->GetComponent<Transform>();
 		Vector3 pos = TR->GetPosition();
-
+		float scale = this->GetDrainage().x;
 		enums::eLayerType type = this->getLayerType();
 
 		GameObject* Colume
-			= object::Instantiate<GameObject>(Vector4(pos.x + 0.1f, pos.y - 3.4f, pos.z, 0.9f), type, L"ColumnMaterial");
+			= object::Instantiate<GameObject>(Vector4(pos.x + 0.1f, pos.y - scale * 3.8, pos.z, scale), type, L"ColumnMaterial");
 
 		GameObject::Initialize();
 	}
