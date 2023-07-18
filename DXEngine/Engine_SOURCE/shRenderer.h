@@ -24,7 +24,6 @@ namespace renderer
 		Matrix mProjection;
 	};
 
-	extern Vertex vertexes[];
 	extern sh::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
@@ -32,11 +31,15 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
+	extern sh::CameraController* mainCamera;
 	extern std::vector<sh::CameraController*> cameras;
-	extern std::shared_ptr<sh::Shader> spriteShader;
-	extern std::shared_ptr<sh::Shader> girdShader;
+	extern std::vector<DebugMesh> debugMeshs;
+
+	extern std::shared_ptr<sh::Shader> shader;
 
 	void Initialize();
 	void Render();
 	void Release();
+
+	void PushDebugMeshAttribute(DebugMesh mesh);
 }

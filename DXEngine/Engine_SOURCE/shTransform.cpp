@@ -68,8 +68,8 @@ namespace sh
 	{
 		renderer::TransformCB trCB = {};
 		trCB.mWorld = mWorld;
-		trCB.mView = CameraController::GetViewMatrix();
-		trCB.mProjection = CameraController::GetProjectionMatrix();
+		trCB.mView = CameraController::GetGpuViewMatrix();
+		trCB.mProjection = CameraController::GetGpuProjectionMatrix();
 
 		//
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];

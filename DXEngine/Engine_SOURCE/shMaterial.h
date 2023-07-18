@@ -22,6 +22,7 @@ namespace sh::graphics
 		eRenderingMode GetRenderingMode() { return mMode; }
 
 		static void Make_Material(std::shared_ptr<Shader> shader, std::wstring textureName, std::wstring Materialname);
+		static void Make_Material(std::shared_ptr<Shader> shader, std::wstring Materialname);
 
 		math::Vector2 GetTextureSize()
 		{

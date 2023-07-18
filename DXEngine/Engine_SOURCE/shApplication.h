@@ -18,6 +18,7 @@ namespace sh
 		void LateUpdate();
 		void Render();
 		void Destroy();
+		void Present();
 
 		void SetWindow(HWND hwnd, UINT width, UINT height);
 

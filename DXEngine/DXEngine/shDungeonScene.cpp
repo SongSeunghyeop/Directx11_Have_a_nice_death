@@ -116,9 +116,9 @@ namespace sh
 		GameObject* stoneLoad19
 			= object::Instantiate<GameObject>(Vector4(63.0f, -2.0f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone3Material");
 
-		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN", Vector3(0.0f, 0.5f,-5.0f));
-		mCamera->SetTarget(Death);
-		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
+		/*Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN", Vector3(0.0f, 0.5f,-5.0f));
+		mCamera->SetTarget(Death);*/
+		//Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 	}
 
 	void DungeonScene::Update()

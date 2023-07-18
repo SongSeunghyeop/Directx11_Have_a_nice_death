@@ -24,7 +24,7 @@ namespace sh
 
 	CameraController::CameraController()
 		: Component(cameraType)
-		, mType(eProjectionType::OrthoGraphic)
+		, mType(eProjectionType::Perspective)
 		, mAspectRatio(1.0f)
 		, mNear(1.0f)
 		, mFar(1000.0f)
@@ -36,7 +36,7 @@ namespace sh
 		, mView(Matrix::Identity)
 		, mProjection(Matrix::Identity)
 	{
-		DisableLayerMasks();
+		EnableLayerMasks();
 	}
 
 	CameraController::~CameraController()
@@ -206,6 +206,9 @@ namespace sh
 		{
 			if (gameObj == nullptr)
 				continue;
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
+				continue;
 
 			gameObj->Render();
 		}
@@ -217,6 +220,9 @@ namespace sh
 		{
 			if (gameObj == nullptr)
 				continue;
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
+				continue;
 
 			gameObj->Render();
 		}
@@ -227,6 +233,9 @@ namespace sh
 		for (GameObject* gameObj : mTransparentGameObjects)
 		{
 			if (gameObj == nullptr)
+				continue;
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
 				continue;
 
 			gameObj->Render();

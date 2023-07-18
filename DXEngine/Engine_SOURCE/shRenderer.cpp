@@ -7,9 +7,8 @@ namespace renderer
 	using namespace sh;
 	using namespace sh::graphics;
 
-	std::shared_ptr<Shader> spriteShader;
+	std::shared_ptr<sh::Shader> shader;
 
-	Vertex vertexes[4] = {};
 	sh::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 
@@ -20,7 +19,8 @@ namespace renderer
 	
 	//
 	std::vector<sh::CameraController*> cameras = {};
-	std::shared_ptr<Shader> normalShader;
+	std::vector<DebugMesh> debugMeshs = {};
+	sh::CameraController* mainCamera = nullptr;
 
 	void SetupState()
 	{
@@ -49,15 +49,20 @@ namespace renderer
 		arrLayout[2].SemanticName = "TEXCOORD";
 		arrLayout[2].SemanticIndex = 0;
 
-		normalShader = sh::Resources::Find<Shader>(L"TriangleShader");
+		shader = sh::Resources::Find<Shader>(L"TriangleShader");
 		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
-			, normalShader->GetVSCode()
-			, normalShader->GetInputLayoutAddressOf());
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
 
-		normalShader = sh::Resources::Find<Shader>(L"SpriteShader");
+		shader = sh::Resources::Find<Shader>(L"SpriteShader");
 		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
-			, normalShader->GetVSCode()
-			, normalShader->GetInputLayoutAddressOf());
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
+		shader = sh::Resources::Find<Shader>(L"DebugShader");
+		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
 
 #pragma endregion
 #pragma region Sampler State
@@ -173,26 +178,86 @@ namespace renderer
 
 #pragma endregion
 	}
-
-	void LoadBuffer()
+	void LoadMesh()
 	{
+		std::vector<Vertex> vertexes = {};
+		std::vector<UINT> indexes = {};
+
+		//RECT
+		vertexes.resize(4);
+		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		vertexes[0].uv = Vector2(0.0f, 0.0f);
+
+		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes[1].uv = Vector2(1.0f, 0.0f);
+
+		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		vertexes[2].uv = Vector2(1.0f, 1.0f);
+
+		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[3].uv = Vector2(0.0f, 1.0f);
+
 		// Vertex Buffer
-		//Mesh 클래스 객체 스마트포인터형 선언 및 생성
-		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();// Mesh 생성
-		Resources::Insert(L"RectMesh", mesh); // 빈 Mesh
+		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		Resources::Insert(L"RectMesh", mesh);
 
-		mesh->CreateVertexBuffer(vertexes, 4); // 생성한 버텍스 정보 매쉬에 저장
+		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 
-		std::vector<UINT> indexes = {}; // 인덱스 버퍼
-		indexes.push_back(0); // 순서 저장
+		indexes.push_back(0);
 		indexes.push_back(1);
 		indexes.push_back(2);
 
 		indexes.push_back(0);
 		indexes.push_back(2);
 		indexes.push_back(3);
+
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
+		// Rect Debug Mesh
+		std::shared_ptr<Mesh> rectDebug = std::make_shared<Mesh>();
+		Resources::Insert(L"DebugRect", rectDebug);
+		rectDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		rectDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+
+		// Circle Debug Mesh
+		vertexes.clear();
+		indexes.clear();
+
+		Vertex center = {};
+		center.pos = Vector3(0.0f, 0.0f, 0.0f);
+		center.color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes.push_back(center);
+
+		int iSlice = 40;
+		float fRadius = 0.5f;
+		float fTheta = XM_2PI / (float)iSlice;
+
+		for (int i = 0; i < iSlice; ++i)
+		{
+			center.pos = Vector3(fRadius * cosf(fTheta * (float)i)
+				, fRadius * sinf(fTheta * (float)i)
+				, 0.0f);
+			center.color = Vector4(0.0f, 1.0f, 0.0f, 1.f);
+			vertexes.push_back(center);
+		}
+
+		for (int i = 0; i < vertexes.size() - 2; ++i)
+		{
+			indexes.push_back(i + 1);
+		}
+		indexes.push_back(1);
+
+		std::shared_ptr<Mesh> circleDebug = std::make_shared<Mesh>();
+		Resources::Insert(L"DebugCircle", circleDebug);
+		circleDebug->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		circleDebug->CreateIndexBuffer(indexes.data(), indexes.size());
+	}
+	void LoadBuffer()
+	{
 		// Constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform); //상수 버퍼
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
@@ -200,19 +265,33 @@ namespace renderer
 
 	void LoadShader() // 쉐이더 생성
 	{
-		normalShader = std::make_shared<Shader>();
-		normalShader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
-		normalShader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
-		sh::Resources::Insert(L"TriangleShader", normalShader);
+		std::shared_ptr<Shader> shader1 = std::make_shared<Shader>();
+		shader1->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
+		shader1->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		sh::Resources::Insert(L"TriangleShader", shader1);
 
-		spriteShader = std::make_shared<Shader>();
-		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
-		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
-		sh::Resources::Insert(L"SpriteShader", spriteShader);
+		std::shared_ptr<Shader> shader2 = std::make_shared<Shader>();
+		shader2->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		shader2->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
+		sh::Resources::Insert(L"SpriteShader", shader2);
+
+		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
+		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
+		debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
+		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		debugShader->SetRSState(eRSType::WireframeNone);
+		sh::Resources::Insert(L"DebugShader", debugShader);
 	}
 
 	void LoadMaterial()
 	{
+		std::shared_ptr<Shader> spriteShader
+			= Resources::Find<Shader>(L"SpriteShader");
+
+		std::shared_ptr<Shader> debugShader
+			= Resources::Find<Shader>(L"DebugShader");
+
+
 		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
 		sh::Material::Make_Material(spriteShader, L"Death", L"PlayerMaterial");
 		sh::Material::Make_Material(spriteShader, L"Lobby", L"LobbyMaterial");
@@ -248,31 +327,22 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"Corne1", L"Corne1Material");
 		sh::Material::Make_Material(spriteShader, L"Corne2", L"Corne2Material");
 		sh::Material::Make_Material(spriteShader, L"CircleGround", L"CircleGroundMaterial");
+
+		sh::Material::Make_Material(debugShader, L"DebugMaterial");
 	}
 
 	void Initialize()
 	{
-		//정점 생성
-		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		vertexes[0].uv = Vector2(0.0f, 0.0f);
-
-		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		vertexes[1].uv = Vector2(1.0f, 0.0f);
-
-		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
-		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		vertexes[2].uv = Vector2(1.0f, 1.0f);
-
-		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertexes[3].uv = Vector2(0.0f, 1.0f);
-
+		LoadMesh();
 		LoadBuffer();
 		LoadShader();
 		LoadMaterial();
 		SetupState();
+	}
+
+	void PushDebugMeshAttribute(DebugMesh mesh)
+	{
+		debugMeshs.push_back(mesh);
 	}
 
 	void Render()
@@ -299,7 +369,6 @@ namespace renderer
 			buff = nullptr;
 		}
 	}
-
 }
 
 

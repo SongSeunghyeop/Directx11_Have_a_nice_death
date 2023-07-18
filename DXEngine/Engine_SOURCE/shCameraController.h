@@ -14,8 +14,10 @@ namespace sh
 			None,
 		};
 		
-		static Matrix GetViewMatrix() { return View; }
-		static Matrix GetProjectionMatrix() { return Projection; }
+		static Matrix& GetGpuViewMatrix() { return View; }
+		static void SetGpuViewMatrix(Matrix view) { View = view; }
+		static Matrix& GetGpuProjectionMatrix() { return Projection; }
+		static void SetGpuProjectionMatrix(Matrix projection) { Projection = projection; }
 
 		CameraController();
 		~CameraController();
@@ -61,6 +63,8 @@ namespace sh
 		}
 
 		float GetSize() { return mSize; }
+		Matrix& GetViewMatrix() { return mView; }
+		Matrix& GetProjectionMatrix() { return mProjection; }
 	private:
 		static Matrix View;
 		static Matrix Projection;

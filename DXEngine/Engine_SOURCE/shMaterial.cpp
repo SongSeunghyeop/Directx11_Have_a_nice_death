@@ -48,4 +48,13 @@ namespace sh::graphics
 		mateiral->SetRenderingMode(eRenderingMode::Transparent);
 		Resources::Insert(MaterialName, mateiral);
 	}
+
+	void Material::Make_Material(std::shared_ptr<Shader> shader, std::wstring MaterialName)
+	{
+		std::shared_ptr<Material> material
+			= std::make_shared<Material>();
+
+		material->SetShader(shader);
+		Resources::Insert(MaterialName, material);
+	}
 }

@@ -16,6 +16,7 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shCameraController.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h" />
@@ -45,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp" />

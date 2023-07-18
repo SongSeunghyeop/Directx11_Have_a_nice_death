@@ -82,6 +82,9 @@
     <Filter Include="GameObject\Component\CameraCotroller">
       <UniqueIdentifier>{b0d6c00f-8b80-4c02-ba3e-b0e54c703fc1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Collder">
+      <UniqueIdentifier>{8e3957d7-6d7f-4311-bc57-bb5d1f3bce22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -168,6 +171,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shObject.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCollider2D.h">
+      <Filter>GameObject\Component\Collder</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
@@ -238,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp">
       <Filter>GameObject\Component\CameraCotroller</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCollider2D.cpp">
+      <Filter>GameObject\Component\Collder</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
