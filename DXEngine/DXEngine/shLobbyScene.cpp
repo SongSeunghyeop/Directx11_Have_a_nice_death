@@ -27,7 +27,6 @@ namespace sh
 	{
 		Player* Death
 			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.5f), eLayerType::Player, L"PlayerMaterial");
-		Death->AddComponent<Collider2D>();
 		Lobby* lobby 
 			= object::Instantiate<Lobby>(Vector4(0.0f, -2.9f, object::zBackGround, 1.5f), eLayerType::BackGround, L"LobbyMaterial");
 		Office* office
@@ -35,7 +34,7 @@ namespace sh
 		Plaza* plaza
 			= object::Instantiate<Plaza>(Vector4(18.5f, -6.2f, object::zBackGround,1.5f), eLayerType::Ground, L"GroundMaterial");
 
-		/*Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");*/
+		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
 		mCamera->SetTarget(Death);
 	}

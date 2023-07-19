@@ -55,9 +55,10 @@ namespace sh
 		GameObject* stoneLoad1
 			= object::Instantiate<GameObject>(Vector4(15.0f, -5.2f, object::zBackGround, 0.4f), eLayerType::Structure_F, L"SquareStone1Material");
 		GameObject* corne1
-			= object::Instantiate<GameObject>(Vector4(16.9f, -5.19f, object::zBackGround, 0.7f), eLayerType::Structure_F, L"Corne1Material");
+			= object::Instantiate<GameObject>(Vector4(16.9f, -5.19f, object::zBackGround, 0.7f), eLayerType::Corne, L"Corne1Material");
 		GameObject* stoneLoad2
-			= object::Instantiate<GameObject>(Vector4(16.89f, -7.0f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone2Material");
+			= object::Instantiate<GameObject>(Vector3(16.85f, -6.3f, object::zBackGround),Vector2(0.4f,0.25f), eLayerType::Structure_B, L"SquareStone2Material");
+		
 
 		GameObject* CircleGround
 			= object::Instantiate<GameObject>(Vector4(21.0, -9.5f, object::zBackGround, 1.0f), eLayerType::Structure_F, L"CircleGroundMaterial");
@@ -68,9 +69,9 @@ namespace sh
 		GameObject* stoneLoad5
 			= object::Instantiate<GameObject>(Vector4(27.2f, -7.4f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone1Material");
 		GameObject* corne2
-			= object::Instantiate<GameObject>(Vector4(29.1f, -7.39f, object::zBackGround, 0.7f), eLayerType::Structure_F, L"Corne1Material");
+			= object::Instantiate<GameObject>(Vector4(29.1f, -7.39f, object::zBackGround, 0.7f), eLayerType::Corne, L"Corne1Material");
 		GameObject* stoneLoad6
-			= object::Instantiate<GameObject>(Vector4(29.1f, -9.3f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone2Material");
+			= object::Instantiate<GameObject>(Vector3(29.1f, -8.0f, object::zBackGround), Vector2(0.4, 0.17f), eLayerType::Structure_F, L"SquareStone2Material");
 		GameObject* stoneLoad7
 			= object::Instantiate<GameObject>(Vector4(31.0, -8.5f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone1Material");
 		GameObject* stoneLoad8
@@ -87,24 +88,22 @@ namespace sh
 		GameObject* column2
 			= object::Instantiate<GameObject>(Vector3(45.0, -7.0f, object::zBackGround), Vector2(0.6f, 1.2f), eLayerType::Structure_B, L"Column2Material");
 		
-		GameObject* stoneLoad12
-			= object::Instantiate<GameObject>(Vector4(49.5, -9.6f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone3Material");
 		GameObject* corne3
-			= object::Instantiate<GameObject>(Vector4(49.49, -7.4f, object::zBackGround, 0.7f), eLayerType::Structure_F, L"Corne2Material");
+			= object::Instantiate<GameObject>(Vector4(49.49, -7.4f, object::zBackGround, 0.7f), eLayerType::Corne, L"Corne2Material");
+		GameObject* stoneLoad12
+			= object::Instantiate<GameObject>(Vector3(49.5, -8.5f, object::zBackGround),Vector2(0.4f,0.17f), eLayerType::Structure_B, L"SquareStone3Material");
 		GameObject* stoneLoad13
-			= object::Instantiate<GameObject>(Vector4(51.4, -7.43f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone1Material");
-		GameObject* stoneLoad14
-			= object::Instantiate<GameObject>(Vector4(55.4, -7.43f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone1Material");
+			= object::Instantiate<GameObject>(Vector3(52.2, -7.43f, object::zBackGround),Vector2(0.6f,0.4f), eLayerType::Structure_B, L"SquareStone1Material");
 
 		GameObject* column3
-			= object::Instantiate<GameObject>(Vector3(50.5, -6.0f, object::zBackGround), Vector2(0.5f,0.9f), eLayerType::Structure_B, L"Column3Material");
+			= object::Instantiate<GameObject>(Vector3(50.5, -6.0f, object::zBackGround), Vector2(0.5f,0.8f), eLayerType::Structure_B, L"Column3Material");
 		GameObject* column4
-			= object::Instantiate<GameObject>(Vector3(51.5, -6.0f, object::zBackGround), Vector2(0.5f, 0.9f), eLayerType::Structure_B, L"Column3Material");
+			= object::Instantiate<GameObject>(Vector3(51.5, -6.0f, object::zBackGround), Vector2(0.5f, 0.8f), eLayerType::Structure_B, L"Column3Material");
 
 		GameObject* stoneLoad15
-			= object::Instantiate<GameObject>(Vector4(55.0, -6.5f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone3Material");
+			= object::Instantiate<GameObject>(Vector3(55.0, -5.8f, object::zBackGround),Vector2(0.4f,0.35f), eLayerType::Structure_B, L"SquareStone3Material");
 		GameObject* corne4
-			= object::Instantiate<GameObject>(Vector4(54.97, -4.2f, object::zBackGround, 0.7f), eLayerType::Structure_F, L"Corne2Material");
+			= object::Instantiate<GameObject>(Vector4(54.97, -4.2f, object::zBackGround, 0.7f), eLayerType::Corne, L"Corne2Material");
 		GameObject* stoneLoad16
 			= object::Instantiate<GameObject>(Vector4(56.7f, -4.21f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone1Material");
 		GameObject* stoneLoad17
@@ -114,11 +113,38 @@ namespace sh
 		GameObject* column5
 			= object::Instantiate<GameObject>(Vector3(58.0f, -3.0f, object::zBackGround), Vector2(0.5f, 1.0f), eLayerType::Structure_F, L"Column2Material");
 		GameObject* stoneLoad19
-			= object::Instantiate<GameObject>(Vector4(63.0f, -2.0f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone3Material");
+			= object::Instantiate<GameObject>(Vector4(67.0f, -5.8f, object::zBackGround, 0.4f), eLayerType::Structure_B, L"SquareStone2Material");
+		GameObject* stoneLoad20
+			= object::Instantiate<GameObject>(Vector3(68.0f, -7.75f, object::zBackGround), Vector2(0.3f, 0.65f), eLayerType::Structure_F, L"SquareStone1Material");
+		GameObject* stoneLoad21
+			= object::Instantiate<GameObject>(Vector3(72.5f, -8.5f, object::zBackGround), Vector2(1.0f, 0.4f), eLayerType::Structure_B, L"SquareStone1Material");
+		GameObject* stoneLoad22
+			= object::Instantiate<GameObject>(Vector3(81.5f, -7.75f, object::zBackGround), Vector2(1.0f, 0.65f), eLayerType::Structure_F, L"SquareStone1Material");
 
-		/*Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN", Vector3(0.0f, 0.5f,-5.0f));
-		mCamera->SetTarget(Death);*/
-		//Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
+		GameObject* elevator
+			= object::Instantiate<GameObject>(Vector4(81.0, -5.5f, object::zBackGround, 1.0f), eLayerType::Structure_F, L"Elevator_Material");
+		
+		{
+			GameObject* groundFill1
+				= object::Instantiate<GameObject>(Vector4(23.0f, -14.0f, object::zBackGround, 1.2f), eLayerType::BackGround, L"GroundFillMaterial");
+			GameObject* groundFill2
+				= object::Instantiate<GameObject>(Vector4(35.2f, -15.0f, object::zBackGround, 1.2f), eLayerType::BackGround, L"GroundFillMaterial");
+			GameObject* groundFill3
+				= object::Instantiate<GameObject>(Vector4(47.4f, -15.0f, object::zBackGround, 1.2f), eLayerType::BackGround, L"GroundFillMaterial");
+			GameObject* groundFill4
+				= object::Instantiate<GameObject>(Vector4(55.5f, -13.5f, object::zBackGround, 1.2f), eLayerType::BackGround, L"GroundFillMaterial");
+			GameObject* groundFill5
+				= object::Instantiate<GameObject>(Vector4(61.2f, -10.7f, object::zBackGround, 1.2f), eLayerType::BackGround, L"GroundFillMaterial");
+			GameObject* groundFill6
+				= object::Instantiate<GameObject>(Vector4(73.4f, -15.0f, object::zBackGround, 1.2f), eLayerType::BackGround, L"GroundFillMaterial");
+			GameObject* groundFill7
+				= object::Instantiate<GameObject>(Vector4(83.7f, -14.0f, object::zBackGround, 1.2f), eLayerType::BackGround, L"GroundFillMaterial");
+		}
+
+
+		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
+		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
+		mCamera->SetTarget(Death);
 	}
 
 	void DungeonScene::Update()

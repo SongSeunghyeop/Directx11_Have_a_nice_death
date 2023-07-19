@@ -14,8 +14,8 @@ namespace sh
 		cameraCont = this->AddComponent<CameraController>();
 		CameraType = type;
 		renderer::cameras.push_back(cameraCont);
-		renderer::mainCamera = cameraCont;
-		filmingPos = Vector3(0, 1.3, -5);
+
+		filmingPos = Vector3(0, 1.0, -5);
 	}
 	Camera::~Camera()
 	{
@@ -30,19 +30,20 @@ namespace sh
 	{
 		if (CameraType == L"UI")
 		{
-			//cameraCont->TurnLayerMask(eLayerType::UI, true);
+			cameraCont->TurnLayerMask(eLayerType::UI, true);
+			cameraCont->SetProjectionType(CameraController::eProjectionType::Perspective);
 		}
 
 		if (CameraType == L"MAIN")
 		{
-			//cameraCont->TurnLayerMask(eLayerType::Structure_F, true);
-			//cameraCont->TurnLayerMask(eLayerType::Structure_B, true);
-			//cameraCont->TurnLayerMask(eLayerType::Player, true);
-			//cameraCont->TurnLayerMask(eLayerType::BackGround, true);
-			//cameraCont->TurnLayerMask(eLayerType::Ground, true);
-			//cameraCont->SetProjectionType(CameraController::eProjectionType::Perspective);
+			cameraCont->TurnLayerMask(eLayerType::Structure_F, true);
+			cameraCont->TurnLayerMask(eLayerType::Structure_B, true);
+			cameraCont->TurnLayerMask(eLayerType::Player, true);
+			cameraCont->TurnLayerMask(eLayerType::BackGround, true);
+			cameraCont->TurnLayerMask(eLayerType::Ground, true);
+			cameraCont->SetProjectionType(CameraController::eProjectionType::Perspective);
+			renderer::mainCamera = cameraCont;
 		}
-
 		GameObject::Initialize();
 	}
 	void Camera::Update()

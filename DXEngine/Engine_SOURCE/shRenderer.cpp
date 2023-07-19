@@ -320,6 +320,7 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"Skull2", L"Skull2Material");
 		sh::Material::Make_Material(spriteShader, L"Logo", L"LogoMaterial");
 		sh::Material::Make_Material(spriteShader, L"Broken_Elevator", L"Broken_ElevatorMaterial");
+		sh::Material::Make_Material(spriteShader, L"Elevator", L"Elevator_Material");
 		sh::Material::Make_Material(spriteShader, L"ColumnDown", L"ColumnDownMaterial");
 		sh::Material::Make_Material(spriteShader, L"SquareStone1", L"SquareStone1Material");
 		sh::Material::Make_Material(spriteShader, L"SquareStone2", L"SquareStone2Material");
@@ -327,6 +328,7 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"Corne1", L"Corne1Material");
 		sh::Material::Make_Material(spriteShader, L"Corne2", L"Corne2Material");
 		sh::Material::Make_Material(spriteShader, L"CircleGround", L"CircleGroundMaterial");
+		sh::Material::Make_Material(spriteShader, L"Ground_Fill", L"GroundFillMaterial");
 
 		sh::Material::Make_Material(debugShader, L"DebugMaterial");
 	}

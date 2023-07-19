@@ -24,6 +24,8 @@ namespace sh::enums
 		Monster,
 		Player,
 		Structure_F,
+		Corne,
+		Ground_Fill,
 		UI,
 		Camera,
 		None,

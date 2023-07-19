@@ -17,6 +17,7 @@ namespace sh
 	}
 	void Player::Initialize()
 	{
+		this->AddComponent<Collider2D>();
 		GameObject::Initialize();
 	}
 	void Player::Update()
@@ -28,7 +29,7 @@ namespace sh
 
 		if (Input::GetKey(eKeyCode::D))
 		{
-			if (pos.x > 78)
+			if (pos.x > 90)
 				speed = 0.0f;
 			else
 				speed = 8.0f;
@@ -37,7 +38,7 @@ namespace sh
 		}
 		else if (Input::GetKey(eKeyCode::A))
 		{
-			if (pos.x < -14)
+			if (pos.x < -20)
 				speed = 0.0f;
 			else
 				speed = 8.0f;
