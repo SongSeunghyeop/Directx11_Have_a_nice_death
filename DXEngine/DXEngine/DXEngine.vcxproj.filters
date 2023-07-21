@@ -8,20 +8,8 @@
     <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp">
       <Filter>Contents\Prefabs\Player</Filter>
     </ClCompile>
-    <ClCompile Include="shLobby.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
     <ClCompile Include="shTitleScene.cpp">
       <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="shOffice.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="shRock.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="shPlaza.cpp">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClCompile>
     <ClCompile Include="shCamera.cpp">
       <Filter>Contents\Prefabs\Camera</Filter>
@@ -38,6 +26,30 @@
     <ClCompile Include="shDungeonScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="shLobby.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shOffice.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shPlaza.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shRock.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shDungeonLobby.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shD_Part1.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shD_Part2.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shGhostBox.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -50,20 +62,8 @@
     <ClInclude Include="..\Engine_SOURCE\shPlayer.h">
       <Filter>Contents\Prefabs\Player</Filter>
     </ClInclude>
-    <ClInclude Include="shLobby.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
     <ClInclude Include="shTitleScene.h">
       <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="shOffice.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="shRock.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="shPlaza.h">
-      <Filter>Contents\Prefabs\BackGrounds</Filter>
     </ClInclude>
     <ClInclude Include="shCamera.h">
       <Filter>Contents\Prefabs\Camera</Filter>
@@ -79,6 +79,30 @@
     </ClInclude>
     <ClInclude Include="shDungeonScene.h">
       <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="shLobby.h">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shOffice.h">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shPlaza.h">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shRock.h">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shDungeonLobby.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shD_Part1.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shD_Part2.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shGhostBox.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +132,12 @@
     </Filter>
     <Filter Include="Contents\Prefabs\Structures">
       <UniqueIdentifier>{6728fd76-2c9e-4626-a344-ce4907e73a20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Prefabs\BackGrounds\LobbyScene%27s">
+      <UniqueIdentifier>{3834f80f-fe1f-423c-9c70-570a16ecfdde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Prefabs\BackGrounds\DungeonScene%27s">
+      <UniqueIdentifier>{d7ce62c4-9051-4894-bd30-9e07f088f411}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

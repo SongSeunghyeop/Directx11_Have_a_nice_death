@@ -11,6 +11,9 @@
 
 #define CBSLOT_TRANSFORM		0
 //#define CBSLOT_PARTICLE			1
+#define CBSLOT_SETUV		2
+#define CBSLOT_ANIMATION2D		3
+
 
 namespace sh::graphics
 {
@@ -29,6 +32,8 @@ namespace sh::graphics
 	{
 		Transform,
 		Material,
+		SetUV,
+		Animator,
 		End,
 	};
 

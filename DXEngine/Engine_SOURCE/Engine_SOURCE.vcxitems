@@ -15,8 +15,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shCameraController.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h" />
@@ -45,8 +48,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp" />

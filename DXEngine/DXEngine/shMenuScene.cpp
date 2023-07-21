@@ -18,7 +18,7 @@ namespace sh
 	}
 	void MenuScene::Initialize()
 	{
-		GameObject* Menu = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 0.9f, 0.09f), eLayerType::UI, L"MenuMaterial");
+		GameObject* Menu = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 9.1f, 1.0f), eLayerType::UI, L"MenuMaterial");
 		Camera* camera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 	}
 

@@ -35,5 +35,4 @@ namespace sh::graphics
 	{
 		sh::graphics::GetDevice()->BindConstantBuffer(stage, mType, buffer.Get());
 	}
-
 }

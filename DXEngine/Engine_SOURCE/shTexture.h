@@ -1,3 +1,4 @@
+
 #pragma once
 #include "shResource.h"
 #include "shGraphics.h"
@@ -23,10 +24,10 @@ namespace sh::graphics
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
 
-		math::Vector2 GetSize()
-		{
-			return math::Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height);
-		}
+		size_t GetWidth() { return mImage.GetMetadata().width; }
+		size_t GetHeight() { return mImage.GetMetadata().height; }
+
+		math::Vector2 GetSize() { return math::Vector2(mImage.GetMetadata().width, mImage.GetMetadata().height); }
 	private:
 		ScratchImage mImage;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mTexture;

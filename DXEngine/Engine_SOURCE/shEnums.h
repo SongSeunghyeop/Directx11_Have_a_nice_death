@@ -11,6 +11,7 @@ namespace sh::enums
 		Collider2D,
 		Particle,
 		MeshRenderer,
+		Animator,
 		Script,
 		MAINCamera,
 		UICamera
@@ -24,12 +25,12 @@ namespace sh::enums
 		Monster,
 		Player,
 		Structure_F,
-		Corne,
 		Ground_Fill,
+		Corne,
+		Ground_F,
 		UI,
 		Camera,
-		None,
-		End,
+		End = 16,
 	};
 
 	enum class eResourceType
@@ -38,6 +39,7 @@ namespace sh::enums
 		Shader,
 		Material,
 		Mesh,
+		Animation,
 		End,
 	};
 

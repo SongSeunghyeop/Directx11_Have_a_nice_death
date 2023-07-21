@@ -18,7 +18,7 @@ namespace sh
 	}
 	void TitleScene::Initialize()
 	{
-		GameObject* title = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 0.9f, 0.09f), eLayerType::UI,L"TitleMaterial");
+		GameObject* title = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 9.3f, 1.0f), eLayerType::UI,L"TitleMaterial");
 		Camera* camera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 	}
 

@@ -25,7 +25,15 @@ namespace sh
 		{
 			return mMaterial->GetTextureSize();
 		}
+
+		void BindConstantBuffer();
+		void SetEnd(Vector2 point)
+		{
+			endPoint = point;
+		}
 	private:
+		Vector2 endPoint;
+
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;
 	};

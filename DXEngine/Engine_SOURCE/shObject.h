@@ -73,6 +73,28 @@ namespace sh::object
 		return gameObj;
 	};
 
+	template <typename T>
+	static inline T* Instantiate(Vector3 pos, Vector2 scale, Vector2 point, eLayerType type, std::wstring materialName)
+	{
+		T* gameObj = new T();
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(type, gameObj);
+
+		MeshRenderer* mr = gameObj->AddComponent<MeshRenderer>();
+		mr->SetMaterial(Resources::Find<Material>(materialName));
+		mr->SetEnd(point);
+
+		Vector2 size = mr->GetTextureSize();
+
+		gameObj->setLayerType(type);
+		gameObj->SetDrainage(scale);
+		gameObj->GetComponent<Transform>()->SetPosition(pos.x, pos.y, pos.z);
+		gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * scale.x, size.y / 100.0f * scale.y, 1.0f);
+		gameObj->Initialize();
+
+		return gameObj;
+	};
+
 	static __forceinline void Destroy(GameObject* gameObj)
 	{
 		gameObj->SetState(sh::GameObject::eState::Dead);

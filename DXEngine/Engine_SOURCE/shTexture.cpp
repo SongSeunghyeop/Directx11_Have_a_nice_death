@@ -34,7 +34,10 @@ namespace sh::graphics
 		}
 		else // WIC (png, jpg, jpeg, bmp )
 		{
-			if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
+			//png 색상정보 무시
+			if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_IGNORE_SRGB, nullptr, mImage)))
+			//if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage))) // 아무 설정 없음
+
 				return S_FALSE;
 		}
 

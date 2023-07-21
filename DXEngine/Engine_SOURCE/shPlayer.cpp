@@ -17,22 +17,22 @@ namespace sh
 	}
 	void Player::Initialize()
 	{
-		this->AddComponent<Collider2D>();
+		//this->AddComponent<Collider2D>();
 		GameObject::Initialize();
 	}
 	void Player::Update()
 	{
-		float speed = 8.0f;
+		float speed = 15.0f;
 
 		Transform* tr = GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition(); // -14, 77
 
 		if (Input::GetKey(eKeyCode::D))
 		{
-			if (pos.x > 90)
+			if (pos.x > 110)
 				speed = 0.0f;
 			else
-				speed = 8.0f;
+				speed = 15.0f;
 
 			pos += Vector3(speed * Time::DeltaTime(), 0, 0);
 		}
@@ -41,7 +41,7 @@ namespace sh
 			if (pos.x < -20)
 				speed = 0.0f;
 			else
-				speed = 8.0f;
+				speed = 15.0f;
 
 			pos += Vector3(-speed * Time::DeltaTime(), 0, 0);
 		}

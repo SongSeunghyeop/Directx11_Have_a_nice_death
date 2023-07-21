@@ -1,7 +1,4 @@
 #include "shLobby.h"
-#include "shLobbyScene.h"
-#include "shMeshRenderer.h"
-#include "shTransform.h"
 #include "shObject.h"
 #include "shBigColumn.h"
 #include "shSmallColumn.h"
@@ -28,6 +25,7 @@ namespace sh
 			GameObject* BossDesk
 				= object::Instantiate<GameObject>(Vector4(-0.2f, -3.8f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"BossDeskMaterial");
 		}
+
 		{
 			BigColumn* column1
 				= object::Instantiate<BigColumn>(Vector4(14.0f, -0.4f, object::zPlayer, 0.9f), eLayerType::Structure_F, L"ColumnMaterial");

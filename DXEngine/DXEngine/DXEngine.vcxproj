@@ -150,11 +150,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Engine_SOURCE\shPlayer.h" />
+    <ClInclude Include="shD_Part1.h" />
+    <ClInclude Include="shDungeonLobby.h" />
     <ClInclude Include="shDungeonScene.h" />
     <ClInclude Include="shBigColumn.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="shCamera.h" />
+    <ClInclude Include="shD_Part2.h" />
+    <ClInclude Include="shGhostBox.h" />
     <ClInclude Include="shLobby.h" />
     <ClInclude Include="shLobbyScene.h" />
     <ClInclude Include="shMenuScene.h" />
@@ -166,10 +170,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp" />
+    <ClCompile Include="shD_Part1.cpp" />
+    <ClCompile Include="shDungeonLobby.cpp" />
     <ClCompile Include="shDungeonScene.cpp" />
     <ClCompile Include="shBigColumn.cpp" />
     <ClCompile Include="DXEngine.cpp" />
     <ClCompile Include="shCamera.cpp" />
+    <ClCompile Include="shD_Part2.cpp" />
+    <ClCompile Include="shGhostBox.cpp" />
     <ClCompile Include="shLobby.cpp" />
     <ClCompile Include="shLobbyScene.cpp" />
     <ClCompile Include="shMenuScene.cpp" />

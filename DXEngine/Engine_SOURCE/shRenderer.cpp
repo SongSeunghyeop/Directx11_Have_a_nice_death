@@ -261,6 +261,12 @@ namespace renderer
 		// Constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new ConstantBuffer(eCBType::Transform); //상수 버퍼
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
+
+		constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
+		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
+
+		constantBuffer[(UINT)eCBType::SetUV] = new ConstantBuffer(eCBType::SetUV);
+		constantBuffer[(UINT)eCBType::SetUV]->Create(sizeof(UVCB));
 	}
 
 	void LoadShader() // 쉐이더 생성
@@ -325,10 +331,14 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"SquareStone1", L"SquareStone1Material");
 		sh::Material::Make_Material(spriteShader, L"SquareStone2", L"SquareStone2Material");
 		sh::Material::Make_Material(spriteShader, L"SquareStone3", L"SquareStone3Material");
+		sh::Material::Make_Material(spriteShader, L"SquareStone4", L"SquareStone4Material");
 		sh::Material::Make_Material(spriteShader, L"Corne1", L"Corne1Material");
 		sh::Material::Make_Material(spriteShader, L"Corne2", L"Corne2Material");
 		sh::Material::Make_Material(spriteShader, L"CircleGround", L"CircleGroundMaterial");
 		sh::Material::Make_Material(spriteShader, L"Ground_Fill", L"GroundFillMaterial");
+		sh::Material::Make_Material(spriteShader, L"Bridge", L"BridgeMaterial");
+		sh::Material::Make_Material(spriteShader, L"GhostBox1", L"GhostBox1Material");
+		sh::Material::Make_Material(spriteShader, L"GhostBox2", L"GhostBox2Material");
 
 		sh::Material::Make_Material(debugShader, L"DebugMaterial");
 	}

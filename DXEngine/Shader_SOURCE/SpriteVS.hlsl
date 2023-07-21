@@ -1,6 +1,5 @@
 #include "Globals.hlsli"
 
-//structedBuffer
 struct VSIn
 {
     float3 Pos : POSITION;
@@ -24,10 +23,12 @@ VSOut main(VSIn In)
     float4 view = mul(world, ViewMatrix);
     float4 proj = mul(view, ProjectionMatrix);
 
-    
+   
     Out.Pos = proj;
     Out.Color = In.Color;
-    Out.UV = In.UV;
+
+    Out.UV.x = In.UV.x * EndX;
+    Out.UV.y = In.UV.y * EndY;
     
     return Out;
 }

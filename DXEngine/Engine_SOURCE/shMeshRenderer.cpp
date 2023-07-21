@@ -10,6 +10,7 @@ namespace sh
 	MeshRenderer::MeshRenderer()
 		: Component(eComponentType::MeshRenderer)
 		, mMesh(Resources::Find<Mesh>(L"RectMesh"))
+		, endPoint(Vector2(1.0f,1.0f))
 	{
 
 	}
@@ -34,10 +35,22 @@ namespace sh
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->BindConstantBuffer();
 
+		this->BindConstantBuffer();
+
 		mMesh->BindBuffer();
 		mMaterial->Binds();
 		mMesh->Render();
 
 		mMaterial->Clear();
+	}
+
+	void MeshRenderer::BindConstantBuffer()
+	{
+		renderer::UVCB uvCB = {};
+		uvCB.EndX = endPoint.x;
+		uvCB.EndY = endPoint.y;
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::SetUV];
+		cb->SetData(&uvCB);
+		cb->Bind(eShaderStage::VS);
 	}
 }
