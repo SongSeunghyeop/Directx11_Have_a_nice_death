@@ -1,7 +1,8 @@
 #include "shAnimation.h"
 #include "shTime.h"
 #include "shAnimator.h"
-
+#include "shRenderer.h"
+#include "shConstantBuffer.h"
 
 namespace sh
 {
@@ -64,9 +65,10 @@ namespace sh
 			Sprite sprite = {};
 			sprite.leftTop.x = leftTop.x + (i * size.x) / width;
 			sprite.leftTop.y = leftTop.y / height;
-			sprite.size = size;
+			sprite.size.x = size.x / width;
+			sprite.size.y = size.y / height;
 			sprite.offset = offset;
-			sprite.duration = duration;
+			sprite.atlasSize = Vector2(200.0f / width, 200.0f / height);
 
 			mSprites.push_back(sprite);
 		}
@@ -79,6 +81,19 @@ namespace sh
 		mAtlas->BindShader(graphics::eShaderStage::PS, 12);
 
 		// AnimationCB
+		renderer::AnimatorCB data = {};
+
+		data.spriteLeftTop = mSprites[mIndex].leftTop;
+		data.spriteSize = mSprites[mIndex].size;
+		data.spriteOffset = mSprites[mIndex].offset;
+		data.atlasSize = mSprites[mIndex].atlasSize;
+		data.animationType = 1;
+
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
+		cb->SetData(&data);
+
+		cb->Bind(eShaderStage::VS);
+		cb->Bind(eShaderStage::PS);
 	}
 	void Animation::Reset()
 	{

@@ -2,16 +2,16 @@
 #include "shInput.h"
 #include "shTransform.h"
 #include "shCameraController.h"
+#include "shPlayerController.h"
 #include "shCamera.h"
 #include "shSceneManager.h"
 #include "shObject.h"
 #include "shPlayer.h"
 #include "shLobby.h"
 #include "shOffice.h"
-#include "shRock.h"
 #include "shPlaza.h"
-#include "shMeshRenderer.h"
 #include "shCollider2D.h"
+#include "shAnimator.h"
 
 namespace sh
 {
@@ -27,6 +27,7 @@ namespace sh
 	{
 		Player* Death
 			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.5f), eLayerType::Player, L"PlayerMaterial");
+
 		Lobby* lobby 
 			= object::Instantiate<Lobby>(Vector4(0.0f, -2.9f, object::zBackGround, 1.5f), eLayerType::BackGround, L"LobbyMaterial");
 		Office* office

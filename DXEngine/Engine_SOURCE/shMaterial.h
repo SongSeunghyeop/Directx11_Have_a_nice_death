@@ -28,10 +28,11 @@ namespace sh::graphics
 		{
 			return mTexture->GetSize();
 		}
+
 	private:
 		std::shared_ptr<Shader> mShader;
 		std::shared_ptr<Texture> mTexture;
-		std::shared_ptr<Shader> shader;
+
 		eRenderingMode mMode;
 	};
 }

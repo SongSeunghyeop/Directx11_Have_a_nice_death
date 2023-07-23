@@ -30,6 +30,7 @@ namespace renderer
 		Vector2 spriteSize;
 		Vector2 spriteOffset;
 		Vector2 atlasSize;
+		UINT animationType;
 	};
 
 	CBUFFER(UVCB, CBSLOT_SETUV)

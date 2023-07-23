@@ -18,6 +18,9 @@ namespace sh
 	void Player::Initialize()
 	{
 		//this->AddComponent<Collider2D>();
+		animator = this->AddComponent<Animator>();
+		controller = this->AddComponent<PlayerController>();
+
 		GameObject::Initialize();
 	}
 	void Player::Update()

@@ -51,6 +51,7 @@ namespace sh
 		if (CameraType == L"MAIN")
 		{
 			Transform* Tr = this->GetComponent<Transform>();
+
 			Vector3 TargetPos = Target->GetComponent<Transform>()->GetPosition();
 
 			Tr->SetPosition(TargetPos + filmingPos);

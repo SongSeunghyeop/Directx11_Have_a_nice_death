@@ -2,8 +2,7 @@
 #include "shGameObject.h"
 #include "shTransform.h"
 #include "shRenderer.h"
-#include "shResources.h"
-
+#include "shAnimator.h"
 
 namespace sh
 {
@@ -32,15 +31,21 @@ namespace sh
 	}
 	void MeshRenderer::Render()
 	{
+		this->BindConstantBuffer();
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->BindConstantBuffer();
 
-		this->BindConstantBuffer();
-
 		mMesh->BindBuffer();
 		mMaterial->Binds();
-		mMesh->Render();
 
+		Animator* animator = GetOwner()->GetComponent<Animator>();
+		if (animator)
+		{
+			animator->Binds();
+		}
+
+		mMesh->Render();
 		mMaterial->Clear();
 	}
 

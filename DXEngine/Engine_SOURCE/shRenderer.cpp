@@ -297,7 +297,6 @@ namespace renderer
 		std::shared_ptr<Shader> debugShader
 			= Resources::Find<Shader>(L"DebugShader");
 
-
 		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
 		sh::Material::Make_Material(spriteShader, L"Death", L"PlayerMaterial");
 		sh::Material::Make_Material(spriteShader, L"Lobby", L"LobbyMaterial");
@@ -348,8 +347,8 @@ namespace renderer
 		LoadMesh();
 		LoadBuffer();
 		LoadShader();
-		LoadMaterial();
 		SetupState();
+		LoadMaterial();
 	}
 
 	void PushDebugMeshAttribute(DebugMesh mesh)

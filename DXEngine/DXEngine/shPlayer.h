@@ -1,5 +1,6 @@
 #pragma once
 #include "shGameObject.h"
+#include "shPlayerController.h"
 
 namespace sh
 {
@@ -14,6 +15,8 @@ namespace sh
 		virtual void LateUpdate();
 		virtual void Render();
 	private:
+		PlayerController* controller;
+		Animator* animator;
 	};
 }
 

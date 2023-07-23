@@ -149,7 +149,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Engine_SOURCE\shPlayer.h" />
+    <ClInclude Include="shPlayer.h" />
+    <ClInclude Include="shPlayerController.h" />
     <ClInclude Include="shD_Part1.h" />
     <ClInclude Include="shDungeonLobby.h" />
     <ClInclude Include="shDungeonScene.h" />
@@ -169,7 +170,8 @@
     <ClInclude Include="shTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Engine_SOURCE\shPlayer.cpp" />
+    <ClCompile Include="shPlayer.cpp" />
+    <ClCompile Include="shPlayerController.cpp" />
     <ClCompile Include="shD_Part1.cpp" />
     <ClCompile Include="shDungeonLobby.cpp" />
     <ClCompile Include="shDungeonScene.cpp" />
