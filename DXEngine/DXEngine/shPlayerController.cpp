@@ -44,7 +44,7 @@ namespace sh
 			pos.y -= 12.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		else if (Input::GetKey(eKeyCode::Q))
+		else if (Input::GetKey(eKeyCode::W))
 		{
 			pos.y += 12.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
