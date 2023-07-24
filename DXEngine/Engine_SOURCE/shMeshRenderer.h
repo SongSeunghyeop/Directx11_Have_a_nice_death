@@ -32,10 +32,16 @@ namespace sh
 		{
 			endPoint = point;
 		}
+		void Fliping(UINT f)
+		{
+			flipx = f;
+		};
 	private:
 		Vector2 endPoint;
 
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;
+
+		UINT flipx;
 	};
 }

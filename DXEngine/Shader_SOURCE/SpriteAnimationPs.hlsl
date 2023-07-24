@@ -19,23 +19,24 @@ float4 main(VSOut In) : SV_TARGET
 {
     float4 color = (float4) 0.0f;
     
-    // 1200 1032 // 120 130
-    // 1080 -> 540
-    // -540 + 1200 
-    color = albedoTexture.Sample(anisotropicSampler, In.UV);
+    color = albedoTexture.Sample(pointSampler, In.UV);
     
     if (animationType == 1)
     {
-        float2 diff = (AtlasSize - SpriteSize) / 2.0f;
-        float2 UV = (SpriteLeftTop - diff - SpriteOffset)
-                + (AtlasSize * In.UV);
-    
-        if (UV.x < SpriteLeftTop.x || UV.x > SpriteLeftTop.x + SpriteSize.x
-            || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
-            discard;
+        float2 UV = (SpriteLeftTop / AtlasSize + SpriteOffset / AtlasSize) + (SpriteSize / AtlasSize * In.UV);
+   
+        if (flipx == -1)
+        {
+            UV.x *= -1;
+            color = atlasTexture.Sample(pointSampler, UV);
+        }
+        else
+        {
+            color = atlasTexture.Sample(pointSampler, UV); 
+        }
         
-        color = atlasTexture.Sample(anisotropicSampler, UV);
     }
     
     return color;
+
 }

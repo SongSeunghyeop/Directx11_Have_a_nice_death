@@ -24,6 +24,8 @@ namespace sh::graphics
 		void BindShader(eShaderStage stage, UINT startSlot);
 		void Clear();
 
+		HRESULT CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight);
+
 		size_t GetWidth() { return mImage.GetMetadata().width; }
 		size_t GetHeight() { return mImage.GetMetadata().height; }
 

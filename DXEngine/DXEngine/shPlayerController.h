@@ -2,6 +2,8 @@
 #include <shScript.h>
 #include "shAnimator.h"
 #include "shPlayer.h"
+#include "shMeshRenderer.h"
+
 namespace sh
 {
 	class PlayerController : public Script
@@ -13,7 +15,8 @@ namespace sh
 		virtual void Initialize() override;
 		virtual void Update() override;
 
-		void Complete();
+		void Waiting();
+		void IdleMotion();
 
 		//virtual void OnCollisionEnter(Collider2D* other) override;
 		//virtual void OnCollisionStay(Collider2D* other) override;
@@ -21,5 +24,6 @@ namespace sh
 
 	private:
 		Animator* animator;
+		MeshRenderer* meshRenderer;
 	};
 }

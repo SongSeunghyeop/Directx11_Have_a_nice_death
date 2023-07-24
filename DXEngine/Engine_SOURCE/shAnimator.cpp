@@ -1,4 +1,5 @@
 #include "shAnimator.h"
+#include "shResources.h"
 
 namespace sh
 {
@@ -54,8 +55,8 @@ namespace sh
 		, Vector2 leftTop
 		, Vector2 size
 		, UINT columnLength
-		, Vector2 offset
-		, float duration)
+		, float duration
+		, Vector2 offset)
 	{
 		Animation* animation = FindAnimation(name);
 		if (nullptr != animation)
@@ -80,6 +81,48 @@ namespace sh
 
 		events = new Events();
 		mEvents.insert(std::make_pair(name, events));
+	}
+
+	Animation* Animator::CreateAnimations(const std::wstring& path, float duration)
+	{
+		size_t maxwidth = 0;
+		size_t maxheight = 0;
+		UINT fileCount = 0;
+
+		std::filesystem::path fs(path);
+		std::vector<std::shared_ptr<Texture>> textures = {};
+		for (const auto& p : std::filesystem::recursive_directory_iterator(path))
+		{
+			std::wstring fileName = p.path().filename();
+			std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
+
+			const std::wstring ext = p.path().extension();
+
+			std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
+
+			if (maxwidth < tex->GetWidth())
+			{
+				maxwidth = tex->GetWidth();
+			}
+			if (maxheight < tex->GetHeight())
+			{
+				maxheight = tex->GetHeight();
+			}
+
+			textures.push_back(tex);
+
+			fileCount++;
+		}
+
+		std::wstring key = fs.parent_path().filename();
+		key += fs.filename();
+
+		mImageAtlas = std::make_shared<graphics::Texture>();
+		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
+		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, duration, Vector2::Zero);
+
+
+		return nullptr;
 	}
 	Animation* Animator::FindAnimation(const std::wstring& name)
 	{

@@ -54,6 +54,7 @@ namespace sh::graphics
 		std::shared_ptr<Material> material
 			= std::make_shared<Material>();
 		material->SetShader(shader);
+		material->SetRenderingMode(eRenderingMode::Transparent);
 		Resources::Insert(MaterialName, material);
 	}
 }

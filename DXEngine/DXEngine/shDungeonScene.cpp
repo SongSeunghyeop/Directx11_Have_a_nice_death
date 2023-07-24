@@ -23,7 +23,7 @@ namespace sh
 	void DungeonScene::Initialize()
 	{
 		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, -4.0f, object::zPlayer, 0.5f), eLayerType::Player, L"PlayerMaterial");
+			= object::Instantiate<Player>(Vector4(0.0f, -4.0f, object::zPlayer, 0.5f), eLayerType::Player, L"SpriteAnimaionMaterial");
 
 		DungeonLobby* Dlobby	
 			= object::Instantiate<DungeonLobby>(Vector4(0.0f, -0.7f, object::zBackGround, 1.4f), eLayerType::BackGround, L"DungeonLobbyMaterial");

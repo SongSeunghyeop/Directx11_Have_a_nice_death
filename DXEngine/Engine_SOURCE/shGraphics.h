@@ -13,6 +13,7 @@
 //#define CBSLOT_PARTICLE			1
 #define CBSLOT_SETUV		2
 #define CBSLOT_ANIMATION2D		3
+#define CBSLOT_FLIPX		4
 
 
 namespace sh::graphics
@@ -34,6 +35,7 @@ namespace sh::graphics
 		Material,
 		SetUV,
 		Animator,
+		FlipX,
 		End,
 	};
 

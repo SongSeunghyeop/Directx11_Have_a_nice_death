@@ -20,6 +20,11 @@ cbuffer Animator : register(b3)
     uint animationType;
 }
 
+cbuffer SetUV : register(b4)
+{
+    uint flipx;
+}
+
 
 Texture2D albedoTexture : register(t0);
 Texture2D atlasTexture : register(t12);

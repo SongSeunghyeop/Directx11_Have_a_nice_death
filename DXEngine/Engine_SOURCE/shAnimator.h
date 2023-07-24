@@ -42,12 +42,18 @@ namespace sh
 			, Vector2 leftTop
 			, Vector2 size
 			, UINT columnLength
-			, Vector2 offset = Vector2::Zero
-			, float duration = 0.1f);
+			, float duration = 0.1f
+			, Vector2 offset = Vector2::Zero);
+
+		Animation* CreateAnimations(const std::wstring& path, float duration);
 		Animation* FindAnimation(const std::wstring& name);
 		Events* FindEvents(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop);
 		void Binds();
+		Animation* GetActiveAnimation()
+		{
+			return mActiveAnimation;
+		}
 
 		std::function<void()>& StartEvent(const std::wstring key);
 		std::function<void()>& CompleteEvent(const std::wstring key);
@@ -57,7 +63,7 @@ namespace sh
 		std::map<std::wstring, Animation*> mAnimations;
 		std::map<std::wstring, Events*> mEvents;
 		Animation* mActiveAnimation;
-
+		std::shared_ptr<graphics::Texture> mImageAtlas;
 
 		bool mbLoop;
 	};

@@ -26,7 +26,7 @@ namespace sh
 	void LobbyScene::Initialize()
 	{
 		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.5f), eLayerType::Player, L"PlayerMaterial");
+			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.5f), eLayerType::Player, L"SpriteAnimaionMaterial");
 
 		Lobby* lobby 
 			= object::Instantiate<Lobby>(Vector4(0.0f, -2.9f, object::zBackGround, 1.5f), eLayerType::BackGround, L"LobbyMaterial");

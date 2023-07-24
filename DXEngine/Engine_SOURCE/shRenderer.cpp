@@ -64,6 +64,11 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = sh::Resources::Find<Shader>(L"SpriteAnimationShader");
+		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		//Sampler State //
@@ -267,6 +272,9 @@ namespace renderer
 
 		constantBuffer[(UINT)eCBType::SetUV] = new ConstantBuffer(eCBType::SetUV);
 		constantBuffer[(UINT)eCBType::SetUV]->Create(sizeof(UVCB));
+
+		constantBuffer[(UINT)eCBType::FlipX] = new ConstantBuffer(eCBType::FlipX);
+		constantBuffer[(UINT)eCBType::FlipX]->Create(sizeof(FlipCB));
 	}
 
 	void LoadShader() // 쉐이더 생성
@@ -281,12 +289,19 @@ namespace renderer
 		shader2->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		sh::Resources::Insert(L"SpriteShader", shader2);
 
+		std::shared_ptr<Shader> shader3 = std::make_shared<Shader>();
+		shader3->Create(eShaderStage::VS, L"SpriteAnimationVS.hlsl", "main");
+		shader3->Create(eShaderStage::PS, L"SpriteAnimationPS.hlsl", "main");
+		sh::Resources::Insert(L"SpriteAnimationShader", shader3);
+
 		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
 		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
 		debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
 		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		debugShader->SetRSState(eRSType::WireframeNone);
 		sh::Resources::Insert(L"DebugShader", debugShader);
+
+
 	}
 
 	void LoadMaterial()
@@ -296,6 +311,9 @@ namespace renderer
 
 		std::shared_ptr<Shader> debugShader
 			= Resources::Find<Shader>(L"DebugShader");
+
+		std::shared_ptr<Shader> animationSpriteShader
+			= Resources::Find<Shader>(L"SpriteAnimationShader");
 
 		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
 		sh::Material::Make_Material(spriteShader, L"Death", L"PlayerMaterial");
@@ -340,6 +358,7 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"GhostBox2", L"GhostBox2Material");
 
 		sh::Material::Make_Material(debugShader, L"DebugMaterial");
+		sh::Material::Make_Material(animationSpriteShader, L"SpriteAnimaionMaterial");
 	}
 
 	void Initialize()

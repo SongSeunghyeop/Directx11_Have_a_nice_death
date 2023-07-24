@@ -20,7 +20,7 @@ namespace sh
 		//this->AddComponent<Collider2D>();
 		animator = this->AddComponent<Animator>();
 		controller = this->AddComponent<PlayerController>();
-
+		meshrenderer = this->GetComponent<MeshRenderer>();
 		GameObject::Initialize();
 	}
 	void Player::Update()

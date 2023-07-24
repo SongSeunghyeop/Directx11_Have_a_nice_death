@@ -17,6 +17,7 @@ namespace sh
 	private:
 		PlayerController* controller;
 		Animator* animator;
+		MeshRenderer* meshrenderer;
 	};
 }
 

@@ -10,6 +10,7 @@ namespace sh
 		: Component(eComponentType::MeshRenderer)
 		, mMesh(Resources::Find<Mesh>(L"RectMesh"))
 		, endPoint(Vector2(1.0f,1.0f))
+		, flipx(1)
 	{
 
 	}
@@ -31,7 +32,6 @@ namespace sh
 	}
 	void MeshRenderer::Render()
 	{
-		this->BindConstantBuffer();
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->BindConstantBuffer();
@@ -39,6 +39,7 @@ namespace sh
 		mMesh->BindBuffer();
 		mMaterial->Binds();
 
+		this->BindConstantBuffer();
 		Animator* animator = GetOwner()->GetComponent<Animator>();
 		if (animator)
 		{
@@ -54,8 +55,14 @@ namespace sh
 		renderer::UVCB uvCB = {};
 		uvCB.EndX = endPoint.x;
 		uvCB.EndY = endPoint.y;
-		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::SetUV];
-		cb->SetData(&uvCB);
-		cb->Bind(eShaderStage::VS);
+		ConstantBuffer* cb1 = renderer::constantBuffer[(UINT)eCBType::SetUV];
+		cb1->SetData(&uvCB);
+		cb1->Bind(eShaderStage::VS);
+
+		renderer::FlipCB fpCB = {};
+		fpCB.flipX = flipx;
+		ConstantBuffer* cb2 = renderer::constantBuffer[(UINT)eCBType::FlipX];
+		cb2->SetData(&fpCB);
+		cb2->Bind(eShaderStage::PS);
 	}
 }

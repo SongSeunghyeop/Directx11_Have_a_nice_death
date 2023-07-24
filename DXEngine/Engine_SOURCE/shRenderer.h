@@ -39,6 +39,11 @@ namespace renderer
 		float EndY;
 	};
 
+	CBUFFER(FlipCB, CBSLOT_SETUV)
+	{
+		UINT flipX;
+	};
+
 	extern sh::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];

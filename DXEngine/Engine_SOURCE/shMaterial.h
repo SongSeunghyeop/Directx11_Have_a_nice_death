@@ -17,6 +17,11 @@ namespace sh::graphics
 		void Clear();
 
 		void SetShader(std::shared_ptr<Shader> shader) { mShader = shader; }
+		bool GetTexture()
+		{
+			if (mTexture == nullptr) return false;
+			else return true;
+		}
 		void SetTexture(std::shared_ptr<Texture> texture) { mTexture = texture; }
 		void SetRenderingMode(eRenderingMode mode) { mMode = mode; }
 		eRenderingMode GetRenderingMode() { return mMode; }
@@ -26,7 +31,7 @@ namespace sh::graphics
 
 		math::Vector2 GetTextureSize()
 		{
-			return mTexture->GetSize();
+				return mTexture->GetSize();
 		}
 
 	private:

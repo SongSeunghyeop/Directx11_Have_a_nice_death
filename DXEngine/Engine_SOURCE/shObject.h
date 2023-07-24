@@ -41,12 +41,15 @@ namespace sh::object
 		MeshRenderer* mr = gameObj->AddComponent<MeshRenderer>();
 		mr->SetMaterial(Resources::Find<Material>(materialName));
 
-	
-		gameObj->setLayerType(type);
-		Vector2 size = mr->GetTextureSize();
+		if (mr->GetMaterial()->GetTexture())
+		{
+			Vector2 size = mr->GetTextureSize();
+			gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * pos_size.w, size.y / 100.0f * pos_size.w, 1.0f);
+		}
+
 		gameObj->SetDrainage(Vector2(pos_size.w, pos_size.w));
 		gameObj->GetComponent<Transform>()->SetPosition(pos_size.x, pos_size.y, pos_size.z);
-		gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * pos_size.w, size.y / 100.0f * pos_size.w, 1.0f);
+		gameObj->setLayerType(type);
 		gameObj->Initialize();
 
 		return gameObj;
@@ -62,11 +65,15 @@ namespace sh::object
 		MeshRenderer* mr = gameObj->AddComponent<MeshRenderer>();
 		mr->SetMaterial(Resources::Find<Material>(materialName));
 
-		gameObj->setLayerType(type);
-		Vector2 size = mr->GetTextureSize();
+		if (mr->GetMaterial()->GetTexture())
+		{
+			Vector2 size = mr->GetTextureSize();
+			gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * scale.x, size.y / 100.0f * scale.y, 1.0f);
+		}
+
 		gameObj->SetDrainage(scale);
 		gameObj->GetComponent<Transform>()->SetPosition(pos.x, pos.y, pos.z);
-		gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * scale.x, size.y / 100.0f * scale.y, 1.0f);
+		gameObj->setLayerType(type);
 		gameObj->Initialize();
 		return gameObj;
 	};
@@ -82,12 +89,14 @@ namespace sh::object
 		mr->SetMaterial(Resources::Find<Material>(materialName));
 		mr->SetEnd(point);
 
-		Vector2 size = mr->GetTextureSize();
-
+		if (mr->GetMaterial()->GetTexture())
+		{
+			Vector2 size = mr->GetTextureSize();
+			gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * scale.x, size.y / 100.0f * scale.y, 1.0f);
+		}
 		gameObj->setLayerType(type);
 		gameObj->SetDrainage(scale);
 		gameObj->GetComponent<Transform>()->SetPosition(pos.x, pos.y, pos.z);
-		gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * scale.x, size.y / 100.0f * scale.y, 1.0f);
 		gameObj->Initialize();
 
 		return gameObj;
