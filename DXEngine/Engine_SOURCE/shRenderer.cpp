@@ -1,6 +1,7 @@
 #include "shRenderer.h"
 #include "shTexture.h"
 #include "shMaterial.h"
+#include "shStructedBuffer.h"
 
 namespace renderer
 {
@@ -17,6 +18,9 @@ namespace renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End] = {};
 	
+	// light
+	std::vector<Light*> lights = {};
+	StructedBuffer* lightsBuffer = nullptr;
 	//
 	std::vector<sh::CameraController*> cameras = {};
 	std::vector<DebugMesh> debugMeshs = {};
@@ -275,6 +279,10 @@ namespace renderer
 
 		constantBuffer[(UINT)eCBType::FlipX] = new ConstantBuffer(eCBType::FlipX);
 		constantBuffer[(UINT)eCBType::FlipX]->Create(sizeof(FlipCB));
+
+		// light structed buffer
+		lightsBuffer = new StructedBuffer();
+		lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);
 	}
 
 	void LoadShader() // 쉐이더 생성
@@ -317,8 +325,10 @@ namespace renderer
 
 		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
 		sh::Material::Make_Material(spriteShader, L"Death", L"PlayerMaterial");
+		sh::Material::Make_Material(spriteShader, L"Empty", L"EmptyMaterial");
 		sh::Material::Make_Material(spriteShader, L"Lobby", L"LobbyMaterial");
 		sh::Material::Make_Material(spriteShader, L"Office", L"OfficeMaterial");
+		sh::Material::Make_Material(spriteShader, L"Dungeon_BackGround", L"DungeonBackGround_Material");
 		sh::Material::Make_Material(spriteShader, L"Dungeon_Lobby", L"DungeonLobbyMaterial");
 		sh::Material::Make_Material(spriteShader, L"title", L"TitleMaterial");
 		sh::Material::Make_Material(spriteShader, L"Menu", L"MenuMaterial");
@@ -330,6 +340,7 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"Tree", L"TreeMaterial");
 		sh::Material::Make_Material(spriteShader, L"Wall", L"WallMaterial");
 		sh::Material::Make_Material(spriteShader, L"Pillar", L"PillarMaterial");
+		sh::Material::Make_Material(spriteShader, L"Pillar2", L"Pillar2Material");
 		sh::Material::Make_Material(spriteShader, L"CircleStair", L"CircleStairMaterial");
 		sh::Material::Make_Material(spriteShader, L"BossChair", L"BossChairMaterial");
 		sh::Material::Make_Material(spriteShader, L"BossDesk", L"BossDeskMaterial");
@@ -344,6 +355,11 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"Logo", L"LogoMaterial");
 		sh::Material::Make_Material(spriteShader, L"Broken_Elevator", L"Broken_ElevatorMaterial");
 		sh::Material::Make_Material(spriteShader, L"Elevator", L"Elevator_Material");
+		sh::Material::Make_Material(spriteShader, L"RockBG04", L"RockBG04_Material");
+		sh::Material::Make_Material(spriteShader, L"RockBG05", L"RockBG05_Material");
+		sh::Material::Make_Material(spriteShader, L"RockBG06", L"RockBG06_Material");
+		sh::Material::Make_Material(spriteShader, L"RockBG07", L"RockBG07_Material");
+		sh::Material::Make_Material(spriteShader, L"box_NPC", L"box_NPC_Material");
 		sh::Material::Make_Material(spriteShader, L"ColumnDown", L"ColumnDownMaterial");
 		sh::Material::Make_Material(spriteShader, L"SquareStone1", L"SquareStone1Material");
 		sh::Material::Make_Material(spriteShader, L"SquareStone2", L"SquareStone2Material");
@@ -356,6 +372,8 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"Bridge", L"BridgeMaterial");
 		sh::Material::Make_Material(spriteShader, L"GhostBox1", L"GhostBox1Material");
 		sh::Material::Make_Material(spriteShader, L"GhostBox2", L"GhostBox2Material");
+		sh::Material::Make_Material(spriteShader, L"GhostBox3", L"GhostBox3Material");
+		sh::Material::Make_Material(spriteShader, L"GhostBox4", L"GhostBox4Material");
 
 		sh::Material::Make_Material(debugShader, L"DebugMaterial");
 		sh::Material::Make_Material(animationSpriteShader, L"SpriteAnimaionMaterial");
@@ -375,8 +393,24 @@ namespace renderer
 		debugMeshs.push_back(mesh);
 	}
 
+	void BindLights()
+	{
+		std::vector<LightAttribute> lightsAttributes = {};
+		for (Light* light : lights)
+		{
+			LightAttribute attribute = light->GetAttribute();
+			lightsAttributes.push_back(attribute);
+		}
+
+		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
+		lightsBuffer->Bind(eShaderStage::VS, 13);
+		lightsBuffer->Bind(eShaderStage::PS, 13);
+	}
+
 	void Render()
 	{
+		BindLights();
+
 		for (CameraController* cam : cameras)
 		{
 			if (cam == nullptr)
@@ -386,6 +420,7 @@ namespace renderer
 		}
 
 		cameras.clear();
+		lights.clear();
 	}
 
 	void Release()
@@ -398,6 +433,9 @@ namespace renderer
 			delete buff;
 			buff = nullptr;
 		}
+
+		delete lightsBuffer;
+		lightsBuffer = nullptr;
 	}
 }
 

@@ -3,11 +3,11 @@
 
 namespace sh
 {
-	class Plaza : public GameObject
+	class Floors : public GameObject
 	{
 	public:
-		Plaza();
-		~Plaza();
+		Floors();
+		~Floors();
 
 		virtual void Initialize();
 		virtual void Update();

@@ -30,6 +30,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shLight.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shMesh.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shStructedBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shTransform.h" />
@@ -61,6 +63,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shLight.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMesh.cpp" />
@@ -72,6 +75,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shStructedBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shTransform.cpp" />

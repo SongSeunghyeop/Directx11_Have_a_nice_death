@@ -31,6 +31,7 @@ namespace sh::object
 		camera->Initialize();
 		return camera;
 	};
+
 	template <typename T>
 	static inline T* Instantiate(Vector4 pos_size, eLayerType type, std::wstring materialName)
 	{
@@ -50,6 +51,7 @@ namespace sh::object
 		gameObj->SetDrainage(Vector2(pos_size.w, pos_size.w));
 		gameObj->GetComponent<Transform>()->SetPosition(pos_size.x, pos_size.y, pos_size.z);
 		gameObj->setLayerType(type);
+		gameObj->SetMaterialName(materialName);
 		gameObj->Initialize();
 
 		return gameObj;
@@ -74,6 +76,7 @@ namespace sh::object
 		gameObj->SetDrainage(scale);
 		gameObj->GetComponent<Transform>()->SetPosition(pos.x, pos.y, pos.z);
 		gameObj->setLayerType(type);
+		gameObj->SetMaterialName(materialName);
 		gameObj->Initialize();
 		return gameObj;
 	};
@@ -97,6 +100,7 @@ namespace sh::object
 		gameObj->setLayerType(type);
 		gameObj->SetDrainage(scale);
 		gameObj->GetComponent<Transform>()->SetPosition(pos.x, pos.y, pos.z);
+		gameObj->SetMaterialName(materialName);
 		gameObj->Initialize();
 
 		return gameObj;

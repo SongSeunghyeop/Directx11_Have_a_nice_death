@@ -23,28 +23,7 @@
     <ClCompile Include="shDungeonScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="shLobby.cpp">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClCompile>
-    <ClCompile Include="shOffice.cpp">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClCompile>
-    <ClCompile Include="shPlaza.cpp">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClCompile>
-    <ClCompile Include="shRock.cpp">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClCompile>
     <ClCompile Include="shDungeonLobby.cpp">
-      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
-    </ClCompile>
-    <ClCompile Include="shD_Part1.cpp">
-      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
-    </ClCompile>
-    <ClCompile Include="shD_Part2.cpp">
-      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
-    </ClCompile>
-    <ClCompile Include="shGhostBox.cpp">
       <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
     </ClCompile>
     <ClCompile Include="shPlayerController.cpp">
@@ -52,6 +31,39 @@
     </ClCompile>
     <ClCompile Include="shPlayer.cpp">
       <Filter>Contents\Prefabs\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="shFloors.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shLobbyColumns.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shD_Floors.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shGhostBoxes.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shGhostBox.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="shGhostBox2.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="shRock.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="shStoneLoads.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shDungeonColumns.cpp">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClCompile>
+    <ClCompile Include="shLightingLogo.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="shStoneLoad.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,28 +92,7 @@
     <ClInclude Include="shDungeonScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="shLobby.h">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClInclude>
-    <ClInclude Include="shOffice.h">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClInclude>
-    <ClInclude Include="shPlaza.h">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClInclude>
-    <ClInclude Include="shRock.h">
-      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
-    </ClInclude>
     <ClInclude Include="shDungeonLobby.h">
-      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
-    </ClInclude>
-    <ClInclude Include="shD_Part1.h">
-      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
-    </ClInclude>
-    <ClInclude Include="shD_Part2.h">
-      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
-    </ClInclude>
-    <ClInclude Include="shGhostBox.h">
       <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
     </ClInclude>
     <ClInclude Include="shPlayerController.h">
@@ -109,6 +100,39 @@
     </ClInclude>
     <ClInclude Include="shPlayer.h">
       <Filter>Contents\Prefabs\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="shFloors.h">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shLobbyColumns.h">
+      <Filter>Contents\Prefabs\BackGrounds\LobbyScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shD_Floors.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shGhostBoxes.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shGhostBox2.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shGhostBox.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shRock.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shStoneLoads.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shDungeonColumns.h">
+      <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
+    </ClInclude>
+    <ClInclude Include="shLightingLogo.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shStoneLoad.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

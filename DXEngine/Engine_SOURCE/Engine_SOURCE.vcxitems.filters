@@ -91,6 +91,9 @@
     <Filter Include="Resource\Animation">
       <UniqueIdentifier>{ccc1d008-e4f7-4627-a067-9ed343682774}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\StructedBuffer">
+      <UniqueIdentifier>{06812528-a535-4617-be95-0face9964556}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -189,6 +192,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shLight.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shStructedBuffer.h">
+      <Filter>Graphics\StructedBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
@@ -271,6 +278,10 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)shAnimation.cpp">
       <Filter>Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shLight.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shStructedBuffer.cpp">
+      <Filter>Graphics\StructedBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

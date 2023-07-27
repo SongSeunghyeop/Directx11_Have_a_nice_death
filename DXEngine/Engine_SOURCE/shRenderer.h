@@ -5,6 +5,7 @@
 #include "shShader.h"
 #include "shConstantBuffer.h"
 #include "shCameraController.h"
+#include "shLight.h"
 
 using namespace sh::graphics;
 using namespace sh::math;
@@ -51,6 +52,7 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
+	extern std::vector<sh::Light*> lights;
 	extern sh::CameraController* mainCamera;
 	extern std::vector<sh::CameraController*> cameras;
 	extern std::vector<DebugMesh> debugMeshs;
@@ -58,6 +60,7 @@ namespace renderer
 	extern std::shared_ptr<sh::Shader> shader;
 
 	void Initialize();
+	void BindLights();
 	void Render();
 	void Release();
 

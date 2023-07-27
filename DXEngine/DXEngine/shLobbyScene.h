@@ -15,6 +15,5 @@ namespace sh
 		virtual void Render() override;
 
 	private:
-
 	};
 }

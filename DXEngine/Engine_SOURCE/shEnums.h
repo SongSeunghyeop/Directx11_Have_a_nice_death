@@ -13,6 +13,7 @@ namespace sh::enums
 		MeshRenderer,
 		Animator,
 		Script,
+		Light,
 		MAINCamera,
 		UICamera
 	};
@@ -26,8 +27,8 @@ namespace sh::enums
 		Player,
 		Structure_F,
 		Ground_Fill,
-		Corne,
 		Ground_F,
+		Light,
 		UI,
 		Camera,
 		End = 16,
@@ -49,6 +50,14 @@ namespace sh::enums
 		Circle,
 		Sphere,
 		Cube,
+		End,
+	};
+
+	enum class eLightType
+	{
+		Directional,
+		Point,
+		Spot,
 		End,
 	};
 }

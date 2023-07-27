@@ -3,11 +3,11 @@
 
 namespace sh
 {
-	class Lobby : public GameObject
+	class D_Floors : public GameObject
 	{
 	public:
-		Lobby();
-		~Lobby();
+		D_Floors();
+		~D_Floors();
 
 		virtual void Initialize();
 		virtual void Update();

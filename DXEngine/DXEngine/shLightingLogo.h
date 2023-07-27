@@ -3,11 +3,11 @@
 
 namespace sh
 {
-	class D_Part1 : public GameObject
+	class LightingLogo : public GameObject
 	{
 	public:
-		D_Part1();
-		~D_Part1();
+		LightingLogo();
+		~LightingLogo();
 
 		virtual void Initialize();
 		virtual void Update();

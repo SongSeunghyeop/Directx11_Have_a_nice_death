@@ -3,11 +3,11 @@
 
 namespace sh
 {
-	class Office : public GameObject
+	class GhostBoxes : public GameObject
 	{
 	public:
-		Office();
-		~Office();
+		GhostBoxes();
+		~GhostBoxes();
 
 		virtual void Initialize();
 		virtual void Update();

@@ -4,6 +4,7 @@
 #include "shInput.h"
 #include "shTime.h"
 #include "shCameraController.h"
+#include "shLight.h"
 
 namespace sh
 {
@@ -21,6 +22,12 @@ namespace sh
 		animator = this->AddComponent<Animator>();
 		controller = this->AddComponent<PlayerController>();
 		meshrenderer = this->GetComponent<MeshRenderer>();
+
+		Light* lightComp = this->AddComponent<Light>();
+		lightComp->SetType(eLightType::Point);
+		lightComp->SetColor(Vector4(169, 245, 225, 1.0f));
+		lightComp->SetRadius(1.5f);
+
 		GameObject::Initialize();
 	}
 	void Player::Update()

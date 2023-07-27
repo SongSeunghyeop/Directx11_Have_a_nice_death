@@ -109,11 +109,22 @@ namespace sh
 		{
 			Drainage = v;
 		}
+
+		void SetMaterialName(std::wstring m)
+		{
+			MaterialName = m;
+		}
+
+		std::wstring GetMaterialName()
+		{
+			return MaterialName;
+		}
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
 		enums::eLayerType layerType;
 		Vector2 Drainage;
+		std::wstring MaterialName;
 	};
 }

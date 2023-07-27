@@ -123,6 +123,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //        이 함수를 통해 인스턴스 핸들을 전역 변수에 저장하고
 //        주 프로그램 창을 만든 다음 표시합니다.
 //
+
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
@@ -130,12 +131,19 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
 
+   HWND VShwnd = GetForegroundWindow();
+
+   RECT rect;
+   GetWindowRect(VShwnd, &rect);
+
+   Vector2 VSpos(rect.left + 5, rect.top + 15);
+
    if (!hWnd)
    {
       return FALSE;
    }
 
-   application.SetWindow(hWnd, 1600, 900);
+   application.SetWindow(hWnd, 1600, 900, VSpos);
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 

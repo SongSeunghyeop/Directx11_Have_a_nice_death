@@ -65,42 +65,24 @@ namespace sh
 			animator->PlayAnimation(L"TextureIdle", true);
 		}
 
-		if (Input::GetKeyDown(eKeyCode::SPACE))
-		{
-			animator->PlayAnimation(L"TextureJump", true);
-		}
-		if (Input::GetKey(eKeyCode::SPACE))
-		{
-			pos.y += 15.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
-		else
-		{
-			if (pos.y > -3.6f)
-			{
-				pos.y -= 18.0f * Time::DeltaTime();
-		    	tr->SetPosition(pos);
-			}
-		}
-
 		if (Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 10.0f * Time::DeltaTime();
+			pos.x -= 15.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 10.0f * Time::DeltaTime();
+			pos.x += 15.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S))
 		{
-			pos.y -= 10.0f * Time::DeltaTime();
+			pos.y -= 15.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::W))
 		{
-			pos.y += 10.0f * Time::DeltaTime();
+			pos.y += 15.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 	}

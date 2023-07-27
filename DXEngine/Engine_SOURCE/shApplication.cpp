@@ -71,7 +71,7 @@ namespace sh
 		graphicDevice->Present();
 	}
 
-	void Application::SetWindow(HWND hwnd, UINT width, UINT height)
+	void Application::SetWindow(HWND hwnd, UINT width, UINT height, Vector2 pos)
 	{
 		if (graphicDevice == nullptr)
 		{
@@ -85,7 +85,7 @@ namespace sh
 
 		RECT rt = { 0, 0, (LONG)width , (LONG)height };
 		AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
-		SetWindowPos(mHwnd, nullptr, 0, 0, rt.right - rt.left, rt.bottom - rt.top, 0);
+		SetWindowPos(mHwnd, nullptr, pos.x, pos.y, rt.right - rt.left, rt.bottom - rt.top, 0);
 		ShowWindow(mHwnd, true);
 		UpdateWindow(mHwnd);
 	}

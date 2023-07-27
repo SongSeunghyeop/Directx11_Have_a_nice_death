@@ -149,45 +149,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="shLightingLogo.h" />
+    <ClInclude Include="shDungeonColumns.h" />
+    <ClInclude Include="shLobbyColumns.h" />
+    <ClInclude Include="shFloors.h" />
+    <ClInclude Include="shGhostBox2.h" />
+    <ClInclude Include="shD_Floors.h" />
+    <ClInclude Include="shGhostBoxes.h" />
     <ClInclude Include="shPlayer.h" />
     <ClInclude Include="shPlayerController.h" />
-    <ClInclude Include="shD_Part1.h" />
     <ClInclude Include="shDungeonLobby.h" />
     <ClInclude Include="shDungeonScene.h" />
     <ClInclude Include="shBigColumn.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="shCamera.h" />
-    <ClInclude Include="shD_Part2.h" />
     <ClInclude Include="shGhostBox.h" />
-    <ClInclude Include="shLobby.h" />
     <ClInclude Include="shLobbyScene.h" />
     <ClInclude Include="shMenuScene.h" />
-    <ClInclude Include="shOffice.h" />
-    <ClInclude Include="shPlaza.h" />
     <ClInclude Include="shRock.h" />
     <ClInclude Include="shSmallColumn.h" />
+    <ClInclude Include="shStoneLoads.h" />
     <ClInclude Include="shTitleScene.h" />
+    <ClInclude Include="shStoneLoad.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="shLightingLogo.cpp" />
+    <ClCompile Include="shDungeonColumns.cpp" />
+    <ClCompile Include="shLobbyColumns.cpp" />
+    <ClCompile Include="shFloors.cpp" />
+    <ClCompile Include="shGhostBox2.cpp" />
+    <ClCompile Include="shD_Floors.cpp" />
+    <ClCompile Include="shGhostBoxes.cpp" />
     <ClCompile Include="shPlayer.cpp" />
     <ClCompile Include="shPlayerController.cpp" />
-    <ClCompile Include="shD_Part1.cpp" />
     <ClCompile Include="shDungeonLobby.cpp" />
     <ClCompile Include="shDungeonScene.cpp" />
     <ClCompile Include="shBigColumn.cpp" />
     <ClCompile Include="DXEngine.cpp" />
     <ClCompile Include="shCamera.cpp" />
-    <ClCompile Include="shD_Part2.cpp" />
     <ClCompile Include="shGhostBox.cpp" />
-    <ClCompile Include="shLobby.cpp" />
     <ClCompile Include="shLobbyScene.cpp" />
     <ClCompile Include="shMenuScene.cpp" />
-    <ClCompile Include="shOffice.cpp" />
-    <ClCompile Include="shPlaza.cpp" />
     <ClCompile Include="shRock.cpp" />
     <ClCompile Include="shSmallColumn.cpp" />
+    <ClCompile Include="shStoneLoads.cpp" />
     <ClCompile Include="shTitleScene.cpp" />
+    <ClCompile Include="shStoneLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Update="C:\Users\tmdgu\OneDrive\Desktop\Directx\Haveanicedeath\DXEngine\Engine_SOURCE\shMath.inl">

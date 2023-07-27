@@ -20,7 +20,7 @@ namespace sh
 		void Destroy();
 		void Present();
 
-		void SetWindow(HWND hwnd, UINT width, UINT height);
+		void SetWindow(HWND hwnd, UINT width, UINT height, Vector2 pos);
 
 		UINT GetWidth() { return mWidth; }
 		UINT GetHeight() { return mHeight; }
