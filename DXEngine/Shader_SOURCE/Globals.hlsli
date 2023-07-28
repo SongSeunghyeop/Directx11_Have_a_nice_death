@@ -63,8 +63,22 @@ void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
             lightColor += lightsAttribute[idx].color * ratio;
         }
     }
-    else
+    else if (2 == lightsAttribute[idx].type) // 스폿 조명 (타입 2)
     {
-        
+        float3 toLightDir = normalize(lightsAttribute[idx].position.xyz - position);
+        float3 lightDir = normalize(float3(0.0, 1.0, 0.0)); // 오브젝트 아래 방향
+        float spotAngleCos = cos(radians(lightsAttribute[idx].angle)); // 60도 각도 (cosine 값 사용)
+
+    // 스포트라이트 각도에 따라 빛이 증폭되도록 함
+        float spotFactor = dot(lightDir, toLightDir);
+        if (spotFactor >= spotAngleCos)
+        {
+            float length = distance(position.xy, lightsAttribute[idx].position.xy);
+            if (length < lightsAttribute[idx].radius)
+            {
+                float ratio = 1.0f - (length / lightsAttribute[idx].radius);
+                lightColor += lightsAttribute[idx].color * ratio;
+            }
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace sh
 			AddGameObject(eLayerType::Light, light);
 			Light* lightComp = light->AddComponent<Light>();
 			lightComp->SetType(eLightType::Directional);
-			lightComp->SetColor(Vector4(0.2f, 0.2f, 0.2f,1.0f));
+			lightComp->SetColor(Vector4(30, 30, 30,1.0f));
 		}
 
 		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
