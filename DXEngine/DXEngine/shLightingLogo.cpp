@@ -14,10 +14,10 @@ namespace sh
 	void LightingLogo::Initialize()
 	{
 		Light* lightComp = this->AddComponent<Light>();
-		lightComp->SetType(eLightType::Spot);
+		lightComp->SetType(eLightType::Point);
 		lightComp->SetColor(Vector4(169, 245, 225,  1.0f));
-		lightComp->SetRadius(5.0f);
-		lightComp->SetAngle(30.0f);
+		lightComp->SetRadius(7.0f);
+
 
 		GameObject::Initialize();
 	}

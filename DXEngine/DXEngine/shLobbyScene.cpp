@@ -26,11 +26,15 @@ namespace sh
 	}
 	void LobbyScene::Initialize()
 	{
+		Light* light1 = object::newLight<Light>(Vector3(12.5f, 3.5f, object::zBackGround), eLightType::Spot, 10.0f, 30.0f);
+		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
+
+
 		Player* Death
 			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
 		
 		Floors *floors
-			= object::Instantiate<Floors>(Vector4(60.5f, -6.2f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
+			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
 
 		LobbyColumns* columns
 			= object::Instantiate<LobbyColumns>(Vector4(0, 0, object::zBackGround, 0), eLayerType::Ground, L"EmptyMaterial");
@@ -63,6 +67,17 @@ namespace sh
 				= object::Instantiate<GameObject>(Vector4(30.6f, -3.2f, object::zBackGround, 1.0f), eLayerType::Structure_F, L"TreeMaterial");
 			GameObject* circlestair
 				= object::Instantiate<GameObject>(Vector4(40.4f, -5.6f, object::zBackGround, 0.45f), eLayerType::Structure_F, L"CircleStairMaterial");
+			
+		
+			{
+				Light* light1 =
+					object::newLight<Light>(Vector3(40.4f, -0.9f, object::zBackGround), eLightType::Point, 5.0f);
+				Light* light2 =
+					object::newLight<Light>(Vector3(40.4f, -1.0f, object::zBackGround), eLightType::Spot, 7.0f, 34.0f);
+				GameObject* lamp1
+					= object::Instantiate<GameObject>(Vector4(40.4f, 0.0f, object::zBackGround, 0.9f), eLayerType::Structure_F, L"lamp2Material");
+				lamp1->GetComponent<MeshRenderer>()->SetColor(Vector4(169, 245, 225, 1.0f));
+			}
 			GameObject* wall
 				= object::Instantiate<GameObject>(Vector4(57.5f, -2.8f, object::zBackGround, 0.7f), eLayerType::Structure_F, L"WallMaterial");
 			GameObject* pillar
@@ -75,7 +90,7 @@ namespace sh
 			AddGameObject(eLayerType::Light, light);
 			Light* lightComp = light->AddComponent<Light>();
 			lightComp->SetType(eLightType::Directional);
-			lightComp->SetColor(Vector4(30, 30, 30,1.0f));
+			lightComp->SetColor(Vector4(0, 0, 0, 1.0f));
 		}
 
 		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");

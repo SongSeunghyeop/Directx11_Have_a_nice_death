@@ -2,6 +2,7 @@
 #include "shBigColumn.h"
 #include "shObject.h"
 #include "shSmallColumn.h"
+#include "shLight.h"
 
 namespace sh
 {
@@ -18,14 +19,21 @@ namespace sh
 		GameObject* broken_Ev
 			= object::Instantiate<GameObject>(Vector4(-13.0f, -2.1f, object::zBackGround, 1.2f), eLayerType::Structure_F, L"Broken_ElevatorMaterial");
 		{
+			Light* light1 
+				= object::newLight<Light>(Vector3(4.5f, 4.5f, object::zBackGround), eLightType::Spot, 10.0f, 60.0f, Vector4(225, 245, 169, 1.0f));
+
 			GameObject* bigspot
-				= object::Instantiate<GameObject>(Vector4(4.4f, 1.2f, object::zBackGround, 1.1f), eLayerType::Structure_F, L"BigSpotMaterial");
+				= object::Instantiate<GameObject>(Vector4(4.5f, 2.5f, object::zBackGround, 1.1f), eLayerType::Structure_F, L"BigSpotMaterial");
+			bigspot->GetComponent<MeshRenderer>()->SetColor(Vector4(225, 245, 169, 1.0f));
 			GameObject* logo
 				= object::Instantiate<GameObject>(Vector4(5.1f, 0.2f, object::zBackGround, 1.2f), eLayerType::Structure_F, L"LogoMaterial");
+			logo->GetComponent<MeshRenderer>()->SetColor(Vector4(120, 120, 120, 1.0f));
 			GameObject* deskWall
 				= object::Instantiate<GameObject>(Vector4(4.9f, -3.4f, object::zBackGround, 1.3f), eLayerType::Structure_B, L"DeskWallMaterial");
+			deskWall->GetComponent<MeshRenderer>()->SetColor(Vector4(120, 120, 120, 1.0f));
 			GameObject* desk
 				= object::Instantiate<GameObject>(Vector4(4.8f, -3.5f, object::zBackGround, 1.2f), eLayerType::Structure_B, L"DeskMaterial");
+			desk->GetComponent<MeshRenderer>()->SetColor(Vector4(120, 120, 120, 1.0f));
 		}
 
 		{

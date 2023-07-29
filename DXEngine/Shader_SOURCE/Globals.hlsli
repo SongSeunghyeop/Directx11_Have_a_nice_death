@@ -26,6 +26,12 @@ cbuffer SetUV : register(b4)
     uint flipx;
 }
 
+cbuffer SetCOLOR : register(b5)
+{
+    float4 colorInfo;
+    uint colorDown;
+}
+
 
 Texture2D albedoTexture : register(t0);
 Texture2D atlasTexture : register(t12);
@@ -41,6 +47,7 @@ struct LightAttribute
     float angle;
     int pad;
 };
+
 
 StructuredBuffer<LightAttribute> lightsAttribute : register(t13);
 
@@ -71,9 +78,12 @@ void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
 
     // 스포트라이트 각도에 따라 빛이 증폭되도록 함
         float spotFactor = dot(lightDir, toLightDir);
-        if (spotFactor >= spotAngleCos)
+        
+        if (spotFactor > spotAngleCos)
         {
             float length = distance(position.xy, lightsAttribute[idx].position.xy);
+            float lengthX = distance(position.x, lightsAttribute[idx].position.x);
+            
             if (length < lightsAttribute[idx].radius)
             {
                 float ratio = 1.0f - (length / lightsAttribute[idx].radius);
@@ -81,4 +91,5 @@ void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
             }
         }
     }
+
 }

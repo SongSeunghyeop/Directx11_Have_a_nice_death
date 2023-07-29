@@ -280,6 +280,9 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::FlipX] = new ConstantBuffer(eCBType::FlipX);
 		constantBuffer[(UINT)eCBType::FlipX]->Create(sizeof(FlipCB));
 
+		constantBuffer[(UINT)eCBType::SetColor] = new ConstantBuffer(eCBType::SetColor);
+		constantBuffer[(UINT)eCBType::SetColor]->Create(sizeof(ColorCB));
+
 		// light structed buffer
 		lightsBuffer = new StructedBuffer();
 		lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);
@@ -374,6 +377,7 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"GhostBox2", L"GhostBox2Material");
 		sh::Material::Make_Material(spriteShader, L"GhostBox3", L"GhostBox3Material");
 		sh::Material::Make_Material(spriteShader, L"GhostBox4", L"GhostBox4Material");
+		sh::Material::Make_Material(spriteShader, L"lamp2", L"lamp2Material");
 
 		sh::Material::Make_Material(debugShader, L"DebugMaterial");
 		sh::Material::Make_Material(animationSpriteShader, L"SpriteAnimaionMaterial");

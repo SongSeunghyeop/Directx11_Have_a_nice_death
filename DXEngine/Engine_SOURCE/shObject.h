@@ -5,6 +5,7 @@
 #include "shTransform.h"
 #include "shMeshRenderer.h"
 #include "shCamera.h"
+#include "shLight.h"
 
 namespace sh::object
 {
@@ -19,6 +20,23 @@ namespace sh::object
 		scene->AddGameObject(type, camera);
 		camera->Initialize();
 		return camera;
+	};
+
+	template <typename Light>
+	static inline Light* newLight(Vector3 pos, eLightType type, float Radius = 1.5f, float Angle = 45.0f,Vector4 color = Vector4(169, 245, 225, 1.0f))
+	{
+		GameObject* light = new GameObject();
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(eLayerType::Light, light);
+		Transform* TR = light->GetComponent<Transform>();
+		TR->SetPosition(pos);
+		Light* lightComp = light->AddComponent<Light>();
+		lightComp->SetType(type);
+		lightComp->SetRadius(Radius);
+		lightComp->SetAngle(Angle);
+		lightComp->SetColor(color);
+		light->Initialize();
+		return lightComp;
 	};
 
 	template <typename Camera>

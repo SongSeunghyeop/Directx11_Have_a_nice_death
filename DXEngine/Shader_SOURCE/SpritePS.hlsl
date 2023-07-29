@@ -29,7 +29,10 @@ float4 main(VSOut In) : SV_TARGET
         CalculateLight2D(lightColor, In.WorldPos, i);
     }
     
+    if(!colorDown)
     color *= lightColor;
-    
+    if (colorDown)
+        color *= colorInfo;
+   
     return color;
 }

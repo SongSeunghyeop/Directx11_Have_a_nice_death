@@ -11,6 +11,7 @@ namespace sh
 		, mMesh(Resources::Find<Mesh>(L"RectMesh"))
 		, endPoint(Vector2(1.0f,1.0f))
 		, flipx(1)
+		, textureColor(Vector4(0.0f,0.0f,0.0f,0.0f))
 	{
 
 	}
@@ -64,5 +65,23 @@ namespace sh
 		ConstantBuffer* cb2 = renderer::constantBuffer[(UINT)eCBType::FlipX];
 		cb2->SetData(&fpCB);
 		cb2->Bind(eShaderStage::PS);
+
+		if (textureColor != Vector4(0.0f, 0.0f, 0.0f, 0.0f))
+		{
+			renderer::ColorCB coCB = {};
+			coCB.colorInfo = textureColor;
+			coCB.colorDown = 1;
+			ConstantBuffer* cb3 = renderer::constantBuffer[(UINT)eCBType::SetColor];
+			cb3->SetData(&coCB);
+			cb3->Bind(eShaderStage::PS);
+		}
+		else
+		{
+			renderer::ColorCB coCB = {};
+			coCB.colorDown = 0;
+			ConstantBuffer* cb3 = renderer::constantBuffer[(UINT)eCBType::SetColor];
+			cb3->SetData(&coCB);
+			cb3->Bind(eShaderStage::PS);
+		}
 	}
 }

@@ -17,8 +17,13 @@ namespace sh
 		{
 			Scale = scale;
 		}
+		GameObject *getPillar()
+		{
+			return pillar;
+		}
 	private:
 		float Scale;
+		GameObject* pillar;
 	};
 }
 

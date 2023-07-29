@@ -2,6 +2,7 @@
 #include "shObject.h"
 #include "shBigColumn.h"
 #include "shSmallColumn.h"
+#include "shLight.h"
 
 namespace sh
 {
@@ -16,7 +17,10 @@ namespace sh
 	void LobbyColumns::Initialize()
 	{
 		BigColumn* column1
-			= object::Instantiate<BigColumn>(Vector4(14.0f, -1.4f, object::zPlayer, 0.8f), eLayerType::Structure_F, L"ColumnMaterial");
+			= object::Instantiate<BigColumn>(Vector3(12.5f, -1.2f, object::zPlayer),Vector2(1.0f, 1.0f), eLayerType::Structure_F, L"ColumnMaterial");
+		column1->GetComponent<MeshRenderer>()->SetColor(Vector4(30, 30, 30, 1.0f));
+		column1->getPillar()->GetComponent<MeshRenderer>()->SetColor(Vector4(30,30,30,1.0f));
+
 		SmallColumn* column2
 			= object::Instantiate<SmallColumn>(Vector4(7.4f, 1.8f, object::zBackGround, 0.7f), eLayerType::Structure_B, L"ColumnMaterial");
 		SmallColumn* column3

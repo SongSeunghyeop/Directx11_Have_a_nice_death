@@ -18,6 +18,12 @@ namespace sh
 		virtual void Render() override;
 
 		void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
+		void SetColor(Vector4 color) { 
+			textureColor.x = color.x / 255;
+			textureColor.y = color.y / 255;
+			textureColor.z = color.z / 255;
+			textureColor.w = color.w;
+		 }
 		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
 		
 		std::shared_ptr<Material> GetMaterial() { return mMaterial; }
@@ -43,5 +49,7 @@ namespace sh
 		std::shared_ptr<Material> mMaterial;
 
 		UINT flipx;
+
+		Vector4 textureColor;
 	};
 }

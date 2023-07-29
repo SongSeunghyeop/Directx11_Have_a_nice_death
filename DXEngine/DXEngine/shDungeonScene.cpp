@@ -82,7 +82,7 @@ namespace sh
 			AddGameObject(eLayerType::Light, light);
 			Light* lightComp = light->AddComponent<Light>();
 			lightComp->SetType(eLightType::Directional);
-			lightComp->SetColor(Vector4(255, 255, 255, 1.0f));
+			lightComp->SetColor(Vector4(30, 30, 30, 1.0f));
 		}
 
 

@@ -14,6 +14,7 @@
 #define CBSLOT_SETUV		2
 #define CBSLOT_ANIMATION2D		3
 #define CBSLOT_FLIPX		4
+#define CBSLOT_SETCOLOR		5
 
 
 namespace sh::graphics
@@ -36,6 +37,7 @@ namespace sh::graphics
 		SetUV,
 		Animator,
 		FlipX,
+		SetColor,
 		End,
 	};
 
