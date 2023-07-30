@@ -14,6 +14,7 @@ namespace sh
 		{
 			Run,
 			Idle,
+			Attack,
 			End,
 		};
 		PlayerController();
@@ -24,6 +25,8 @@ namespace sh
 
 		void Waiting();
 		void IdleMotion();
+		void Attack2Motion();
+		void Attack3Motion();
 
 		virtual void OnCollisionEnter(Collider2D* other) override;
 		virtual void OnCollisionStay(Collider2D* other) override;
@@ -31,6 +34,7 @@ namespace sh
 
 		void Run();
 		void Idle();
+		void Attack();
 
 		void Looking_Right()
 		{

@@ -143,7 +143,7 @@ namespace sh::graphics
             , atlasImage.GetMetadata()
             , mSRV.GetAddressOf()
         );
-        mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
+         mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
 
         // Create an atlas texture object
         // Assign the DirectX 11 texture and SRV to the atlasTexture

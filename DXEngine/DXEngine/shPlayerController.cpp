@@ -20,6 +20,7 @@ namespace sh
 		{
 			moveKeys.push_back(eKeyCode::A);
 			moveKeys.push_back(eKeyCode::D);
+			moveKeys.push_back(eKeyCode::SPACE);
 		}
 
 		//크기를 줄이고 싶으면 transform->setScale()
@@ -29,11 +30,17 @@ namespace sh
 		animator->CreateAnimations(L"..\\Resources\\Texture\\Waiting", 0.1f);
 		animator->CreateAnimations(L"..\\Resources\\Texture\\Run", 0.05f);
 		animator->CreateAnimations(L"..\\Resources\\Texture\\Jump", 0.05f);
+		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack1", 0.06f);
+		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack2", 0.08f);
+		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack3", 0.08f);
 
 		animator->PlayAnimation(L"TextureIdle", true);
 
 		animator->CompleteEvent(L"TextureIdle") = std::bind(&PlayerController::Waiting, this);
 		animator->CompleteEvent(L"TextureWaiting") = std::bind(&PlayerController::IdleMotion, this);
+		animator->CompleteEvent(L"TextureAttack1") = std::bind(&PlayerController::Attack2Motion, this);
+		animator->CompleteEvent(L"TextureAttack2") = std::bind(&PlayerController::Attack3Motion, this);
+		animator->CompleteEvent(L"TextureAttack3") = std::bind(&PlayerController::IdleMotion, this);
 		animator->CompleteEvent(L"TextureJump") = std::bind(&PlayerController::IdleMotion, this);
 
 		meshRenderer = GetOwner()->GetComponent<MeshRenderer>();
@@ -55,15 +62,18 @@ namespace sh
 			{
 				Run();
 			} break;
+			case eMoveState::Attack:
+			{
+				Attack();
+			} break;
 		}
-
-		Transform* tr = GetOwner()->GetComponent<Transform>();
-		tr->SetScale(0.7f, 0.7f, 1.0f);
-		Vector3 pos = tr->GetPosition();
 	}
 	void PlayerController::Idle()
 	{
-		for (int i = 0; i < moveKeys.size(); i++)
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		tr->SetScale(0.8, 0.8, 1.0f);
+
+		for (int i = 0; i < 2; i++)
 		{
 			if (Input::GetKeyDown(moveKeys[i]) || Input::GetKey(moveKeys[i]))
 			{
@@ -71,9 +81,22 @@ namespace sh
 				animator->PlayAnimation(L"TextureRun", true);
 			}
 		}
+			if (Input::GetKeyDown(moveKeys[2]))
+			{
+				moveState = eMoveState::Attack;
+				animator->PlayAnimation(L"TextureAttack1", true);
+			}
+	}
+	void PlayerController::Attack()
+	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		tr->SetScale(2.5, 2.5, 1.0f);
 	}
 	void PlayerController::Run()
 	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		tr->SetScale(0.8, 0.8, 1.0f);
+
 		if ((!Input::GetKeyDown(eKeyCode::A)) && (!Input::GetKey(eKeyCode::A))&&
 			(!Input::GetKeyDown(eKeyCode::D)) && (!Input::GetKey(eKeyCode::D)))
 		{
@@ -81,8 +104,6 @@ namespace sh
 			IdleMotion();
 		}
 
-
-		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
 
 		if (Input::GetKeyDown(eKeyCode::D) || Input::GetKey(eKeyCode::D))
@@ -136,6 +157,15 @@ namespace sh
 	}
 	void PlayerController::IdleMotion()
 	{
+		moveState = eMoveState::Idle;
 		animator->PlayAnimation(L"TextureIdle", true);
+	}
+	void PlayerController::Attack2Motion()
+	{
+		animator->PlayAnimation(L"TextureAttack2", true);
+	}
+	void PlayerController::Attack3Motion()
+	{
+		animator->PlayAnimation(L"TextureAttack3", true);
 	}
 }

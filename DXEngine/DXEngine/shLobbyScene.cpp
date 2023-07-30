@@ -34,7 +34,7 @@ namespace sh
 		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
 
 		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
+			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
 		
 		Floors *floors
 			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");

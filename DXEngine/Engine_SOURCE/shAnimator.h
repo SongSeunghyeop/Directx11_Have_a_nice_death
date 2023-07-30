@@ -49,7 +49,6 @@ namespace sh
 		Animation* FindAnimation(const std::wstring& name);
 		Events* FindEvents(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop);
-		void PlayAnimation_not_Reset(const std::wstring& name, bool loop);
 		void Binds();
 		Animation* GetActiveAnimation()
 		{
