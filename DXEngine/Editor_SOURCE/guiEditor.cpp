@@ -10,7 +10,7 @@
 namespace gui
 {
 	using namespace sh::enums;
-	std::vector<guiWidget*> Editor::mWidgets = {};
+	std::vector<Widget*> Editor::mWidgets = {};
 	std::vector<EditorObject*> Editor::mEditorObjects = {};
 	std::vector<DebugObject*> Editor::mDebugObjects = {};
 

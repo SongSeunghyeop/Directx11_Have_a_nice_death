@@ -3,6 +3,7 @@
 #include "shTime.h"
 #include "shRenderer.h"
 #include "shSceneManager.h"
+#include "shCollisionManager.h"
 
 namespace sh
 {
@@ -41,6 +42,7 @@ namespace sh
 	{
 		Time::Update();
 		Input::Update();
+		CollisionManager::Update();
 		SceneManager::Update();
 	}
 
@@ -57,8 +59,6 @@ namespace sh
 		graphicDevice->UpdateViewPort();
 
 		renderer::Render();
-
-		graphicDevice->Present();
 	}
 
 	void Application::Destroy()

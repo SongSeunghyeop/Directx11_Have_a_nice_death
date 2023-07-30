@@ -13,6 +13,8 @@
 #include "shAnimator.h"
 #include "shLight.h"
 #include "shLightingLogo.h"
+#include "shCollisionManager.h"
+#include "shRenderer.h"
 
 namespace sh
 {
@@ -26,15 +28,17 @@ namespace sh
 	}
 	void LobbyScene::Initialize()
 	{
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
+
 		Light* light1 = object::newLight<Light>(Vector3(12.5f, 3.5f, object::zBackGround), eLightType::Spot, 10.0f, 30.0f);
 		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
-
 
 		Player* Death
 			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
 		
 		Floors *floors
 			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
+		floors->AddComponent<Collider2D>();
 
 		LobbyColumns* columns
 			= object::Instantiate<LobbyColumns>(Vector4(0, 0, object::zBackGround, 0), eLayerType::Ground, L"EmptyMaterial");
@@ -93,7 +97,7 @@ namespace sh
 			lightComp->SetColor(Vector4(0, 0, 0, 1.0f));
 		}
 
-		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
+		//Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
 		mCamera->SetTarget(Death);
 	}

@@ -98,8 +98,8 @@ namespace sh
 		}
 
 		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
-		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
-		mCamera->SetTarget(Death);
+		//Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
+		//mCamera->SetTarget(Death);
 	}
 
 	void DungeonScene::Update()

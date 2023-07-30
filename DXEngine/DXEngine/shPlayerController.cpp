@@ -5,6 +5,7 @@
 #include "shInput.h"
 #include "shAnimator.h"
 #include "shResources.h"
+#include "shCollider2D.h"
 
 namespace sh
 {
@@ -16,6 +17,11 @@ namespace sh
 	}
 	void PlayerController::Initialize()
 	{
+		{
+			moveKeys.push_back(eKeyCode::A);
+			moveKeys.push_back(eKeyCode::D);
+		}
+
 		//크기를 줄이고 싶으면 transform->setScale()
 		animator = GetOwner()->GetComponent<Animator>();
 		//animator->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3, 3.f);
@@ -31,38 +37,61 @@ namespace sh
 		animator->CompleteEvent(L"TextureJump") = std::bind(&PlayerController::IdleMotion, this);
 
 		meshRenderer = GetOwner()->GetComponent<MeshRenderer>();
+
+		Collider2D *collider = GetOwner()->AddComponent<Collider2D>();
+
+		moveState = eMoveState::Idle;
+		animator->PlayAnimation(L"TextureIdle", true);
 	}
 	void PlayerController::Update()
 	{
+		switch (moveState)
+		{
+			case eMoveState::Idle:
+			{
+				Idle();
+			} break;
+			case eMoveState::Run:
+			{
+				Run();
+			} break;
+		}
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->SetScale(0.7f, 0.7f, 1.0f);
 		Vector3 pos = tr->GetPosition();
-
-		if(animator->GetActiveAnimation() == animator->FindAnimation(L"TextureJump"))
-			tr->SetScale(1.0f, 1.0f, 1.0f);
-
-		if (Input::GetKeyDown(eKeyCode::D))
+	}
+	void PlayerController::Idle()
+	{
+		for (int i = 0; i < moveKeys.size(); i++)
 		{
-			meshRenderer->Fliping(1);
-
-			animator->PlayAnimation(L"TextureRun", true);
+			if (Input::GetKeyDown(moveKeys[i]) || Input::GetKey(moveKeys[i]))
+			{
+				moveState = eMoveState::Run;
+				animator->PlayAnimation(L"TextureRun", true);
+			}
 		}
-		if (Input::GetKeyUp(eKeyCode::D))
+	}
+	void PlayerController::Run()
+	{
+		if ((!Input::GetKeyDown(eKeyCode::A)) && (!Input::GetKey(eKeyCode::A))&&
+			(!Input::GetKeyDown(eKeyCode::D)) && (!Input::GetKey(eKeyCode::D)))
 		{
-			meshRenderer->Fliping(1);
-
-			animator->PlayAnimation(L"TextureIdle", true);
+			moveState = eMoveState::Idle;
+			IdleMotion();
 		}
-		if (Input::GetKeyDown(eKeyCode::A))
-		{
-			meshRenderer->Fliping(-1);
 
-			animator->PlayAnimation(L"TextureRun", true);
-		}
-		if (Input::GetKeyUp(eKeyCode::A))
+
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector3 pos = tr->GetPosition();
+
+		if (Input::GetKeyDown(eKeyCode::D) || Input::GetKey(eKeyCode::D))
 		{
-			meshRenderer->Fliping(-1);
-			animator->PlayAnimation(L"TextureIdle", true);
+			Looking_Right();
+		}
+		if (Input::GetKeyDown(eKeyCode::A) || Input::GetKey(eKeyCode::A))
+		{
+			Looking_Left();
 		}
 
 		if (Input::GetKey(eKeyCode::A))
@@ -85,7 +114,22 @@ namespace sh
 			pos.y += 15.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
+
+		tr->SetPosition(pos);
 	}
+	void PlayerController::OnCollisionEnter(Collider2D* other)
+	{
+		int a = 0;
+	}
+	void PlayerController::OnCollisionStay(Collider2D* other)
+	{
+		int c = 0;
+	}
+	void PlayerController::OnCollisionExit(Collider2D* other)
+	{
+		int b = 0;
+	}
+
 	void PlayerController::Waiting()
 	{
 		animator->PlayAnimation(L"TextureWaiting", true);

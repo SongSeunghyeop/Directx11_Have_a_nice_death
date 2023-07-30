@@ -10,6 +10,7 @@ namespace sh
 		, mTransform(nullptr)
 		, mSize(Vector2::One)
 		, mCenter(Vector2::Zero)
+		, mType(eColliderType::Rect)
 	{
 		mColliderNumber++;
 		mColliderID = mColliderNumber;
@@ -44,7 +45,6 @@ namespace sh
 		mesh.position = pos;
 		mesh.scale = scale;
 		mesh.rotation = tr->GetRotation();
-		mesh.type = eColliderType::Rect;
 
 		renderer::PushDebugMeshAttribute(mesh);
 	}

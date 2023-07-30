@@ -23,7 +23,7 @@ namespace gui
 		static void DebugRender(const sh::graphics::DebugMesh& mesh);
 
 	private:
-		static std::vector<guiWidget*> mWidgets;
+		static std::vector<Widget*> mWidgets;
 		static std::vector<EditorObject*> mEditorObjects;
 		static std::vector<DebugObject*> mDebugObjects;
 	};

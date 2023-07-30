@@ -27,6 +27,7 @@ namespace sh
 				}
 			}
 		}
+
 	}
 
 	void CollisionManager::LayerCollision(eLayerType left, eLayerType right)
@@ -88,6 +89,8 @@ namespace sh
 				//최초 충돌
 				left->OnCollisionEnter(right);
 				right->OnCollisionEnter(left);
+
+				iter->second = true;
 			}
 			else
 			{
@@ -104,6 +107,8 @@ namespace sh
 				// 충돌하고 있다가 나갈떄
 				left->OnCollisionExit(right);
 				right->OnCollisionExit(left);
+
+				iter->second = false;
 			}
 		}
 	}
