@@ -33,6 +33,8 @@ namespace sh
 		Animation();
 		~Animation();
 
+		inline Vector2 GetCurSpriteSize() const;
+
 		virtual HRESULT Load(const std::wstring& path) { return S_FALSE; };
 
 		void Update();
@@ -58,4 +60,12 @@ namespace sh
 		float mTime;
 		bool mbComplete;
 	};
+
+	inline Vector2 Animation::GetCurSpriteSize() const
+	{
+		if (mSprites.size() <= mIndex)
+			return Vector2::Zero;
+
+		return mSprites[mIndex].size;
+	}
 }

@@ -27,6 +27,11 @@ namespace sh
 		double differnceFrequency = mCurFrequency.QuadPart - mPrevFrequency.QuadPart;
 
 		mDeltaTime = differnceFrequency / mCpuFrequency.QuadPart;
+
+		if (mDeltaTime > (1.f / 60.f))
+		{
+			mDeltaTime = 1.f / 60.f;
+		}
 		
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
 	}

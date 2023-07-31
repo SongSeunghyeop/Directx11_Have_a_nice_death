@@ -122,7 +122,7 @@ namespace sh
 		Vector3 arrLocalPos[4] =
 		{
 		   Vector3{-0.5f, 0.5f, 0.0f}
-		   ,Vector3{0.5f, 0.5f, 0.0f}
+		   ,Vector3{0.5f, 0.5f, 0.0f} 
 		   ,Vector3{0.5f, -0.5f, 0.0f}
 		   ,Vector3{-0.5f, -0.5f, 0.0f}
 		};

@@ -21,6 +21,7 @@ namespace sh
 	Animation::~Animation()
 	{
 	}
+
 	void Animation::Update()
 	{
 	}

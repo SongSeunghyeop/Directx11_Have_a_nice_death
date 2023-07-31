@@ -34,7 +34,7 @@ namespace sh
 		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
 
 		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, -3.6f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
+			= object::Instantiate<Player>(Vector4(0.0f, 10.0f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
 		
 		Floors *floors
 			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
@@ -59,9 +59,14 @@ namespace sh
 			GameObject* BossChair
 				= object::Instantiate<GameObject>(Vector4(-0.5f, -2.0f, object::zBackGround, 0.7f), eLayerType::Structure_B, L"BossChairMaterial");
 			GameObject* Stair_R
-				= object::Instantiate<GameObject>(Vector4(7.0, -5.45f, object::zBackGround, 0.7f), eLayerType::Structure_B, L"StairR_Material");
-			GameObject* SupportDesk
-				= object::Instantiate<GameObject>(Vector4(-0.25f, -5.4f, object::zBackGround, 1.0f), eLayerType::Structure_B, L"SupportDesk_Material");
+				= object::Instantiate<GameObject>(Vector4(7.0, -5.45f, object::zBackGround, 0.7f), eLayerType::Ground, L"StairR_Material");
+			
+			{
+				GameObject* SupportDesk
+					= object::Instantiate<GameObject>(Vector4(-0.25f, -5.4f, object::zBackGround, 1.0f), eLayerType::Ground, L"SupportDesk_Material");
+				Collider2D *collider = SupportDesk->AddComponent<Collider2D>();
+				collider->SetSize(Vector2(1.0f, 0.6f));
+			}
 			GameObject* BossDesk
 				= object::Instantiate<GameObject>(Vector4(-0.2f, -3.8f, object::zBackGround, 0.6f), eLayerType::Structure_F, L"BossDeskMaterial");
 		}

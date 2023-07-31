@@ -25,8 +25,10 @@ namespace sh
 
 		void Waiting();
 		void IdleMotion();
+		void Attack1Motion();
 		void Attack2Motion();
 		void Attack3Motion();
+		void Attack4Motion();
 
 		virtual void OnCollisionEnter(Collider2D* other) override;
 		virtual void OnCollisionStay(Collider2D* other) override;
@@ -58,5 +60,8 @@ namespace sh
 		MeshRenderer* meshRenderer;
 
 		std::vector<eKeyCode> moveKeys;
+		Transform* playerTR;
+
+		float gravity = 10.0f;
 	};
 }

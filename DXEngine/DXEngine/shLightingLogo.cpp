@@ -16,7 +16,7 @@ namespace sh
 		Light* lightComp = this->AddComponent<Light>();
 		lightComp->SetType(eLightType::Point);
 		lightComp->SetColor(Vector4(169, 245, 225,  1.0f));
-		lightComp->SetRadius(7.0f);
+		lightComp->SetRadius(8.0f);
 
 
 		GameObject::Initialize();
