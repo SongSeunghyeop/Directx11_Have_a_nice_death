@@ -24,8 +24,10 @@ float4 main(VSOut In) : SV_TARGET
     
     if (animationType == 1)
     {
+       // float2 UV = (SpriteLeftTop / AtlasSize + SpriteOffset / AtlasSize) + (SpriteSize / AtlasSize * In.UV);
+        
         float2 UV = (SpriteLeftTop / AtlasSize + SpriteOffset / AtlasSize) + (SpriteSize / AtlasSize * In.UV);
-   
+
         if (flipx == -1)
         {
             UV.x *= -1;

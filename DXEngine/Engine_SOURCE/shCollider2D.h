@@ -22,6 +22,7 @@ namespace sh
 
 		void SetType(eColliderType type) { mType = type; }
 		Vector2 GetSize() { return mSize; }
+		Vector3 GetScale() { return mScale; }
 		void SetSize(Vector2 size) { mSize = size; }
 		void SetCenter(Vector2 size) { mCenter = size; }
 		UINT GetColliderID() { return mColliderID; }
@@ -34,6 +35,7 @@ namespace sh
 
 		Vector3 mPosition;
 		Vector2 mSize;
+		Vector3 mScale;
 		Vector2 mCenter;
 
 	};

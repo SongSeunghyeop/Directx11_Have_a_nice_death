@@ -66,5 +66,7 @@ namespace sh
 		std::shared_ptr<graphics::Texture> mImageAtlas;
 
 		bool mbLoop;
+
+		std::vector<math::Vector2> texSizes;
 	};
 }

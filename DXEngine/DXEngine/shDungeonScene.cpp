@@ -13,6 +13,7 @@
 #include "shMeshRenderer.h"
 #include "shInput.h"
 #include "shLight.h"
+#include "shRenderer.h"
 
 namespace sh
 {
@@ -26,6 +27,13 @@ namespace sh
 	}
 	void DungeonScene::Initialize()
 	{
+		Player* Death
+			= object::Instantiate<Player>(Vector4(0.0f, 10.0f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
+
+		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
+		mCamera->SetTarget(Death);
+		this->SetActiveCamera(mCamera);
+
 		{	//12.2
 			GameObject* BackGround_Pattern0
 				= object::Instantiate<GameObject>(Vector3(23.5f, 0.2f, object::zBackGround), Vector2(0.6f, 0.7f), eLayerType::BackGround, L"DungeonBackGround_Material");
@@ -53,8 +61,6 @@ namespace sh
 				= object::Instantiate<GameObject>(Vector3(102.7f, -7.4f, object::zBackGround), Vector2(0.45f, 0.6f), eLayerType::Structure_B, L"Pillar2Material");
 		}
 
-		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, -4.0f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
 		DungeonLobby* Dlobby
 			= object::Instantiate<DungeonLobby>(Vector4(0.0f, -0.7f, object::zBackGround, 1.4f), eLayerType::BackGround, L"DungeonLobbyMaterial");
 		GameObject* Box_NPC
@@ -63,6 +69,7 @@ namespace sh
 			= object::Instantiate<GhostBoxes>(Vector4(43.5f, -7.3f, object::zBackGround, 1.0f), eLayerType::Structure_B, L"GhostBox3Material");
 		D_Floors* floors
 			= object::Instantiate<D_Floors>(Vector4(-0.0f, -4.7f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
+		floors->AddComponent<Collider2D>();
 		StoneLoads *stonLoads
 			= object::Instantiate<StoneLoads>(Vector4(15.0f, -5.2f, object::zBackGround, 0.4f), eLayerType::Structure_F, L"SquareStone1Material");
 		DungeonColumns *dungeonColumns
@@ -98,8 +105,6 @@ namespace sh
 		}
 
 		Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
-		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
-		mCamera->SetTarget(Death);
 	}
 
 	void DungeonScene::Update()
@@ -120,5 +125,9 @@ namespace sh
 	void DungeonScene::Render()
 	{
 
+	}
+	void DungeonScene::OnEnter()
+	{
+		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 	}
 }

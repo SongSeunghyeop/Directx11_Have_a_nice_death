@@ -20,6 +20,10 @@ namespace sh
 		{
 			filmingPos = pos;
 		}
+		CameraController* getCameraCont()
+		{
+			return cameraCont;
+		}
 	private:
 		std::wstring CameraType;
 		CameraController* cameraCont;

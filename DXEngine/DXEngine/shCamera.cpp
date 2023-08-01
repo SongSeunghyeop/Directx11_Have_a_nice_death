@@ -15,7 +15,7 @@ namespace sh
 		CameraType = type;
 		renderer::cameras.push_back(cameraCont);
 
-		filmingPos = Vector3(0, 1.0, -5);
+		filmingPos = Vector3(0, 2.0, -7);
 	}
 	Camera::~Camera()
 	{
@@ -42,7 +42,6 @@ namespace sh
 			cameraCont->TurnLayerMask(eLayerType::BackGround, true);
 			cameraCont->TurnLayerMask(eLayerType::Ground, true);
 			cameraCont->SetProjectionType(CameraController::eProjectionType::Perspective);
-			renderer::mainCamera = cameraCont;
 		}
 		GameObject::Initialize();
 	}

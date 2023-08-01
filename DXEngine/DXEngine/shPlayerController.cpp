@@ -31,9 +31,9 @@ namespace sh
 		animator->CreateAnimations(L"..\\Resources\\Texture\\Run", 0.05f);
 		animator->CreateAnimations(L"..\\Resources\\Texture\\Jump", 0.05f);
 		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack1", 0.04f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack2", 0.07f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack3", 0.07f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack4", 0.07f);
+		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack2", 0.06f);
+		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack3", 0.06f);
+		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack4", 0.06f);
 
 		animator->PlayAnimation(L"TextureIdle", true);
 
@@ -54,19 +54,6 @@ namespace sh
 	}
 	void PlayerController::Update()
 	{
-		auto* animator = GetOwner()->GetComponent<Animator>();
-		
-		auto* CurAnim = animator->GetActiveAnimation();
-		if (CurAnim)
-		{
-			auto* Collider = GetOwner()->GetComponent<Collider2D>();
-			Collider->SetSize(Vector2(1.2f, 1.2f));
-		}
-		//Collider2D *collider = GetOwner()->AddComponent<Collider2D>();
-		//Vector2 size;
-		//size.x = meshRenderer->GetTextureSize();
-		//size.y = playerTR->GetScale().y;
-		//collider->SetSize(size);
 
 		switch (moveState)
 		{
@@ -86,8 +73,6 @@ namespace sh
 	}
 	void PlayerController::Idle()
 	{
-		playerTR ->SetScale(0.8, 0.8, 1.0f);
-		
 		{
 			Vector3 pos = playerTR->GetPosition();
 			pos.y -= gravity * Time::DeltaTime();
@@ -114,8 +99,6 @@ namespace sh
 	}
 	void PlayerController::Run()
 	{
-		playerTR->SetScale(0.8, 0.8, 1.0f);
-
 		if ((!Input::GetKeyDown(eKeyCode::A)) && (!Input::GetKey(eKeyCode::A))&&
 			(!Input::GetKeyDown(eKeyCode::D)) && (!Input::GetKey(eKeyCode::D)))
 		{
@@ -159,57 +142,67 @@ namespace sh
 	}
 	void PlayerController::OnCollisionEnter(Collider2D* other)
 	{
-		gravity = 0;
+		if (other->GetOwner()->GetName() == L"Test")
+		{
+	 		Collider2D* player = playerTR->GetOwner()->GetComponent<Collider2D>();
+			int a = 0;
+		}
+			
+			gravity = 0;
 	}
 	void PlayerController::OnCollisionStay(Collider2D* other)
 	{
+		if (other->GetOwner()->GetName() == L"Test")
+			int a = 0;
+
 		gravity = 0;
 	}
 	void PlayerController::OnCollisionExit(Collider2D* other)
 	{
-		gravity = 10;
+		gravity = 10.0f;
 	}
 
 	void PlayerController::Waiting()
 	{
+		playerTR->SetScale(0.9, 0.9, 1.0f);
 		animator->PlayAnimation(L"TextureWaiting", true);
 	}
 	void PlayerController::IdleMotion()
 	{
+		playerTR->SetScale(0.9, 0.9, 1.0f);
 		moveState = eMoveState::Idle;
 		animator->PlayAnimation(L"TextureIdle", true);
 	}
 	void PlayerController::Attack1Motion()
 	{
-		playerTR->SetScale(2.8f,2.0f,1.0f);
+		//playerTR->SetScale(2.8f,2.0f,1.0f);
 		Vector3 pos = playerTR->GetPosition();
-		pos.x += 120.f * Time::DeltaTime();
+		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
 		animator->PlayAnimation(L"TextureAttack1", true);
 	}
 	void PlayerController::Attack2Motion()
 	{
-		playerTR->SetScale(2.0f, 2.0f, 1.0f);
+		//playerTR->SetScale(2.0f, 2.0f, 1.0f);
 		Vector3 pos = playerTR->GetPosition();
-		pos.x += 120.f * Time::DeltaTime();
+		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
 		animator->PlayAnimation(L"TextureAttack2", true);
 	}
 	void PlayerController::Attack3Motion()
 	{
-		playerTR->SetScale(2.0f, 2.0f, 1.0f);
+		//playerTR->SetScale(2.0f, 2.0f, 1.0f);
 		Vector3 pos = playerTR->GetPosition();
-		pos.x += 120.f * Time::DeltaTime();
+		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
 		animator->PlayAnimation(L"TextureAttack3", true);
 	}
 	void PlayerController::Attack4Motion()
 	{
 		Vector3 pos = playerTR->GetPosition();
-		pos.x += 120.f * Time::DeltaTime();
-		pos.y += 40.f * Time::DeltaTime();
+		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
-		playerTR->SetScale(3.2f, 3.2f, 1.0f);
+		//playerTR->SetScale(3.2f, 3.2f, 1.0f);
 		animator->PlayAnimation(L"TextureAttack4", true);
 	}
 }

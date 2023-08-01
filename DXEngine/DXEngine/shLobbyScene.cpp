@@ -15,6 +15,8 @@
 #include "shLightingLogo.h"
 #include "shCollisionManager.h"
 #include "shRenderer.h"
+#include "shTime.h"
+#include "shElevator_NPC.h"
 
 namespace sh
 {
@@ -34,11 +36,16 @@ namespace sh
 		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
 
 		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, 10.0f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
-		
+			= object::Instantiate<Player>(Vector4(0.0f, 5.0f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
+	
+		mainCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
+		mainCamera->SetTarget(Death);
+		this->SetActiveCamera(mainCamera);
+
 		Floors *floors
-			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
-		floors->AddComponent<Collider2D>();
+			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround + 0.00001f, 1.5f), eLayerType::Ground, L"GroundMaterial");
+		floors->AddComponent<Collider2D>()->SetSize(Vector2(1.0f,0.9f));
+
 
 		LobbyColumns* columns
 			= object::Instantiate<LobbyColumns>(Vector4(0, 0, object::zBackGround, 0), eLayerType::Ground, L"EmptyMaterial");
@@ -64,8 +71,9 @@ namespace sh
 			{
 				GameObject* SupportDesk
 					= object::Instantiate<GameObject>(Vector4(-0.25f, -5.4f, object::zBackGround, 1.0f), eLayerType::Ground, L"SupportDesk_Material");
+				SupportDesk->SetName(L"Test");
 				Collider2D *collider = SupportDesk->AddComponent<Collider2D>();
-				collider->SetSize(Vector2(1.0f, 0.6f));
+				collider->SetSize(Vector2(0.8f, 0.6f));
 			}
 			GameObject* BossDesk
 				= object::Instantiate<GameObject>(Vector4(-0.2f, -3.8f, object::zBackGround, 0.6f), eLayerType::Structure_F, L"BossDeskMaterial");
@@ -88,9 +96,15 @@ namespace sh
 				lamp1->GetComponent<MeshRenderer>()->SetColor(Vector4(169, 245, 225, 1.0f));
 			}
 			GameObject* wall
-				= object::Instantiate<GameObject>(Vector4(57.5f, -2.8f, object::zBackGround, 0.7f), eLayerType::Structure_F, L"WallMaterial");
-			GameObject* pillar
-				= object::Instantiate<GameObject>(Vector3(72.0f, -2.0f, object::zBackGround),Vector2(0.7f, 0.7f), eLayerType::Structure_F, L"PillarMaterial");
+				= object::Instantiate<GameObject>(Vector4(57.5f, -2.9f, object::zBackGround, 0.6f), eLayerType::Structure_F, L"WallMaterial");
+			
+			
+			{
+				GameObject* pillar
+					= object::Instantiate<GameObject>(Vector3(72.0f, -2.6f, object::zBackGround), Vector2(0.6f, 0.6f), eLayerType::Structure_F, L"PillarMaterial");
+				Elevator_NPC *mElevator
+					= object::Instantiate<Elevator_NPC>(Vector3(72.0f, -4.4f, object::zBackGround - 0.00001f), Vector2(3.0f, 3.0f), eLayerType::Structure_F, L"SpriteAnimaionMaterial");
+			}
 		}
 		
 		{
@@ -103,8 +117,6 @@ namespace sh
 		}
 
 		//Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
-		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
-		mCamera->SetTarget(Death);
 	}
 
 	void LobbyScene::Update()
@@ -125,5 +137,9 @@ namespace sh
 	void LobbyScene::Render()
 	{
 
+	}
+	void LobbyScene::OnEnter()
+	{
+		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 	}
 }

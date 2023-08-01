@@ -1,6 +1,7 @@
 #pragma once
 #include "shComponent.h"
 #include "shGraphics.h"
+#include "shScene.h"
 
 namespace sh
 {

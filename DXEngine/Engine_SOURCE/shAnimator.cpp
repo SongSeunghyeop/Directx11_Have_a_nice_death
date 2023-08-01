@@ -110,7 +110,9 @@ namespace sh
 			}
 
 			textures.push_back(tex);
+			Vector2 size = Vector2(tex->GetWidth(), tex->GetHeight());
 
+			texSizes.push_back(size);
 			fileCount++;
 		}
 
@@ -118,10 +120,10 @@ namespace sh
 		key += fs.filename();
 
 		mImageAtlas = std::make_shared<graphics::Texture>();
-		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
+		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight, texSizes);
+
 		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, duration, Vector2::Zero);
-
-
+		texSizes.clear();
 		return nullptr;
 	}
 	Animation* Animator::FindAnimation(const std::wstring& name)

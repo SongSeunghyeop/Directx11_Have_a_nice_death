@@ -58,7 +58,7 @@ namespace sh::graphics
 	{
 		GetDevice()->BindShaderResource(stage, startSlot, mSRV.GetAddressOf());
 	}
-    HRESULT Texture::CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight)
+    HRESULT Texture::CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight, std::vector<math::Vector2> texsizes)
     {
         ScratchImage atlasImage;
         HRESULT hr = S_OK;
@@ -88,7 +88,7 @@ namespace sh::graphics
             }
             else
             {
-                hr = LoadFromWICFile(fullName.c_str(), WIC_FLAGS_NONE, nullptr, image);
+                hr = LoadFromWICFile(fullName.c_str(), WIC_FLAGS_IGNORE_SRGB, nullptr, image);
             }
 
             if (SUCCEEDED(hr))
@@ -112,9 +112,13 @@ namespace sh::graphics
                     return hr;
                 }
 
+                float width = imageMaxWidth - texsizes[idx].x;
+                float height = imageMaxHeight - texsizes[idx].y;
+
                 // Copy the converted image data to the atlas image
                 hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
-                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth)*idx, 0);
+                    *atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth)*idx  + width / 2, height);
+                
                 if (FAILED(hr))
                 {
                     // Handle the copy rectangle error if necessary

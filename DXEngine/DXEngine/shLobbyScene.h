@@ -14,6 +14,9 @@ namespace sh
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		virtual void OnEnter() override;
+
 	private:
+		Camera* mainCamera;
 	};
 }

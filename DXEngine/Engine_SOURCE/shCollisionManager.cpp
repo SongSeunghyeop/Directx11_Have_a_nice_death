@@ -139,7 +139,7 @@ namespace sh
 		Matrix finalLeft = Matrix::CreateScale(leftScale);
 		finalLeft *= leftMatrix;
 
-		Vector3 rightScale = Vector3(right->GetSize().x, right->GetSize().y, 1.0f);
+		Vector3 rightScale = Vector3(right->GetSize().x , right->GetSize().y, 1.0f);
 		Matrix finalRight = Matrix::CreateScale(rightScale);
 		finalRight *= rightMatrix;
 

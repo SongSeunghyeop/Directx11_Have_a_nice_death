@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="shElevator_NPC.h" />
     <ClInclude Include="shLightingLogo.h" />
     <ClInclude Include="shDungeonColumns.h" />
     <ClInclude Include="shLobbyColumns.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="shStoneLoad.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="shElevator_NPC.cpp" />
     <ClCompile Include="shLightingLogo.cpp" />
     <ClCompile Include="shDungeonColumns.cpp" />
     <ClCompile Include="shLobbyColumns.cpp" />

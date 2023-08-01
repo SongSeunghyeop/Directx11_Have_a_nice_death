@@ -65,6 +65,9 @@
     <ClCompile Include="shStoneLoad.cpp">
       <Filter>Contents\Prefabs\Structures</Filter>
     </ClCompile>
+    <ClCompile Include="shElevator_NPC.cpp">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -132,6 +135,9 @@
       <Filter>Contents\Prefabs\Structures</Filter>
     </ClInclude>
     <ClInclude Include="shStoneLoad.h">
+      <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shElevator_NPC.h">
       <Filter>Contents\Prefabs\Structures</Filter>
     </ClInclude>
   </ItemGroup>

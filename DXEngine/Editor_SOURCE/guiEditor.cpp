@@ -95,7 +95,6 @@ namespace gui
 		sh::Transform* tr = debugObj->GetComponent<sh::Transform>();
 
 		Vector3 pos = mesh.position;
-		pos.z -= 0.01f;
 
 		tr->SetPosition(pos);
 		tr->SetScale(mesh.scale);

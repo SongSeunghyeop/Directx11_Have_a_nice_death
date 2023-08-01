@@ -1,7 +1,7 @@
 #pragma once
 #include "shEntity.h"
 #include "shLayer.h"
-
+#include "../DXEngine/shCamera.h"
 namespace sh
 {
 	class Scene : public Entity
@@ -39,7 +39,18 @@ namespace sh
 			return findObjs;
 		}
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
+		
+		void SetActiveCamera(Camera* c)
+		{
+			activeCamera = c;
+		}
+		Camera* GetActiveCamera()
+		{
+			return activeCamera;
+		}
 	private:
 		std::vector<Layer> mLayers;
+
+		Camera* activeCamera;
 	};
 }
