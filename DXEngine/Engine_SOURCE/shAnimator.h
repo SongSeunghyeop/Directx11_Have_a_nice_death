@@ -29,6 +29,14 @@ namespace sh
 			Event endEvent;
 		};
 
+		struct AnimationINFO
+		{
+			std::wstring path;
+			std::vector<math::Vector2> texSizes;
+			
+			float duration;
+		};
+
 		Animator();
 		~Animator();
 
@@ -43,9 +51,10 @@ namespace sh
 			, Vector2 size
 			, UINT columnLength
 			, float duration = 0.1f
-			, Vector2 offset = Vector2::Zero);
+			, Vector2 offset = Vector2::Zero
+			, int direction = 0);
 
-		Animation* CreateAnimations(const std::wstring& path, float duration);
+		Animation* CreateAnimations();
 		Animation* FindAnimation(const std::wstring& name);
 		Events* FindEvents(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop);
@@ -59,6 +68,9 @@ namespace sh
 		std::function<void()>& CompleteEvent(const std::wstring key);
 		std::function<void()>& EndEvent(const std::wstring key);
 
+		//애니메이션을 배열에 추가하고, maxSize값을 미리 구해놓는다
+
+		void SetAnimations(const std::wstring path, float duration = 0.06f);
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
 		std::map<std::wstring, Events*> mEvents;
@@ -66,7 +78,11 @@ namespace sh
 		std::shared_ptr<graphics::Texture> mImageAtlas;
 
 		bool mbLoop;
+		Vector2 maxSize = Vector2(0,0);
 
-		std::vector<math::Vector2> texSizes;
+		//std::vector<std::wstring> pathes;
+		std::vector<AnimationINFO *> informations;
+
+		int Direction; // 0 = Right // 1 = Left
 	};
 }

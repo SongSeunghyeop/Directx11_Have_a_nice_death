@@ -24,7 +24,10 @@ namespace sh
 		virtual void Update() override;
 
 		void Waiting();
-		void IdleMotion();
+		void Idle1Motion();
+		void Idle2Motion();
+		void Idle3Motion();
+		void Idle4Motion();
 		void Attack1Motion();
 		void Attack2Motion();
 		void Attack3Motion();
@@ -63,5 +66,6 @@ namespace sh
 		Transform* playerTR;
 
 		float gravity = 10.0f;
+
 	};
 }

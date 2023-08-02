@@ -47,7 +47,8 @@ namespace sh
 			, Vector2 size
 			, UINT columnLength
 			, Vector2 offset = Vector2::Zero
-			, float duration = 0.0f);
+			, float duration = 0.0f
+			, int direction = 0);
 
 		void Binds();
 		void Reset();

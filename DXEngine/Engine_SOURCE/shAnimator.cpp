@@ -14,12 +14,15 @@ namespace sh
 			delete iter.second;
 			iter.second = nullptr;
 		}
-
-
 		for (auto& iter : mEvents)
 		{
 			delete iter.second;
 			iter.second = nullptr;
+		}
+		for (auto& iter : informations)
+		{
+			delete iter;
+			iter = nullptr;
 		}
 	}
 	void Animator::Initialize()
@@ -56,7 +59,8 @@ namespace sh
 		, Vector2 size
 		, UINT columnLength
 		, float duration
-		, Vector2 offset)
+		, Vector2 offset
+		, int direction)
 	{
 		Animation* animation = FindAnimation(name);
 		if (nullptr != animation)
@@ -71,7 +75,8 @@ namespace sh
 			, size
 			, columnLength
 			, offset
-			, duration);
+			, duration
+			, direction);
 
 		mAnimations.insert(std::make_pair(name, animation));
 
@@ -83,48 +88,31 @@ namespace sh
 		mEvents.insert(std::make_pair(name, events));
 	}
 
-	Animation* Animator::CreateAnimations(const std::wstring& path, float duration)
+	//애니메이션 배열 안에 있는 정보들과 , 최종 maxSize를 토대로 아틀라스를 생성한다
+	Animation* Animator::CreateAnimations()
 	{
-		size_t maxwidth = 0;
-		size_t maxheight = 0;
-		UINT fileCount = 0;
-
-		std::filesystem::path fs(path);
-		std::vector<std::shared_ptr<Texture>> textures = {};
-		for (const auto& p : std::filesystem::recursive_directory_iterator(path))
+		for (int i = 0; i < informations.size(); i++)
 		{
-			std::wstring fileName = p.path().filename();
-			std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
+			std::filesystem::path fs(informations[i]->path);
+			std::vector<std::shared_ptr<Texture>> textures = {};
 
-			const std::wstring ext = p.path().extension();
+			std::wstring keyR = fs.parent_path().filename();
+			keyR += fs.filename();
+			keyR += +L"R";
 
-			std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
+			std::wstring keyL = fs.parent_path().filename();
+			keyL += fs.filename();
+			keyL += +L"L";
 
-			if (maxwidth < tex->GetWidth())
-			{
-				maxwidth = tex->GetWidth();
-			}
-			if (maxheight < tex->GetHeight())
-			{
-				maxheight = tex->GetHeight();
-			}
+			mImageAtlas = std::make_shared<graphics::Texture>();
+			mImageAtlas->CreateTex(informations[i]->path, informations[i]->texSizes.size(), maxSize.x, maxSize.y, informations[i]->texSizes);
 
-			textures.push_back(tex);
-			Vector2 size = Vector2(tex->GetWidth(), tex->GetHeight());
-
-			texSizes.push_back(size);
-			fileCount++;
+			//오른쪽 방향 아틀라스
+			Create(keyR, mImageAtlas, Vector2(0.0), Vector2(maxSize.x, maxSize.y), informations[i]->texSizes.size(), informations[i]->duration, Vector2::Zero, 0);
+			//왼쪽 방향 아틀라스
+			Create(keyL, mImageAtlas, Vector2(0.0), Vector2(maxSize.x, maxSize.y), informations[i]->texSizes.size(), informations[i]->duration, Vector2::Zero, 1);
 		}
-
-		std::wstring key = fs.parent_path().filename();
-		key += fs.filename();
-
-		mImageAtlas = std::make_shared<graphics::Texture>();
-		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight, texSizes);
-
-		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, duration, Vector2::Zero);
-		texSizes.clear();
-		return nullptr;
+			return nullptr;
 	}
 	Animation* Animator::FindAnimation(const std::wstring& name)
 	{
@@ -197,5 +185,43 @@ namespace sh
 		Events* events = FindEvents(key);
 
 		return events->endEvent.mEvent;
+	}
+	//maxSize 값을 정하고, 애니메이션의 정보를 배열에 넣는다
+	void Animator::SetAnimations(const std::wstring path, float duration)
+	{
+		UINT fileCount = 0;
+
+		std::filesystem::path fs(path);
+		std::vector<std::shared_ptr<Texture>> textures = {};
+		std::vector<math::Vector2> texSizes;
+
+		for (const auto& p : std::filesystem::recursive_directory_iterator(path))
+		{
+			std::wstring fileName = p.path().filename();
+			std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
+
+			std::shared_ptr<Texture> tex = Resources::Load<Texture>(fileName, fullName);
+
+			if (maxSize.x < tex->GetWidth())
+			{
+				maxSize.x = tex->GetWidth();
+			}
+			if (maxSize.y < tex->GetHeight())
+			{
+				maxSize.y = tex->GetHeight();
+			}
+
+			textures.push_back(tex);
+			Vector2 size = Vector2(tex->GetWidth(), tex->GetHeight());
+			texSizes.push_back(size);
+			fileCount++;
+		}
+
+			AnimationINFO* info = new AnimationINFO();
+			info->path = path;
+			info->duration = duration;
+			info->texSizes = texSizes;
+
+			informations.push_back(info);
 	}
 }

@@ -15,20 +15,19 @@ namespace sh
 	{
 		animator = this->AddComponent<Animator>();
 
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear1", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear2", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear3", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear4", 0.06f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear1");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear2");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear3");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Appear4");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Confirm1");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Confirm2");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Disappear");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle1");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle2");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle3");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle4");
 
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Confirm1", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Confirm2", 0.06f);
-
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Disappear", 0.06f);
-
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle1", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle2", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle3", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Elevator_NPC\\Idle4", 0.06f);
+		animator->CreateAnimations();
 
 		Transform* Tr = this->GetComponent<Transform>();
 		eLayerType type = this->getLayerType();
@@ -36,7 +35,7 @@ namespace sh
 		scale.x = this->GetDrainage().x;
 		scale.y = this->GetDrainage().y;
 
-		animator->PlayAnimation(L"Elevator_NPCAppear1", true);
+		animator->PlayAnimation(L"Elevator_NPCAppear1R", true);
 
 		/*GameObject* Elevator
 			= object::Instantiate<GameObject>(Vector3(Tr->GetPosition().x, Tr->GetPosition().y + 0.2f, Tr->GetPosition().z), Vector2(scale.x, scale.y), type, L"Elevator_Material");*/

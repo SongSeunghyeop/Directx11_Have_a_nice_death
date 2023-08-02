@@ -46,8 +46,9 @@ namespace sh
 	}
 	void Animation::Render()
 	{
+
 	}
-	void Animation::Create(std::wstring name, std::shared_ptr<Texture> atlas, Vector2 leftTop, Vector2 size, UINT columnLength, Vector2 offset, float duration)
+	void Animation::Create(std::wstring name, std::shared_ptr<Texture> atlas, Vector2 leftTop, Vector2 size, UINT columnLength, Vector2 offset, float duration, int direction)
 	{
 		SetKey(name);
 		mAtlas = atlas;
@@ -55,17 +56,35 @@ namespace sh
 		float width = (float)atlas->GetWidth();
 		float height = (float)atlas->GetHeight();
 
-		for (size_t i = 0; i < columnLength; i++)
+		if (direction == 0) // ¿À¸¥ÂÊ
 		{
-			Sprite sprite = {};
-			sprite.leftTop.x = leftTop.x + (i * size.x);
-			sprite.leftTop.y = leftTop.y;
-			sprite.size = size;
-			sprite.offset = offset;
-			sprite.atlasSize = Vector2(width, height);
-			sprite.duration = duration;
+			for (size_t i = 0; i < columnLength; i++)
+			{
+				Sprite sprite = {};
+				sprite.leftTop.x = leftTop.x + (i * size.x);
+				sprite.leftTop.y = leftTop.y;
+				sprite.size = size;
+				sprite.offset = offset;
+				sprite.atlasSize = Vector2(width, height);
+				sprite.duration = duration;
 
-			mSprites.push_back(sprite);
+				mSprites.push_back(sprite);
+			}
+		}
+		if (direction == 1) // ¿ÞÂÊ 
+		{
+			for (size_t i = 0; i < columnLength; i++)
+			{
+				Sprite sprite = {};
+				sprite.leftTop.x = leftTop.x + (i * size.x);
+				sprite.leftTop.y = leftTop.y;
+				sprite.size = size;
+				sprite.offset = offset;
+				sprite.atlasSize = Vector2(width, height);
+				sprite.duration = duration;
+
+				mSprites.insert(mSprites.begin(), sprite);
+			}
 		}
 	}
 

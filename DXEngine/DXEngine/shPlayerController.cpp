@@ -10,6 +10,9 @@ namespace sh
 {
 	PlayerController::PlayerController()
 	{
+		Direction_Right = 1;
+		Direction_Left = 0;
+
 	}
 	PlayerController::~PlayerController()
 	{
@@ -25,50 +28,86 @@ namespace sh
 
 		//크기를 줄이고 싶으면 transform->setScale()
 		animator = GetOwner()->GetComponent<Animator>();
-		//animator->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3, 3.f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Idle", 0.07f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Waiting", 0.1f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Run", 0.05f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Jump", 0.05f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack1", 0.04f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack2", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack3", 0.06f);
-		animator->CreateAnimations(L"..\\Resources\\Texture\\Attack4", 0.06f);
 
-		animator->PlayAnimation(L"TextureIdle", true);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Attack\\Attack1", 0.04f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Attack\\Attack2", 0.07f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Attack\\Attack3", 0.07f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Attack\\Attack4", 0.06f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Idle\\Idle1");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Idle\\Idle2");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Idle\\Idle3");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Idle\\Idle4");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Waiting");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Run");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Jump");
+		animator->CreateAnimations();
 
-		animator->CompleteEvent(L"TextureIdle") = std::bind(&PlayerController::Waiting, this);
-		animator->CompleteEvent(L"TextureWaiting") = std::bind(&PlayerController::IdleMotion, this);
-		animator->CompleteEvent(L"TextureAttack1") = std::bind(&PlayerController::Attack2Motion, this);
-		animator->CompleteEvent(L"TextureAttack2") = std::bind(&PlayerController::Attack3Motion, this);
-		animator->CompleteEvent(L"TextureAttack3") = std::bind(&PlayerController::Attack4Motion, this);
-		animator->CompleteEvent(L"TextureAttack4") = std::bind(&PlayerController::IdleMotion, this);
-		animator->CompleteEvent(L"TextureJump") = std::bind(&PlayerController::IdleMotion, this);
+		{
+			animator->CompleteEvent(L"IdleIdle1R") = std::bind(&PlayerController::Idle2Motion, this);
+			animator->CompleteEvent(L"IdleIdle2R") = std::bind(&PlayerController::Idle3Motion, this);
+			animator->CompleteEvent(L"IdleIdle3R") = std::bind(&PlayerController::Idle4Motion, this);
+			animator->CompleteEvent(L"IdleIdle4R") = std::bind(&PlayerController::Waiting, this);
+			animator->CompleteEvent(L"IdleIdle1L") = std::bind(&PlayerController::Idle2Motion, this);
+			animator->CompleteEvent(L"IdleIdle2L") = std::bind(&PlayerController::Idle3Motion, this);
+			animator->CompleteEvent(L"IdleIdle3L") = std::bind(&PlayerController::Idle4Motion, this);
+			animator->CompleteEvent(L"IdleIdle4L") = std::bind(&PlayerController::Waiting, this);
+		}
+		{
+			animator->CompleteEvent(L"AttackAttack1R") = std::bind(&PlayerController::Attack2Motion, this);
+			animator->CompleteEvent(L"AttackAttack2R") = std::bind(&PlayerController::Attack3Motion, this);
+			animator->CompleteEvent(L"AttackAttack3R") = std::bind(&PlayerController::Attack4Motion, this);
+			animator->CompleteEvent(L"AttackAttack4R") = std::bind(&PlayerController::Idle1Motion, this);
+			animator->CompleteEvent(L"AttackAttack1L") = std::bind(&PlayerController::Attack2Motion, this);
+			animator->CompleteEvent(L"AttackAttack2L") = std::bind(&PlayerController::Attack3Motion, this);
+			animator->CompleteEvent(L"AttackAttack3L") = std::bind(&PlayerController::Attack4Motion, this);
+			animator->CompleteEvent(L"AttackAttack4L") = std::bind(&PlayerController::Idle1Motion, this);
+		}
+		{
+			//animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::Idle1Motion, this);
+			//animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::Idle1Motion, this);
+			animator->CompleteEvent(L"TextureWaitingR") = std::bind(&PlayerController::Idle1Motion, this);
+			animator->CompleteEvent(L"TextureWaitingL") = std::bind(&PlayerController::Idle1Motion, this);
+		}
 
 		meshRenderer = GetOwner()->GetComponent<MeshRenderer>();
 
 		GetOwner()->AddComponent<Collider2D>();
 
-		moveState = eMoveState::Idle;
-		animator->PlayAnimation(L"TextureIdle", true);
+		{
+			moveState = eMoveState::Idle;
+			animator->PlayAnimation(L"IdleIdle1R", true);
+			playerTR->SetScale(3.0f, 3.0f, 1.0f);
+		}
 	}
 	void PlayerController::Update()
 	{
+		//실시간 방향 체크
+		if (Input::GetKeyDown(eKeyCode::D) || Input::GetKey(eKeyCode::D))
+		{
+			Looking_Right();
+		}
+		if (Input::GetKeyDown(eKeyCode::A) || Input::GetKey(eKeyCode::A))
+		{
+			Looking_Left();
+		}
 
 		switch (moveState)
 		{
 			case eMoveState::Idle:
 			{
 				Idle();
-			} break;
+			} 
+			break;
 			case eMoveState::Run:
 			{
 				Run();
-			} break;
+			} 
+			break;
 			case eMoveState::Attack:
 			{
 				Attack();
-			} break;
+			} 
+			break;
 		}
 	}
 	void PlayerController::Idle()
@@ -79,23 +118,34 @@ namespace sh
 			playerTR->SetPosition(pos);
 		}
 
-		for (int i = 0; i < 2; i++)
+		if (Input::GetKeyDown(moveKeys[0])) // key A
 		{
-			if (Input::GetKeyDown(moveKeys[i]) || Input::GetKey(moveKeys[i]))
-			{
-				moveState = eMoveState::Run;
-				animator->PlayAnimation(L"TextureRun", true);
-			}
+			moveState = eMoveState::Run;
+			animator->PlayAnimation(L"TextureRunL", true);
 		}
-			if (Input::GetKeyDown(moveKeys[2]))
-			{
-				moveState = eMoveState::Attack;
-				Attack1Motion();
-			}
+		if (Input::GetKeyDown(moveKeys[1])) // key D
+		{
+			moveState = eMoveState::Run;
+			animator->PlayAnimation(L"TextureRunR", true);
+		}
+		if (Input::GetKeyDown(moveKeys[2])) // key Space
+		{
+			moveState = eMoveState::Attack;
+			Attack1Motion();
+		}
 	}
 	void PlayerController::Attack()
 	{
-
+		if (Input::GetKey(moveKeys[0])) // key A
+		{
+			moveState = eMoveState::Run;
+			animator->PlayAnimation(L"TextureRunL", true);
+		}
+		if (Input::GetKey(moveKeys[1])) // key D
+		{
+			moveState = eMoveState::Run;
+			animator->PlayAnimation(L"TextureRunR", true);
+		}
 	}
 	void PlayerController::Run()
 	{
@@ -103,19 +153,10 @@ namespace sh
 			(!Input::GetKeyDown(eKeyCode::D)) && (!Input::GetKey(eKeyCode::D)))
 		{
 			moveState = eMoveState::Idle;
-			IdleMotion();
+			Idle1Motion();
 		}
 
 		Vector3 pos = playerTR->GetPosition();
-
-		if (Input::GetKeyDown(eKeyCode::D) || Input::GetKey(eKeyCode::D))
-		{
-			Looking_Right();
-		}
-		if (Input::GetKeyDown(eKeyCode::A) || Input::GetKey(eKeyCode::A))
-		{
-			Looking_Left();
-		}
 
 		if (Input::GetKey(eKeyCode::A))
 		{
@@ -164,45 +205,85 @@ namespace sh
 
 	void PlayerController::Waiting()
 	{
-		playerTR->SetScale(0.9, 0.9, 1.0f);
-		animator->PlayAnimation(L"TextureWaiting", true);
+		if(Direction_Right)
+			animator->PlayAnimation(L"TextureWaitingR", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"TextureWaitingL", true);
 	}
-	void PlayerController::IdleMotion()
+	void PlayerController::Idle1Motion()
 	{
-		playerTR->SetScale(0.9, 0.9, 1.0f);
 		moveState = eMoveState::Idle;
-		animator->PlayAnimation(L"TextureIdle", true);
+
+		if(Direction_Right)
+			animator->PlayAnimation(L"IdleIdle1R", true);
+		if(Direction_Left)
+			animator->PlayAnimation(L"IdleIdle1L", true);
+	}
+
+	void PlayerController::Idle2Motion()
+	{
+		moveState = eMoveState::Idle;
+
+		if (Direction_Right)
+			animator->PlayAnimation(L"IdleIdle2R", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"IdleIdle2L", true);
+	}
+
+	void PlayerController::Idle3Motion()
+	{
+		moveState = eMoveState::Idle;
+		if (Direction_Right)
+			animator->PlayAnimation(L"IdleIdle3R", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"IdleIdle3L", true);
+	}
+
+	void PlayerController::Idle4Motion()
+	{
+		moveState = eMoveState::Idle;
+		if (Direction_Right)
+			animator->PlayAnimation(L"IdleIdle4R", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"IdleIdle4L", true);
 	}
 	void PlayerController::Attack1Motion()
 	{
-		//playerTR->SetScale(2.8f,2.0f,1.0f);
 		Vector3 pos = playerTR->GetPosition();
-		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
-		animator->PlayAnimation(L"TextureAttack1", true);
+
+		if (Direction_Right)
+			animator->PlayAnimation(L"AttackAttack1R", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"AttackAttack1L", true);
 	}
 	void PlayerController::Attack2Motion()
 	{
-		//playerTR->SetScale(2.0f, 2.0f, 1.0f);
 		Vector3 pos = playerTR->GetPosition();
-		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
-		animator->PlayAnimation(L"TextureAttack2", true);
+
+		if (Direction_Right)
+			animator->PlayAnimation(L"AttackAttack2R", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"AttackAttack2L", true);
 	}
 	void PlayerController::Attack3Motion()
 	{
-		//playerTR->SetScale(2.0f, 2.0f, 1.0f);
 		Vector3 pos = playerTR->GetPosition();
-		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
-		animator->PlayAnimation(L"TextureAttack3", true);
+		
+		if (Direction_Right)
+			animator->PlayAnimation(L"AttackAttack3R", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"AttackAttack3L", true);
 	}
 	void PlayerController::Attack4Motion()
 	{
 		Vector3 pos = playerTR->GetPosition();
-		//pos.x += 120.f * Time::DeltaTime();
 		playerTR->SetPosition(pos);
-		//playerTR->SetScale(3.2f, 3.2f, 1.0f);
-		animator->PlayAnimation(L"TextureAttack4", true);
+		if (Direction_Right)
+			animator->PlayAnimation(L"AttackAttack4R", true);
+		if (Direction_Left)
+			animator->PlayAnimation(L"AttackAttack4L", true);
 	}
 }
