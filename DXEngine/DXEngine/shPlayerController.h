@@ -4,6 +4,7 @@
 #include "shPlayer.h"
 #include "shMeshRenderer.h"
 #include "shInput.h"
+#include "shRigidBody.h"
 
 namespace sh
 {
@@ -15,6 +16,7 @@ namespace sh
 			Run,
 			Idle,
 			Attack,
+			Jump,
 			End,
 		};
 		PlayerController();
@@ -40,6 +42,7 @@ namespace sh
 		void Run();
 		void Idle();
 		void Attack();
+		void Jump();
 
 		void Looking_Right()
 		{
@@ -63,9 +66,10 @@ namespace sh
 		MeshRenderer* meshRenderer;
 
 		std::vector<eKeyCode> moveKeys;
+
 		Transform* playerTR;
+		Rigidbody* playerRG;
 
-		float gravity = 10.0f;
-
+		float JumpPos = 0.0f;
 	};
 }

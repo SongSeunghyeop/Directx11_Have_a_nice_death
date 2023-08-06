@@ -195,6 +195,14 @@ namespace sh::graphics
 		return true;
 	}
 
+	bool GraphicDevice_Dx11::CreateComputeShader(const void* pShaderBytecode, SIZE_T BytecodeLength, ID3D11ComputeShader** ppComputeShader)
+	{
+		if (FAILED(mDevice->CreateComputeShader(pShaderBytecode, BytecodeLength, nullptr, ppComputeShader)))
+			return false;
+
+		return true;
+	}
+
 	bool GraphicDevice_Dx11::CreateSamplerState(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState)
 	{
 		if (FAILED(mDevice->CreateSamplerState(pSamplerDesc, ppSamplerState)))
@@ -291,12 +299,21 @@ namespace sh::graphics
 	void GraphicDevice_Dx11::BindVertexShader(ID3D11VertexShader* pVetexShader)
 	{
 		mContext->VSSetShader(pVetexShader, 0, 0);
-
 	}
 
 	void GraphicDevice_Dx11::BindPixelShader(ID3D11PixelShader* pPixelShader)
 	{
 		mContext->PSSetShader(pPixelShader, 0, 0);
+	}
+
+	void GraphicDevice_Dx11::BindComputeShader(ID3D11ComputeShader* pComputeShader)
+	{
+		mContext->CSSetShader(pComputeShader, 0, 0);
+	}
+
+	void GraphicDevice_Dx11::Dispatch(UINT ThreadGroupCountX, UINT ThreadGroupCountY, UINT ThreadGroupCountZ)
+	{
+		mContext->Dispatch(ThreadGroupCountX, ThreadGroupCountY, ThreadGroupCountZ);
 	}
 
 	void GraphicDevice_Dx11::SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size)

@@ -94,6 +94,12 @@
     <Filter Include="Graphics\StructedBuffer">
       <UniqueIdentifier>{06812528-a535-4617-be95-0face9964556}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\RigidBody">
+      <UniqueIdentifier>{fe2c961b-71cb-4137-a17d-5fbd16fb02a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader\CS">
+      <UniqueIdentifier>{9177e16c-8497-40e1-b743-29d740e33842}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -196,6 +202,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shStructedBuffer.h">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shRigidBody.h">
+      <Filter>GameObject\Component\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shComputeShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
@@ -282,6 +294,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shLight.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shStructedBuffer.cpp">
       <Filter>Graphics\StructedBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shRigidBody.cpp">
+      <Filter>GameObject\Component\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shComputeShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

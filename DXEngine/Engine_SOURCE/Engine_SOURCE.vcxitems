@@ -20,6 +20,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shCameraController.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shCollisionManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shComponent.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shRigidBody.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shScript.h" />
@@ -55,6 +57,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shCollisionManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shComponent.cpp" />
@@ -71,6 +74,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shRigidBody.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shScript.cpp" />

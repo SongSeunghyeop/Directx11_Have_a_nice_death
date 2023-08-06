@@ -21,7 +21,6 @@ namespace sh
 	{
 		GameObject* title = object::Instantiate<GameObject>(Vector4(0.0f, 0.0f, 9.3f, 1.0f), eLayerType::UI,L"TitleMaterial");
 		Camera* camera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
-
 		{
 			GameObject* light = new GameObject();
 			light->SetName(L"Sun");

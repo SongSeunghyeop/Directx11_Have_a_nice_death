@@ -28,7 +28,7 @@ namespace sh
 	void DungeonScene::Initialize()
 	{
 		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, 10.0f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
+			= object::Instantiate<Player>(Vector4(0.0f, 3.0f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
 
 		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
 		mCamera->SetTarget(Death);

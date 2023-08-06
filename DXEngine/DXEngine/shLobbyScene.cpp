@@ -44,7 +44,7 @@ namespace sh
 
 		Floors *floors
 			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround + 0.00001f, 1.5f), eLayerType::Ground, L"GroundMaterial");
-		floors->AddComponent<Collider2D>()->SetSize(Vector2(1.0f,0.9f));
+		floors->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 1.0f));
 
 
 		LobbyColumns* columns

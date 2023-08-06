@@ -10,7 +10,7 @@
 namespace sh::object
 {
 	const float zFront = - 2.0f; 
-	const float zPlayer = -0.00002f;
+	const float zPlayer = -0.00001f;
 	const float zBackGround = 0.0f;
 
 	template <typename Camera>

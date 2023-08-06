@@ -15,16 +15,16 @@ namespace sh
 	{
 		GameObject* floor1
 			= object::Instantiate<GameObject>(Vector4(79.0f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
-		floor1->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 0.9f));
+		floor1->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 1.0f));
 		GameObject* floor2
 			= object::Instantiate<GameObject>(Vector4(59.0f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
-		floor2->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 0.9f));
+		floor2->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 1.0f));
 		GameObject* floor3
 			= object::Instantiate<GameObject>(Vector4(39.0f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
-		floor3->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 0.9f));
+		floor3->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 1.0f));
 		GameObject* floor4
 			= object::Instantiate<GameObject>(Vector4(19.0f, -6.5f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
-		floor4->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 0.9f));
+		floor4->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 1.0f));
 
 		GameObject::Initialize();
 	}

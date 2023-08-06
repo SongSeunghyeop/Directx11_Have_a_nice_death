@@ -20,11 +20,15 @@ namespace sh
 	void PlayerController::Initialize()
 	{
 		playerTR = GetOwner()->GetComponent<Transform>();
+		
 		{
 			moveKeys.push_back(eKeyCode::A);
 			moveKeys.push_back(eKeyCode::D);
 			moveKeys.push_back(eKeyCode::SPACE);
+			moveKeys.push_back(eKeyCode::E);
 		}
+
+		playerRG = GetOwner()->GetComponent<Rigidbody>();
 
 		//크기를 줄이고 싶으면 transform->setScale()
 		animator = GetOwner()->GetComponent<Animator>();
@@ -108,13 +112,18 @@ namespace sh
 				Attack();
 			} 
 			break;
+			case eMoveState::Jump:
+			{
+				Jump();
+			}
+			break;
 		}
 	}
 	void PlayerController::Idle()
 	{
 		{
+			JumpPos = 200.0f;
 			Vector3 pos = playerTR->GetPosition();
-			pos.y -= gravity * Time::DeltaTime();
 			playerTR->SetPosition(pos);
 		}
 
@@ -133,6 +142,13 @@ namespace sh
 			moveState = eMoveState::Attack;
 			Attack1Motion();
 		}
+		if (Input::GetKeyDown(moveKeys[3])) // E
+		{
+			moveState = eMoveState::Jump;
+			playerRG->AddForce(Vector3(0.0f, JumpPos, 0.0f));
+			Jump();
+			//Attack1Motion();
+		}
 	}
 	void PlayerController::Attack()
 	{
@@ -146,6 +162,10 @@ namespace sh
 			moveState = eMoveState::Run;
 			animator->PlayAnimation(L"TextureRunR", true);
 		}
+	}
+	void PlayerController::Jump()
+	{
+		//moveState = eMoveState::Idle;
 	}
 	void PlayerController::Run()
 	{
@@ -180,27 +200,6 @@ namespace sh
 		}
 
 		playerTR->SetPosition(pos);
-	}
-	void PlayerController::OnCollisionEnter(Collider2D* other)
-	{
-		if (other->GetOwner()->GetName() == L"Test")
-		{
-	 		Collider2D* player = playerTR->GetOwner()->GetComponent<Collider2D>();
-			int a = 0;
-		}
-			
-			gravity = 0;
-	}
-	void PlayerController::OnCollisionStay(Collider2D* other)
-	{
-		if (other->GetOwner()->GetName() == L"Test")
-			int a = 0;
-
-		gravity = 0;
-	}
-	void PlayerController::OnCollisionExit(Collider2D* other)
-	{
-		gravity = 10.0f;
 	}
 
 	void PlayerController::Waiting()
@@ -285,5 +284,24 @@ namespace sh
 			animator->PlayAnimation(L"AttackAttack4R", true);
 		if (Direction_Left)
 			animator->PlayAnimation(L"AttackAttack4L", true);
+	}
+
+	void PlayerController::OnCollisionEnter(Collider2D* other)
+	{
+		if(moveState == eMoveState::Jump)
+			playerRG->SetGround(false);
+		else
+			playerRG->SetGround(true);
+	}
+	void PlayerController::OnCollisionStay(Collider2D* other)
+	{
+		if (moveState == eMoveState::Jump)
+			playerRG->SetGround(false);
+		else
+			playerRG->SetGround(true);
+	}
+	void PlayerController::OnCollisionExit(Collider2D* other)
+	{
+		playerRG->SetGround(false);
 	}
 }

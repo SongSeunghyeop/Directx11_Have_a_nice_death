@@ -9,7 +9,7 @@ namespace sh::enums
 		Transform,
 		Mesh,
 		Collider2D,
-		Particle,
+		Rigidbody,
 		MeshRenderer,
 		Animator,
 		Script,
@@ -41,6 +41,7 @@ namespace sh::enums
 		Material,
 		Mesh,
 		Animation,
+		ComputeShader,
 		End,
 	};
 
