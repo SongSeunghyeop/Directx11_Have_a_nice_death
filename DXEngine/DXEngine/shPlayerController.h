@@ -42,7 +42,7 @@ namespace sh
 		void Run();
 		void Idle();
 		void Attack();
-		void Jump();
+		void Jump(float Drain = 1.0f);
 
 		void Looking_Right()
 		{
@@ -71,5 +71,6 @@ namespace sh
 		Rigidbody* playerRG;
 
 		float JumpPos = 0.0f;
+		bool jumped = false;
 	};
 }

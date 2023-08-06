@@ -42,8 +42,8 @@ namespace sh
 	{
 		Time::Update();
 		Input::Update();
-		CollisionManager::Update();
 		SceneManager::Update();
+		CollisionManager::Update();
 	}
 
 	void Application::LateUpdate()

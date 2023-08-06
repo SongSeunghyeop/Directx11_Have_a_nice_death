@@ -44,7 +44,7 @@ namespace sh
 		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
 
 		Player* Death
-			= object::Instantiate<Player>(Vector4(0.0f, 5.0f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
+			= object::Instantiate<Player>(Vector4(0.0f, 0.0f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
 
 		{
 			GameObject* player = new GameObject();
@@ -66,7 +66,7 @@ namespace sh
 
 
 		LobbyColumns* columns
-			= object::Instantiate<LobbyColumns>(Vector4(0, 0, object::zBackGround, 0), eLayerType::Ground, L"EmptyMaterial");
+			= object::Instantiate<LobbyColumns>(Vector4(0, 0, object::zBackGround, 0), eLayerType::Structure_B, L"EmptyMaterial");
 
 		{
 			GameObject* lobby 

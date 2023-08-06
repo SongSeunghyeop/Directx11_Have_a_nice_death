@@ -24,8 +24,8 @@ namespace sh
 		{
 			moveKeys.push_back(eKeyCode::A);
 			moveKeys.push_back(eKeyCode::D);
-			moveKeys.push_back(eKeyCode::SPACE);
 			moveKeys.push_back(eKeyCode::E);
+			moveKeys.push_back(eKeyCode::LEFT_SHIFT);
 		}
 
 		playerRG = GetOwner()->GetComponent<Rigidbody>();
@@ -66,9 +66,10 @@ namespace sh
 			animator->CompleteEvent(L"AttackAttack3L") = std::bind(&PlayerController::Attack4Motion, this);
 			animator->CompleteEvent(L"AttackAttack4L") = std::bind(&PlayerController::Idle1Motion, this);
 		}
+
 		{
-			//animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::Idle1Motion, this);
-			//animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::Idle1Motion, this);
+			animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::Idle1Motion, this);
+			animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::Idle1Motion, this);
 			animator->CompleteEvent(L"TextureWaitingR") = std::bind(&PlayerController::Idle1Motion, this);
 			animator->CompleteEvent(L"TextureWaitingL") = std::bind(&PlayerController::Idle1Motion, this);
 		}
@@ -144,7 +145,7 @@ namespace sh
 		}
 		if (Input::GetKeyDown(moveKeys[3])) // E
 		{
-			if (playerRG->GetState() == true) //2단 점프 불가
+			if (!jumped) //2단 점프 불가
 			{
 				moveState = eMoveState::Jump;
 			}
@@ -163,9 +164,18 @@ namespace sh
 			animator->PlayAnimation(L"TextureRunR", true);
 		}
 	}
-	void PlayerController::Jump()
+	void PlayerController::Jump(float Drain)
 	{
-		playerRG->AddForce(Vector3(0.0f, JumpPos, 0.0f));
+		jumped = true;
+		Vector3 pos = playerTR->GetPosition();
+
+		if (Direction_Right)
+			animator->PlayAnimation(L"TextureJumpR", true);
+		else if (Direction_Left) 
+			animator->PlayAnimation(L"TextureJumpL", true);
+		
+
+		playerRG->AddForce(Vector3(0, JumpPos * Drain, 0));
 	}
 	void PlayerController::Run()
 	{
@@ -174,6 +184,10 @@ namespace sh
 		{
 			moveState = eMoveState::Idle;
 			Idle1Motion();
+		}
+		else if (Input::GetKeyDown(eKeyCode::LEFT_SHIFT))
+		{
+			Jump(2.5f);
 		}
 
 		Vector3 pos = playerTR->GetPosition();
@@ -188,16 +202,6 @@ namespace sh
 			pos.x += 15.0f * Time::DeltaTime();
 			playerTR->SetPosition(pos);
 		}
-		else if (Input::GetKey(eKeyCode::S))
-		{
-			pos.y -= 15.0f * Time::DeltaTime();
-			playerTR->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::W))
-		{
-			pos.y += 15.0f * Time::DeltaTime();
-			playerTR->SetPosition(pos);
-		}
 
 		playerTR->SetPosition(pos);
 	}
@@ -206,7 +210,7 @@ namespace sh
 	{
 		if(Direction_Right)
 			animator->PlayAnimation(L"TextureWaitingR", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"TextureWaitingL", true);
 	}
 	void PlayerController::Idle1Motion()
@@ -215,7 +219,7 @@ namespace sh
 
 		if(Direction_Right)
 			animator->PlayAnimation(L"IdleIdle1R", true);
-		if(Direction_Left)
+		else if(Direction_Left)
 			animator->PlayAnimation(L"IdleIdle1L", true);
 	}
 
@@ -225,7 +229,7 @@ namespace sh
 
 		if (Direction_Right)
 			animator->PlayAnimation(L"IdleIdle2R", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"IdleIdle2L", true);
 	}
 
@@ -234,7 +238,7 @@ namespace sh
 		moveState = eMoveState::Idle;
 		if (Direction_Right)
 			animator->PlayAnimation(L"IdleIdle3R", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"IdleIdle3L", true);
 	}
 
@@ -243,7 +247,7 @@ namespace sh
 		moveState = eMoveState::Idle;
 		if (Direction_Right)
 			animator->PlayAnimation(L"IdleIdle4R", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"IdleIdle4L", true);
 	}
 	void PlayerController::Attack1Motion()
@@ -253,7 +257,7 @@ namespace sh
 
 		if (Direction_Right)
 			animator->PlayAnimation(L"AttackAttack1R", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"AttackAttack1L", true);
 	}
 	void PlayerController::Attack2Motion()
@@ -263,7 +267,7 @@ namespace sh
 
 		if (Direction_Right)
 			animator->PlayAnimation(L"AttackAttack2R", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"AttackAttack2L", true);
 	}
 	void PlayerController::Attack3Motion()
@@ -273,7 +277,7 @@ namespace sh
 		
 		if (Direction_Right)
 			animator->PlayAnimation(L"AttackAttack3R", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"AttackAttack3L", true);
 	}
 	void PlayerController::Attack4Motion()
@@ -282,26 +286,38 @@ namespace sh
 		playerTR->SetPosition(pos);
 		if (Direction_Right)
 			animator->PlayAnimation(L"AttackAttack4R", true);
-		if (Direction_Left)
+		else if (Direction_Left)
 			animator->PlayAnimation(L"AttackAttack4L", true);
 	}
 
 	void PlayerController::OnCollisionEnter(Collider2D* other)
 	{
+		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
+		{
+			jumped = false;
 			playerRG->SetGround(true);
+		}
 	}
 	void PlayerController::OnCollisionStay(Collider2D* other)
 	{
-		if(moveState == eMoveState::Jump)
-			playerRG->SetGround(false);
-		else
+		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
+		{
+			if(jumped)
+				playerRG->SetGround(false);
+			else
 			playerRG->SetGround(true);
+		}
 	}
 	void PlayerController::OnCollisionExit(Collider2D* other)
 	{
-		playerRG->SetGround(false);
+		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
+		{
+			playerRG->SetGround(false);
 
-		if (moveState == eMoveState::Jump)
-			moveState = eMoveState::Idle;
+			if (moveState == eMoveState::Jump)
+			{
+				moveState = eMoveState::Idle;
+			}
+		}
 	}
 }

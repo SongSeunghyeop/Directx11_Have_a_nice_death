@@ -51,6 +51,7 @@ namespace sh
 
 			float dot = mVelocity.Dot(gravity);
 			mVelocity -= gravity * dot;
+			mVelocity.x = 0;
 		}
 		else
 		{

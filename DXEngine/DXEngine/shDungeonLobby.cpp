@@ -49,11 +49,11 @@ namespace sh
 			GameObject* SmallColumnDown
 				= object::Instantiate<GameObject>(Vector4(12.0f, -3.0f, object::zBackGround, 0.6f), eLayerType::Structure_B, L"ColumnDownMaterial");
 			GameObject* ForwardRock1
-				= object::Instantiate<GameObject>(Vector3(11.9f, -5.8f, object::zPlayer - 0.1f), Vector2(1.4f, 1.3f), eLayerType::Structure_F, L"RockBG07_Material");
+				= object::Instantiate<GameObject>(Vector3(11.9f, -5.8f, object::zFront - 0.1f), Vector2(1.4f, 1.3f), eLayerType::Structure_F, L"RockBG07_Material");
 			GameObject* BackRock1
 				= object::Instantiate<GameObject>(Vector3(18.2f, -8.3f, object::zBackGround - 0.1f), Vector2(1.4f, 1.5f), eLayerType::Structure_F, L"RockBG05_Material");
 			GameObject* BigColumnDown
-				= object::Instantiate<GameObject>(Vector4(13.0f, -3.7f, object::zPlayer - 0.1f, 0.9f), eLayerType::Structure_F, L"ColumnDownMaterial");
+				= object::Instantiate<GameObject>(Vector4(13.0f, -3.7f, object::zFront - 0.1f, 0.9f), eLayerType::Structure_F, L"ColumnDownMaterial");
 		}
 
 		GameObject::Initialize();

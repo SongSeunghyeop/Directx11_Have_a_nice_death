@@ -18,6 +18,6 @@ namespace sh
 		PlayerController* controller;
 		Animator* animator;
 		MeshRenderer* meshrenderer;
+
 	};
 }
-

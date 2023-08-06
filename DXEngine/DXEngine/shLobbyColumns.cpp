@@ -17,7 +17,7 @@ namespace sh
 	void LobbyColumns::Initialize()
 	{
 		BigColumn* column1
-			= object::Instantiate<BigColumn>(Vector3(12.5f, -1.2f, object::zPlayer),Vector2(1.0f, 1.0f), eLayerType::Structure_F, L"ColumnMaterial");
+			= object::Instantiate<BigColumn>(Vector3(12.5f, -1.2f, object::zFront),Vector2(1.0f, 1.0f), eLayerType::Structure_F, L"ColumnMaterial");
 		column1->GetComponent<MeshRenderer>()->SetColor(Vector4(30, 30, 30, 1.0f));
 		column1->getPillar()->GetComponent<MeshRenderer>()->SetColor(Vector4(30,30,30,1.0f));
 
@@ -31,18 +31,18 @@ namespace sh
 		SmallColumn* column5
 			= object::Instantiate<SmallColumn>(Vector3(33.5f, 0.2f, object::zBackGround), Vector2(0.4f, 0.6f), eLayerType::Structure_B, L"ColumnMaterial");
 		SmallColumn* column6
-			= object::Instantiate<SmallColumn>(Vector3(34.0f, -0.7f, object::zPlayer), Vector2(0.45f, 0.6f), eLayerType::Structure_F, L"ColumnMaterial");
+			= object::Instantiate<SmallColumn>(Vector3(34.0f, -0.7f, object::zFront), Vector2(0.45f, 0.6f), eLayerType::Structure_F, L"ColumnMaterial");
 		SmallColumn* column7
 			= object::Instantiate<SmallColumn>(Vector3(36.0f, 0.2f, object::zBackGround), Vector2(0.4f, 0.6f), eLayerType::Structure_B, L"ColumnMaterial");
 		SmallColumn* column8
 			= object::Instantiate<SmallColumn>(Vector3(42.0f, 0.2f, object::zBackGround), Vector2(0.4f, 0.6f), eLayerType::Structure_B, L"ColumnMaterial");
 		
 		SmallColumn* column11
-			= object::Instantiate<SmallColumn>(Vector3(43.5f, -0.8f, object::zPlayer), Vector2(0.45f, 0.6f), eLayerType::Structure_F, L"ColumnMaterial");
+			= object::Instantiate<SmallColumn>(Vector3(43.5f, -0.8f, object::zFront), Vector2(0.45f, 0.6f), eLayerType::Structure_F, L"ColumnMaterial");
 		BigColumn* column12
-			= object::Instantiate<BigColumn>(Vector3(45.2f, -2.0f, object::zPlayer), Vector2(0.8f, 1.0f), eLayerType::Structure_F, L"ColumnMaterial");
+			= object::Instantiate<BigColumn>(Vector3(45.2f, -2.0f, object::zFront), Vector2(0.8f, 1.0f), eLayerType::Structure_F, L"ColumnMaterial");
 		BigColumn* column13
-			= object::Instantiate<BigColumn>(Vector3(63.0f, -2.0f, object::zPlayer), Vector2(0.8f, 1.0f), eLayerType::Structure_F, L"ColumnMaterial");
+			= object::Instantiate<BigColumn>(Vector3(63.0f, -2.0f, object::zFront), Vector2(0.8f, 1.0f), eLayerType::Structure_F, L"ColumnMaterial");
 
 		GameObject::Initialize();
 	}
