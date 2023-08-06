@@ -34,6 +34,9 @@ namespace sh::graphics
 			mDesc.MipLevels = 0;
 			mDesc.MiscFlags = 0;
 
+			mWidth = width;
+			mHeight = height;
+
 			if (!GetDevice()->CreateTexture2D(&mDesc, nullptr, mTexture.GetAddressOf()))
 				return false;
 		}
@@ -115,6 +118,9 @@ namespace sh::graphics
 			, mSRV.GetAddressOf()
 		);
 		mSRV->GetResource((ID3D11Resource**)mTexture.GetAddressOf());
+
+		mWidth = mImage.GetMetadata().width;
+		mHeight = mImage.GetMetadata().height;
 
 		return S_OK;
 	}

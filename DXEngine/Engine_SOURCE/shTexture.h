@@ -51,5 +51,8 @@ namespace sh::graphics
 		Microsoft::WRL::ComPtr<ID3D11RenderTargetView> mRTV;
 		Microsoft::WRL::ComPtr<ID3D11DepthStencilView> mDSV;
 		Microsoft::WRL::ComPtr<ID3D11UnorderedAccessView> mUAV;
+
+		UINT mWidth;
+		UINT mHeight;
 	};
 }

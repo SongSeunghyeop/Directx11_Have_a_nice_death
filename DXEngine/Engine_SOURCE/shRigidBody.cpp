@@ -13,10 +13,9 @@ namespace sh
 		, mVelocity(Vector3::Zero)
 	{
 		mLimitedVelocity.x = 200.0f;
-		mLimitedVelocity.y = 150.0f;
+		mLimitedVelocity.y = 120.0f;
 		mbGround = false;
-		mGravity = Vector3(0.0f, -300.0f, 0.0f);
-		mFriction = 50.0f;
+		mGravity = Vector3(0.0f, -90.0f, 0.0f);
 	}
 
 	Rigidbody::~Rigidbody()
@@ -33,6 +32,12 @@ namespace sh
 	{
 		// F = M * A
 		// A = M / F
+
+		if (mForce.y > 0)
+		{
+			int a = 0;
+		}
+
 		mAccelation = mForce / mMass;
 
 		// 속도에 가속도를 더해준다.
@@ -69,27 +74,6 @@ namespace sh
 		{
 			sideVelocity.Normalize();
 			sideVelocity *= mLimitedVelocity.x;
-		}
-
-		// 마찰력 조건 ( 적용된 힘이 없고, 속도가 0이 아님)
-		if (!(mVelocity == Vector3::Zero))
-		{
-			//속도에 반대방향으로 마찰력이 적용된다.
-			Vector3 friction = -mVelocity;
-			friction.Normalize();
-			
-			friction*= mFriction* mMass* Time::DeltaTime();
-
-			//마찰력으로 인한 속도 감소는 현재 속도보다 큰 경우
-
-			if (mVelocity.Length() < friction.Length())
-			{
-				mVelocity = Vector3::Zero;
-			}
-			else
-			{
-				mVelocity += friction;
-			}
 		}
 		//
 

@@ -122,7 +122,7 @@ namespace sh
 	void PlayerController::Idle()
 	{
 		{
-			JumpPos = 200.0f;
+			JumpPos = 1200.0f;
 			Vector3 pos = playerTR->GetPosition();
 			playerTR->SetPosition(pos);
 		}
@@ -144,10 +144,10 @@ namespace sh
 		}
 		if (Input::GetKeyDown(moveKeys[3])) // E
 		{
-			moveState = eMoveState::Jump;
-			playerRG->AddForce(Vector3(0.0f, JumpPos, 0.0f));
-			Jump();
-			//Attack1Motion();
+			if (playerRG->GetState() == true) //2단 점프 불가
+			{
+				moveState = eMoveState::Jump;
+			}
 		}
 	}
 	void PlayerController::Attack()
@@ -165,7 +165,7 @@ namespace sh
 	}
 	void PlayerController::Jump()
 	{
-		//moveState = eMoveState::Idle;
+		playerRG->AddForce(Vector3(0.0f, JumpPos, 0.0f));
 	}
 	void PlayerController::Run()
 	{
@@ -288,14 +288,11 @@ namespace sh
 
 	void PlayerController::OnCollisionEnter(Collider2D* other)
 	{
-		if(moveState == eMoveState::Jump)
-			playerRG->SetGround(false);
-		else
 			playerRG->SetGround(true);
 	}
 	void PlayerController::OnCollisionStay(Collider2D* other)
 	{
-		if (moveState == eMoveState::Jump)
+		if(moveState == eMoveState::Jump)
 			playerRG->SetGround(false);
 		else
 			playerRG->SetGround(true);
@@ -303,5 +300,8 @@ namespace sh
 	void PlayerController::OnCollisionExit(Collider2D* other)
 	{
 		playerRG->SetGround(false);
+
+		if (moveState == eMoveState::Jump)
+			moveState = eMoveState::Idle;
 	}
 }

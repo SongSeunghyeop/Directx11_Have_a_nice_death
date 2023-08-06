@@ -6,9 +6,9 @@ namespace sh::graphics
 	ComputeShader::ComputeShader(int x, int y, int z)
 		: Resource(enums::eResourceType::ComputeShader)
 	{
-		mThreadGroupCountX = 32;
-		mThreadGroupCountY = 32;
-		mThreadGroupCountZ = 1;
+		mThreadGroupCountX = x;
+		mThreadGroupCountY = y;
+		mThreadGroupCountZ = z;
 	}
 
 	ComputeShader::ComputeShader()

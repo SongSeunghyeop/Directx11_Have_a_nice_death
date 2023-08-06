@@ -3,6 +3,7 @@
 #include "shMaterial.h"
 #include "shStructedBuffer.h"
 #include "shPaintShader.h"
+#include "shParticleShader.h"
 
 namespace renderer
 {
@@ -371,8 +372,12 @@ namespace renderer
 		std::shared_ptr<Shader> animationSpriteShader
 			= Resources::Find<Shader>(L"SpriteAnimationShader");
 
+		std::shared_ptr<Shader> particleShader
+			= Resources::Find<Shader>(L"ParticleShader");
+
 		//
 		sh::Material::Make_Material(spriteShader, L"PaintTexuture", L"SpriteMaterial");
+		sh::Material::Make_Material(particleShader, L"ParticleMaterial");
 		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
 		sh::Material::Make_Material(spriteShader, L"Death", L"PlayerMaterial");
 		sh::Material::Make_Material(spriteShader, L"Empty", L"EmptyMaterial");
