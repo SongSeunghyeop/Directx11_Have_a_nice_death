@@ -100,6 +100,9 @@
     <Filter Include="Resource\Shader\CS">
       <UniqueIdentifier>{9177e16c-8497-40e1-b743-29d740e33842}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\ParticleSystem">
+      <UniqueIdentifier>{9c8983de-0666-4a4c-ad09-741fe6451cee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -208,6 +211,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shComputeShader.h">
       <Filter>Resource\Shader\CS</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPaintShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shParticleSystem.h">
+      <Filter>GameObject\Component\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shParticleShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp">
@@ -301,6 +311,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shComputeShader.cpp">
       <Filter>Resource\Shader\CS</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPaintShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shParticleSystem.cpp">
+      <Filter>GameObject\Component\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shParticleShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)shMath.inl">

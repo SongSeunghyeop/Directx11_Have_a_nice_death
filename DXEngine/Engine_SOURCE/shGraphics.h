@@ -15,6 +15,7 @@
 #define CBSLOT_ANIMATION2D		3
 #define CBSLOT_FLIPX		4
 #define CBSLOT_SETCOLOR		5
+#define CBSLOT_PARTICLE			6
 
 
 namespace sh::graphics
@@ -38,6 +39,7 @@ namespace sh::graphics
 		Animator,
 		FlipX,
 		SetColor,
+		Particle,
 		End,
 	};
 
@@ -83,9 +85,11 @@ namespace sh::graphics
 		End,
 	};
 
-	enum class eSRVType
+	enum class eViewType
 	{
 		None,
+		SRV,
+		UAV,
 		End,
 	};
 
@@ -125,5 +129,16 @@ namespace sh::graphics
 		float radius;
 		float angle;
 		int pad;
+	};
+
+	struct Particle
+	{
+		math::Vector4 position;
+		math::Vector4 direction;
+
+		float endTime;
+		float time;
+		float speed;
+		UINT active;
 	};
 }

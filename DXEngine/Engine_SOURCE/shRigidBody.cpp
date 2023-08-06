@@ -15,7 +15,7 @@ namespace sh
 		mLimitedVelocity.x = 200.0f;
 		mLimitedVelocity.y = 150.0f;
 		mbGround = false;
-		mGravity = Vector3(0.0f, -52.0f, 0.0f);
+		mGravity = Vector3(0.0f, -300.0f, 0.0f);
 		mFriction = 50.0f;
 	}
 

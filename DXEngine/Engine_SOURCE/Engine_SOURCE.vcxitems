@@ -15,6 +15,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shParticleShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shParticleSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shCameraController.h" />
@@ -38,6 +40,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)DXEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shPaintShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)shResources.h" />
@@ -52,6 +55,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)shTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)shParticleShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shParticleSystem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shCameraController.cpp" />
@@ -71,6 +76,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)shMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shMeshRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)shPaintShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)shResources.cpp" />

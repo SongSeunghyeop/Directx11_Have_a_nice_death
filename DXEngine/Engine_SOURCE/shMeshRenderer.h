@@ -18,6 +18,8 @@ namespace sh
 		virtual void Render() override;
 
 		void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
+		std::shared_ptr<Mesh> GetMesh() { return mMesh; }
+
 		void SetColor(Vector4 color) { 
 			textureColor.x = color.x / 255;
 			textureColor.y = color.y / 255;

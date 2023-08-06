@@ -51,6 +51,15 @@ namespace renderer
 		UINT colorDown;
 	};
 
+
+	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
+	{
+		UINT elementCount;
+		float elpasedTime;
+		int padd;
+		int padd2;
+	};
+
 	extern sh::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];

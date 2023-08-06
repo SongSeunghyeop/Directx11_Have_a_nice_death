@@ -17,6 +17,7 @@
 #include "shRenderer.h"
 #include "shTime.h"
 #include "shElevator_NPC.h"
+#include "shComputeShader.h"
 
 namespace sh
 {

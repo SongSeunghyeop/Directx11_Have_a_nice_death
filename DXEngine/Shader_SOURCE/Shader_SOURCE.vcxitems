@@ -33,5 +33,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Globals.hlsli" />
+    <None Include="$(MSBuildThisFileDirectory)PaintCS.hlsl" />
+    <None Include="$(MSBuildThisFileDirectory)ParticleCS.hlsl" />
+    <None Include="$(MSBuildThisFileDirectory)ParticleGS.hlsl" />
+    <None Include="$(MSBuildThisFileDirectory)ParticlePS.hlsl" />
+    <None Include="$(MSBuildThisFileDirectory)ParticleVS.hlsl" />
   </ItemGroup>
 </Project>

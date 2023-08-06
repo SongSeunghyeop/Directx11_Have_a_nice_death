@@ -2,6 +2,7 @@
 #include "shTexture.h"
 #include "shMaterial.h"
 #include "shStructedBuffer.h"
+#include "shPaintShader.h"
 
 namespace renderer
 {
@@ -69,6 +70,11 @@ namespace renderer
 			, shader->GetInputLayoutAddressOf());
 
 		shader = sh::Resources::Find<Shader>(L"SpriteAnimationShader");
+		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
+		shader = sh::Resources::Find<Shader>(L"ParticleShader");
 		sh::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -192,6 +198,18 @@ namespace renderer
 		std::vector<Vertex> vertexes = {};
 		std::vector<UINT> indexes = {};
 
+		// PointMesh
+		Vertex v = {};
+		v.pos = Vector3(0.0f, 0.0f, 0.0f);
+		vertexes.push_back(v);
+		indexes.push_back(0);
+		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
+		Resources::Insert(L"PointMesh", mesh);
+
+		vertexes.clear();
+		indexes.clear();
 		//RECT
 		vertexes.resize(4);
 		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
@@ -211,7 +229,7 @@ namespace renderer
 		vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		// Vertex Buffer
-		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
 
 		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
@@ -283,9 +301,12 @@ namespace renderer
 		constantBuffer[(UINT)eCBType::SetColor] = new ConstantBuffer(eCBType::SetColor);
 		constantBuffer[(UINT)eCBType::SetColor]->Create(sizeof(ColorCB));
 
+		constantBuffer[(UINT)eCBType::Particle] = new ConstantBuffer(eCBType::Particle);
+		constantBuffer[(UINT)eCBType::Particle]->Create(sizeof(ParticleCB));
+
 		// light structed buffer
 		lightsBuffer = new StructedBuffer();
-		lightsBuffer->Create(sizeof(LightAttribute), 2, eSRVType::None);
+		lightsBuffer->Create(sizeof(LightAttribute), 2, eViewType::SRV, nullptr);
 	}
 
 	void LoadShader() // 쉐이더 생성
@@ -312,9 +333,33 @@ namespace renderer
 		debugShader->SetRSState(eRSType::WireframeNone);
 		sh::Resources::Insert(L"DebugShader", debugShader);
 
+		std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
+		paintShader->Create(L"PaintCS.hlsl", "main");
+		sh::Resources::Insert(L"PaintShader", paintShader);
 
+		std::shared_ptr<ParticleShader> psSystemShader = std::make_shared<ParticleShader>();
+		psSystemShader->Create(L"ParticleCS.hlsl", "main");
+		sh::Resources::Insert(L"ParticleSystemShader", psSystemShader);
+
+		std::shared_ptr<Shader> paritcleShader = std::make_shared<Shader>();
+		paritcleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
+		paritcleShader->Create(eShaderStage::GS, L"ParticleGS.hlsl", "main");
+		paritcleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
+		paritcleShader->SetRSState(eRSType::SolidNone);
+		paritcleShader->SetDSState(eDSType::NoWrite);
+		paritcleShader->SetBSState(eBSType::AlphaBlend);
+		paritcleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
+		sh::Resources::Insert(L"ParticleShader", paritcleShader);
 	}
 
+	void LoadTexture()
+	{
+		//paint texture
+		std::shared_ptr<Texture> uavTexture = std::make_shared<Texture>();
+		uavTexture->Create(1024, 1024, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+		sh::Resources::Insert(L"PaintTexuture", uavTexture);
+
+	}
 	void LoadMaterial()
 	{
 		std::shared_ptr<Shader> spriteShader
@@ -326,6 +371,8 @@ namespace renderer
 		std::shared_ptr<Shader> animationSpriteShader
 			= Resources::Find<Shader>(L"SpriteAnimationShader");
 
+		//
+		sh::Material::Make_Material(spriteShader, L"PaintTexuture", L"SpriteMaterial");
 		//메터리얼을 만들고 로드한 텍스쳐와 스프라이트 쉐이더를 세팅한다
 		sh::Material::Make_Material(spriteShader, L"Death", L"PlayerMaterial");
 		sh::Material::Make_Material(spriteShader, L"Empty", L"EmptyMaterial");
@@ -389,6 +436,7 @@ namespace renderer
 		LoadBuffer();
 		LoadShader();
 		SetupState();
+		LoadTexture();
 		LoadMaterial();
 	}
 
@@ -407,8 +455,8 @@ namespace renderer
 		}
 
 		lightsBuffer->SetData(lightsAttributes.data(), lightsAttributes.size());
-		lightsBuffer->Bind(eShaderStage::VS, 13);
-		lightsBuffer->Bind(eShaderStage::PS, 13);
+		lightsBuffer->BindSRV(eShaderStage::VS, 13);
+		lightsBuffer->BindSRV(eShaderStage::PS, 13);
 	}
 
 	void Render()
