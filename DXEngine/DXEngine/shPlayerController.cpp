@@ -43,7 +43,8 @@ namespace sh
 		animator->SetAnimations(L"..\\Resources\\Texture\\Idle\\Idle4");
 		animator->SetAnimations(L"..\\Resources\\Texture\\Waiting");
 		animator->SetAnimations(L"..\\Resources\\Texture\\Run");
-		animator->SetAnimations(L"..\\Resources\\Texture\\Jump");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Jump", 0.06f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Falling");
 		animator->CreateAnimations();
 
 		{
@@ -68,8 +69,8 @@ namespace sh
 		}
 
 		{
-			animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::Idle1Motion, this);
-			animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::Idle1Motion, this);
+			animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::JumpEnd, this);
+			animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::JumpEnd, this);
 			animator->CompleteEvent(L"TextureWaitingR") = std::bind(&PlayerController::Idle1Motion, this);
 			animator->CompleteEvent(L"TextureWaitingL") = std::bind(&PlayerController::Idle1Motion, this);
 		}
@@ -169,12 +170,13 @@ namespace sh
 		jumped = true;
 		Vector3 pos = playerTR->GetPosition();
 
+
+
 		if (Direction_Right)
 			animator->PlayAnimation(L"TextureJumpR", true);
 		else if (Direction_Left) 
 			animator->PlayAnimation(L"TextureJumpL", true);
 		
-
 		playerRG->AddForce(Vector3(0, JumpPos * Drain, 0));
 	}
 	void PlayerController::Run()
@@ -213,6 +215,25 @@ namespace sh
 		else if (Direction_Left)
 			animator->PlayAnimation(L"TextureWaitingL", true);
 	}
+
+	void PlayerController::JumpEnd()
+	{
+		if (moveState == eMoveState::Run)
+		{
+			if (Direction_Right)
+				animator->PlayAnimation(L"TextureRunR", true);
+			else
+				animator->PlayAnimation(L"TextureRunL", true);
+		}
+		else
+		{
+			if (Direction_Right)
+				animator->PlayAnimation(L"IdleIdle1R", true);
+			else
+				animator->PlayAnimation(L"IdleIdle1L", true);
+		}
+	}
+
 	void PlayerController::Idle1Motion()
 	{
 		moveState = eMoveState::Idle;
@@ -295,6 +316,7 @@ namespace sh
 		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
 		{
 			jumped = false;
+			JumpEnd();
 			playerRG->SetGround(true);
 		}
 	}

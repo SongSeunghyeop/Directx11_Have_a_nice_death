@@ -30,6 +30,7 @@ namespace sh
 		void Idle2Motion();
 		void Idle3Motion();
 		void Idle4Motion();
+		void JumpEnd();
 		void Attack1Motion();
 		void Attack2Motion();
 		void Attack3Motion();
