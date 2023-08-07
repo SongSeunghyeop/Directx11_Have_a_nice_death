@@ -1,5 +1,6 @@
 #pragma once
 #include "shScene.h"
+#include "shPlayer.h"
 
 namespace sh
 {
@@ -16,5 +17,6 @@ namespace sh
 
 		virtual void OnEnter() override;
 	private:
+		Player* Death;
 	};
 }

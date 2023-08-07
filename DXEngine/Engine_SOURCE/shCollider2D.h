@@ -25,8 +25,18 @@ namespace sh
 		Vector3 GetScale() { return mScale; }
 		void SetSize(Vector2 size) { mSize = size; }
 		void SetCenter(Vector2 size) { mCenter = size; }
+		Vector2 GetCenter() { return mCenter; }
 		UINT GetColliderID() { return mColliderID; }
+		
+		Vector3 GetPosition()
+		{
+			return mPosition;
+		}
 
+		void SetPosition(Vector3 pos)
+		{
+			mPosition = pos;
+		}
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;

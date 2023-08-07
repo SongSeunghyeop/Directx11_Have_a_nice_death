@@ -1,5 +1,6 @@
 #pragma once
 #include "shScene.h"
+#include "shPlayer.h"
 
 namespace sh
 {
@@ -18,5 +19,6 @@ namespace sh
 
 	private:
 		Camera* mainCamera;
+		Player* Death;
 	};
 }

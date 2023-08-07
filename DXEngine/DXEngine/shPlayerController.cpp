@@ -116,7 +116,8 @@ namespace sh
 			break;
 			case eMoveState::Jump:
 			{
-				Jump();
+				if(!jumped)
+					Jump();
 			}
 			break;
 		}
@@ -165,19 +166,20 @@ namespace sh
 			animator->PlayAnimation(L"TextureRunR", true);
 		}
 	}
-	void PlayerController::Jump(float Drain)
+	void PlayerController::Jump()
 	{
 		jumped = true;
 		Vector3 pos = playerTR->GetPosition();
-
-
 
 		if (Direction_Right)
 			animator->PlayAnimation(L"TextureJumpR", true);
 		else if (Direction_Left) 
 			animator->PlayAnimation(L"TextureJumpL", true);
 		
-		playerRG->AddForce(Vector3(0, JumpPos * Drain, 0));
+		if(moveState == eMoveState::Run)
+			playerRG->AddForce(Vector3(0, JumpPos * 1.5f, 0));
+		else
+			playerRG->AddForce(Vector3(0, JumpPos, 0));
 	}
 	void PlayerController::Run()
 	{
@@ -189,7 +191,7 @@ namespace sh
 		}
 		else if (Input::GetKeyDown(eKeyCode::LEFT_SHIFT))
 		{
-			Jump(2.5f);
+			Jump();
 		}
 
 		Vector3 pos = playerTR->GetPosition();
@@ -313,12 +315,12 @@ namespace sh
 
 	void PlayerController::OnCollisionEnter(Collider2D* other)
 	{
-		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
-		{
-			jumped = false;
-			JumpEnd();
-			playerRG->SetGround(true);
-		}
+			if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
+			{
+				jumped = false;
+				JumpEnd();
+				playerRG->SetGround(true);
+			}
 	}
 	void PlayerController::OnCollisionStay(Collider2D* other)
 	{
@@ -328,6 +330,17 @@ namespace sh
 				playerRG->SetGround(false);
 			else
 			playerRG->SetGround(true);
+
+
+			float y1 = this->GetOwner()->GetComponent<Transform>()->GetPosition().y - this->GetOwner()->GetComponent<Transform>()->GetScale().y / 2;
+			float y2 = other->GetOwner()->GetComponent<Transform>()->GetPosition().y + other->GetOwner()->GetComponent<Transform>()->GetScale().y / 2;
+
+			if (y1 < y2 - fabs(y2 * 0.01f))
+			{
+				Vector3 pos = this->GetOwner()->GetComponent<Transform>()->GetPosition();
+				pos.y += 10.0f * Time::DeltaTime();
+				this->GetOwner()->GetComponent<Transform>()->SetPosition(pos);
+			}
 		}
 	}
 	void PlayerController::OnCollisionExit(Collider2D* other)

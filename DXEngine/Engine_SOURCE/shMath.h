@@ -323,7 +323,7 @@ namespace sh::math
     Vector3 operator/ (const Vector3& V1, const Vector3& V2) noexcept;
     Vector3 operator/ (const Vector3& V, float S) noexcept;
     Vector3 operator* (float S, const Vector3& V) noexcept;
-
+  
     //------------------------------------------------------------------------------
     // 4D vector
     struct Vector4 : public XMFLOAT4

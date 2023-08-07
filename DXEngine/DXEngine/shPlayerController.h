@@ -43,7 +43,7 @@ namespace sh
 		void Run();
 		void Idle();
 		void Attack();
-		void Jump(float Drain = 1.0f);
+		void Jump();
 
 		void Looking_Right()
 		{

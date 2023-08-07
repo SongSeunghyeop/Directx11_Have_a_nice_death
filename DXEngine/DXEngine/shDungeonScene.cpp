@@ -6,7 +6,6 @@
 #include "shCamera.h"
 #include "shSceneManager.h"
 #include "shObject.h"
-#include "shPlayer.h"
 #include "shD_Floors.h"
 #include "shStoneLoads.h"
 #include "shDungeonColumns.h"
@@ -27,7 +26,7 @@ namespace sh
 	}
 	void DungeonScene::Initialize()
 	{
-		Player* Death
+		Death
 			= object::Instantiate<Player>(Vector4(0.0f, 3.0f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
 
 		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
@@ -68,8 +67,9 @@ namespace sh
 		GhostBoxes *ghostboxes 
 			= object::Instantiate<GhostBoxes>(Vector4(43.5f, -7.3f, object::zBackGround, 1.0f), eLayerType::Structure_B, L"GhostBox3Material");
 		D_Floors* floors
-			= object::Instantiate<D_Floors>(Vector4(-0.0f, -4.7f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
+			= object::Instantiate<D_Floors>(Vector4(-0.0f, -4.7f, object::zPlayer, 1.5f), eLayerType::Ground, L"GroundMaterial");
 		floors->AddComponent<Collider2D>();
+
 		StoneLoads *stonLoads
 			= object::Instantiate<StoneLoads>(Vector4(15.0f, -5.2f, object::zBackGround, 0.4f), eLayerType::Structure_F, L"SquareStone1Material");
 		DungeonColumns *dungeonColumns
@@ -129,5 +129,7 @@ namespace sh
 	void DungeonScene::OnEnter()
 	{
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
+
+		Death->GetComponent<Transform>()->SetPosition(0.0f, 1.0f, object::zPlayer);
 	}
 }

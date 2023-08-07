@@ -6,7 +6,6 @@
 #include "shCamera.h"
 #include "shSceneManager.h"
 #include "shObject.h"
-#include "shPlayer.h"
 #include "shLobbyColumns.h"
 #include "shFloors.h"
 #include "shCollider2D.h"
@@ -43,7 +42,7 @@ namespace sh
 		Light* light1 = object::newLight<Light>(Vector3(12.5f, 3.5f, object::zBackGround), eLightType::Spot, 10.0f, 30.0f);
 		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
 
-		Player* Death
+		Death
 			= object::Instantiate<Player>(Vector4(0.0f, 0.0f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
 
 		{
@@ -61,7 +60,7 @@ namespace sh
 		this->SetActiveCamera(mainCamera);
 
 		Floors *floors
-			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zBackGround + 0.00001f, 1.5f), eLayerType::Ground, L"GroundMaterial");
+			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zPlayer, 1.5f), eLayerType::Ground, L"GroundMaterial");
 		floors->AddComponent<Collider2D>()->SetSize(Vector2(1.0f, 1.0f));
 
 
@@ -88,10 +87,10 @@ namespace sh
 			
 			{
 				GameObject* SupportDesk
-					= object::Instantiate<GameObject>(Vector4(-0.25f, -5.4f, object::zBackGround, 1.0f), eLayerType::Ground, L"SupportDesk_Material");
+					= object::Instantiate<GameObject>(Vector4(-0.25f, -5.4f, object::zPlayer, 1.0f), eLayerType::Ground, L"SupportDesk_Material");
 				SupportDesk->SetName(L"Test");
 				Collider2D *collider = SupportDesk->AddComponent<Collider2D>();
-				collider->SetSize(Vector2(0.8f, 0.6f));
+				collider->SetSize(Vector2(0.8f, 1.0f));
 			}
 			GameObject* BossDesk
 				= object::Instantiate<GameObject>(Vector4(-0.2f, -3.8f, object::zBackGround, 0.6f), eLayerType::Structure_F, L"BossDeskMaterial");
@@ -159,5 +158,7 @@ namespace sh
 	void LobbyScene::OnEnter()
 	{
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
+
+		Death->GetComponent<Transform>()->SetPosition(0.0f, 1.0f, object::zPlayer);
 	}
 }
