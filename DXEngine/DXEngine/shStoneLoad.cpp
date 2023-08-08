@@ -17,8 +17,10 @@ namespace sh
 	}
 	void StoneLoad::Initialize()
 	{
+		this->AddComponent<Collider2D>();
 		if(this->GetMaterialName() == L"SquareStone1Material")
 		{
+
 			Transform* Tr = this->GetComponent<Transform>();
 			MeshRenderer* Mr = this->GetComponent<MeshRenderer>();
 			float scale = this->GetDrainage().x;

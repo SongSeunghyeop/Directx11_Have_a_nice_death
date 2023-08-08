@@ -32,8 +32,6 @@ namespace sh
 	}
 	void LobbyScene::Initialize()
 	{
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
-
 		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
 		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");
 		paintShader->SetTarget(paintTexture);
@@ -158,7 +156,8 @@ namespace sh
 	void LobbyScene::OnEnter()
 	{
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
-
-		Death->GetComponent<Transform>()->SetPosition(0.0f, 1.0f, object::zPlayer);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true); // Rope
+		Death->GetComponent<Transform>()->SetPosition(0.0f, 2.0f, object::zPlayer);
 	}
 }

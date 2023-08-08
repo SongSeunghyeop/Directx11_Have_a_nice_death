@@ -392,6 +392,7 @@ namespace renderer
 		sh::Material::Make_Material(spriteShader, L"Column3", L"Column3Material");
 		sh::Material::Make_Material(spriteShader, L"Big_Rock", L"BigRockMaterial");
 		sh::Material::Make_Material(spriteShader, L"Ground", L"GroundMaterial");
+		sh::Material::Make_Material(spriteShader, L"TX_LaserTrail", L"RopeMaterial");
 		sh::Material::Make_Material(spriteShader, L"Tree", L"TreeMaterial");
 		sh::Material::Make_Material(spriteShader, L"Wall", L"WallMaterial");
 		sh::Material::Make_Material(spriteShader, L"Pillar", L"PillarMaterial");

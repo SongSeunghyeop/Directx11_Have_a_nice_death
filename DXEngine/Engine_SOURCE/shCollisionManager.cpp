@@ -130,8 +130,28 @@ namespace sh
 		Transform* leftTr = left->GetOwner()->GetComponent<Transform>();
 		Transform* rightTr = right->GetOwner()->GetComponent<Transform>();
 
-		Matrix leftMatrix = leftTr->GetMatrix();
-		Matrix rightMatrix = rightTr->GetMatrix();
+		Vector2 leftCenter = left->GetCenter();
+		Vector2 rightCenter = right->GetCenter();
+
+		Transform Final_LeftTr = *leftTr;
+		Transform Final_RightTr = *rightTr;
+
+		Vector3 FinalLeftPos;
+		Vector3 FinalRightPos;
+		
+		FinalLeftPos.x = leftTr->GetPosition().x + leftCenter.x;
+		FinalLeftPos.y = leftTr->GetPosition().y + leftCenter.y;
+		FinalLeftPos.z = leftTr->GetPosition().z;
+
+		FinalRightPos.x = rightTr->GetPosition().x + rightCenter.x;
+		FinalRightPos.y = rightTr->GetPosition().y + rightCenter.y;
+		FinalRightPos.z = rightTr->GetPosition().z;
+
+		Final_LeftTr.SetPosition(FinalLeftPos);
+		Final_RightTr.SetPosition(FinalRightPos);
+
+		Matrix leftMatrix = Final_LeftTr.GetMatrix();
+		Matrix rightMatrix = Final_RightTr.GetMatrix();
 
 		Vector3 Axis[4] = {};
 
@@ -156,7 +176,7 @@ namespace sh
 		for (size_t i = 0; i < 4; i++)
 			Axis[i].z = 0.0f;
 
-		Vector3 vc = leftTr->GetPosition() - rightTr->GetPosition();
+		Vector3 vc = Final_LeftTr.GetPosition() - Final_RightTr .GetPosition();
 		vc.z = 0.0f;
 
 		Vector3 centerDir = vc;

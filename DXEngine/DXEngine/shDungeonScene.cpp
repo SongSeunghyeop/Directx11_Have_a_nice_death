@@ -13,6 +13,8 @@
 #include "shInput.h"
 #include "shLight.h"
 #include "shRenderer.h"
+#include "shRope.h"
+#include "shCollisionManager.h"
 
 namespace sh
 {
@@ -51,7 +53,7 @@ namespace sh
 			GameObject* BackGround_Pattern7
 				= object::Instantiate<GameObject>(Vector3(108.9f, -2.6f, object::zBackGround), Vector2(0.6f, 0.7f), eLayerType::BackGround, L"DungeonBackGround_Material");
 			GameObject* RockBG1
-				= object::Instantiate<GameObject>(Vector3(16.3, -2.9f, object::zBackGround), Vector2(2.5f, 2.0f), eLayerType::Structure_F, L"RockBG04_Material");
+				= object::Instantiate<GameObject>(Vector3(16.3, -2.9f, object::zBackGround), Vector2(2.5f, 2.0f), eLayerType::Structure_B, L"RockBG04_Material");
 			GameObject* pillar1
 				= object::Instantiate<GameObject>(Vector3(97.5f, -3.2f, object::zBackGround), Vector2(0.45f, 0.6f), eLayerType::Structure_B, L"Pillar2Material");
 			GameObject* pillar2
@@ -64,21 +66,29 @@ namespace sh
 			= object::Instantiate<DungeonLobby>(Vector4(0.0f, -0.7f, object::zBackGround, 1.4f), eLayerType::BackGround, L"DungeonLobbyMaterial");
 		GameObject* Box_NPC
 			= object::Instantiate<GameObject>(Vector3(88.0f, -3.2f, object::zBackGround), Vector2(0.8f, 0.8f), eLayerType::Structure_B, L"box_NPC_Material");
+
 		GhostBoxes *ghostboxes 
 			= object::Instantiate<GhostBoxes>(Vector4(43.5f, -7.3f, object::zBackGround, 1.0f), eLayerType::Structure_B, L"GhostBox3Material");
 		D_Floors* floors
-			= object::Instantiate<D_Floors>(Vector4(-0.0f, -4.7f, object::zPlayer, 1.5f), eLayerType::Ground, L"GroundMaterial");
+			= object::Instantiate<D_Floors>(Vector4(0.0f, -4.7f, object::zBackGround, 1.5f), eLayerType::Ground, L"GroundMaterial");
 		floors->AddComponent<Collider2D>();
 
+		GameObject* BackRock
+			= object::Instantiate<GameObject>(Vector3(14.5f, -6.2f, object::zBackGround), Vector2(1.1f, 1.1f), eLayerType::Structure_B, L"RockBG07_Material");
+
 		StoneLoads *stonLoads
-			= object::Instantiate<StoneLoads>(Vector4(15.0f, -5.2f, object::zBackGround, 0.4f), eLayerType::Structure_F, L"SquareStone1Material");
+			= object::Instantiate<StoneLoads>(Vector4(15.0f, -5.2f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
+		stonLoads->AddComponent<Collider2D>();
+
+		Rope* rope1
+			= object::Instantiate<Rope>(Vector3(42.0f, -4.0f, object::zBackGround), Vector2(0.3f, 0.8f), eLayerType::Structure_F, L"RopeMaterial");
+		rope1->GetComponent<MeshRenderer>()->SetColor(Vector4(255, 0, 0, 1.0f));
+
 		DungeonColumns *dungeonColumns
 			= object::Instantiate<DungeonColumns>(Vector3(40.0, -7.2f, object::zBackGround), Vector2(0.5f, 0.9f), eLayerType::Structure_B, L"Column2Material");
 		
 		GameObject* CircleGround
-			= object::Instantiate<GameObject>(Vector4(21.0, -9.5f, object::zBackGround, 1.0f), eLayerType::Ground_F, L"CircleGroundMaterial");
-		GameObject* BackRock
-			= object::Instantiate<GameObject>(Vector3(14.5f, -6.2f, object::zBackGround), Vector2(1.1f, 1.1f), eLayerType::Structure_F, L"RockBG07_Material");
+			= object::Instantiate<GameObject>(Vector4(21.0, -9.5f, object::zBackGround, 1.0f), eLayerType::Structure_F, L"CircleGroundMaterial");
 
 		GameObject* elevator
 			= object::Instantiate<GameObject>(Vector4(110.0f, -7.4f, object::zBackGround, 1.0f), eLayerType::Structure_F, L"Elevator_Material");
@@ -130,6 +140,9 @@ namespace sh
 	{
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 
-		Death->GetComponent<Transform>()->SetPosition(0.0f, 1.0f, object::zPlayer);
+		Death->GetComponent<Transform>()->SetPosition(0.0f, 2.0f, object::zPlayer);
+
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true); // Rope
 	}
 }

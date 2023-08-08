@@ -169,6 +169,7 @@
     <ClInclude Include="shLobbyScene.h" />
     <ClInclude Include="shMenuScene.h" />
     <ClInclude Include="shRock.h" />
+    <ClInclude Include="shRope.h" />
     <ClInclude Include="shSmallColumn.h" />
     <ClInclude Include="shStoneLoads.h" />
     <ClInclude Include="shTitleScene.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="shLobbyScene.cpp" />
     <ClCompile Include="shMenuScene.cpp" />
     <ClCompile Include="shRock.cpp" />
+    <ClCompile Include="shRope.cpp" />
     <ClCompile Include="shSmallColumn.cpp" />
     <ClCompile Include="shStoneLoads.cpp" />
     <ClCompile Include="shTitleScene.cpp" />

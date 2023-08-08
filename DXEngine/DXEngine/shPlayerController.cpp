@@ -20,7 +20,10 @@ namespace sh
 	void PlayerController::Initialize()
 	{
 		playerTR = GetOwner()->GetComponent<Transform>();
-		
+
+		this->GetOwner()->GetComponent<Collider2D>()->SetCenter(Vector2(0.0f, -0.8f));
+		this->GetOwner()->GetComponent<Collider2D>()->SetSize(Vector2(0.5f, 0.5f));
+
 		{
 			moveKeys.push_back(eKeyCode::A);
 			moveKeys.push_back(eKeyCode::D);
@@ -43,8 +46,8 @@ namespace sh
 		animator->SetAnimations(L"..\\Resources\\Texture\\Idle\\Idle4");
 		animator->SetAnimations(L"..\\Resources\\Texture\\Waiting");
 		animator->SetAnimations(L"..\\Resources\\Texture\\Run");
-		animator->SetAnimations(L"..\\Resources\\Texture\\Jump", 0.06f);
-		animator->SetAnimations(L"..\\Resources\\Texture\\Falling");
+		animator->SetAnimations(L"..\\Resources\\Texture\\Jump", 0.04f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Falling", 0.05f);
 		animator->CreateAnimations();
 
 		{
@@ -69,16 +72,16 @@ namespace sh
 		}
 
 		{
-			animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::JumpEnd, this);
-			animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::JumpEnd, this);
+			animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::Fall, this);
+			animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::Fall, this);
+			animator->CompleteEvent(L"TextureFallingR") = std::bind(&PlayerController::JumpEnd, this);
+			animator->CompleteEvent(L"TextureFallingL") = std::bind(&PlayerController::JumpEnd, this);
+
 			animator->CompleteEvent(L"TextureWaitingR") = std::bind(&PlayerController::Idle1Motion, this);
 			animator->CompleteEvent(L"TextureWaitingL") = std::bind(&PlayerController::Idle1Motion, this);
 		}
 
 		meshRenderer = GetOwner()->GetComponent<MeshRenderer>();
-
-		GetOwner()->AddComponent<Collider2D>();
-
 		{
 			moveState = eMoveState::Idle;
 			animator->PlayAnimation(L"IdleIdle1R", true);
@@ -114,18 +117,11 @@ namespace sh
 				Attack();
 			} 
 			break;
-			case eMoveState::Jump:
-			{
-				if(!jumped)
-					Jump();
-			}
-			break;
 		}
 	}
 	void PlayerController::Idle()
 	{
 		{
-			JumpPos = 1200.0f;
 			Vector3 pos = playerTR->GetPosition();
 			playerTR->SetPosition(pos);
 		}
@@ -149,7 +145,7 @@ namespace sh
 		{
 			if (!jumped) //2단 점프 불가
 			{
-				moveState = eMoveState::Jump;
+				Jump();
 			}
 		}
 	}
@@ -171,15 +167,44 @@ namespace sh
 		jumped = true;
 		Vector3 pos = playerTR->GetPosition();
 
+		JumpPos = 3000.0f;
+
 		if (Direction_Right)
 			animator->PlayAnimation(L"TextureJumpR", true);
 		else if (Direction_Left) 
 			animator->PlayAnimation(L"TextureJumpL", true);
 		
 		if(moveState == eMoveState::Run)
-			playerRG->AddForce(Vector3(0, JumpPos * 1.5f, 0));
+			playerRG->AddForce(Vector3(0, JumpPos, 0));
 		else
 			playerRG->AddForce(Vector3(0, JumpPos, 0));
+	}
+	void PlayerController::Fall()
+	{
+		jumped = false;
+		JumpPos = 0.0f;
+
+		if (Direction_Right)
+			animator->PlayAnimation(L"TextureFallingR", true);
+		else if (Direction_Left)
+			animator->PlayAnimation(L"TextureFallingL", true);
+	}
+	void PlayerController::JumpEnd()
+	{
+		if (moveState == eMoveState::Run)
+		{
+			if (Direction_Right)
+				animator->PlayAnimation(L"TextureRunR", true);
+			else
+				animator->PlayAnimation(L"TextureRunL", true);
+		}
+		else
+		{
+			if (Direction_Right)
+				animator->PlayAnimation(L"IdleIdle1R", true);
+			else
+				animator->PlayAnimation(L"IdleIdle1L", true);
+		}
 	}
 	void PlayerController::Run()
 	{
@@ -198,12 +223,12 @@ namespace sh
 
 		if (Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 15.0f * Time::DeltaTime();
+			pos.x -= 13.0f * Time::DeltaTime();
 			playerTR->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 15.0f * Time::DeltaTime();
+			pos.x += 13.0f * Time::DeltaTime();
 			playerTR->SetPosition(pos);
 		}
 
@@ -216,24 +241,6 @@ namespace sh
 			animator->PlayAnimation(L"TextureWaitingR", true);
 		else if (Direction_Left)
 			animator->PlayAnimation(L"TextureWaitingL", true);
-	}
-
-	void PlayerController::JumpEnd()
-	{
-		if (moveState == eMoveState::Run)
-		{
-			if (Direction_Right)
-				animator->PlayAnimation(L"TextureRunR", true);
-			else
-				animator->PlayAnimation(L"TextureRunL", true);
-		}
-		else
-		{
-			if (Direction_Right)
-				animator->PlayAnimation(L"IdleIdle1R", true);
-			else
-				animator->PlayAnimation(L"IdleIdle1L", true);
-		}
 	}
 
 	void PlayerController::Idle1Motion()
@@ -317,9 +324,12 @@ namespace sh
 	{
 			if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
 			{
-				jumped = false;
-				JumpEnd();
-				playerRG->SetGround(true);
+				if (jumped)
+				{
+					playerRG->SetGround(false);
+				}
+				else
+					playerRG->SetGround(true);
 			}
 	}
 	void PlayerController::OnCollisionStay(Collider2D* other)
@@ -331,9 +341,8 @@ namespace sh
 			else
 			playerRG->SetGround(true);
 
-
-			float y1 = this->GetOwner()->GetComponent<Transform>()->GetPosition().y - this->GetOwner()->GetComponent<Transform>()->GetScale().y / 2;
-			float y2 = other->GetOwner()->GetComponent<Transform>()->GetPosition().y + other->GetOwner()->GetComponent<Transform>()->GetScale().y / 2;
+			float y1 = this->GetOwner()->GetComponent<Collider2D>()->GetPosition().y - this->GetOwner()->GetComponent<Collider2D>()->GetScale().y / 2;
+			float y2 = other->GetOwner()->GetComponent<Collider2D>()->GetPosition().y + other->GetOwner()->GetComponent<Collider2D>()->GetScale().y / 2;
 
 			if (y1 < y2 - fabs(y2 * 0.01f))
 			{
@@ -348,11 +357,6 @@ namespace sh
 		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
 		{
 			playerRG->SetGround(false);
-
-			if (moveState == eMoveState::Jump)
-			{
-				moveState = eMoveState::Idle;
-			}
 		}
 	}
 }

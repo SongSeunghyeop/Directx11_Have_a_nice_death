@@ -18,6 +18,7 @@ namespace sh
 	{
 		GameObject* broken_Ev
 			= object::Instantiate<GameObject>(Vector4(-13.0f, -2.1f, object::zBackGround, 1.2f), eLayerType::Structure_F, L"Broken_ElevatorMaterial");
+
 		{
 			Light* light1 
 				= object::newLight<Light>(Vector3(4.5f, 4.5f, object::zBackGround), eLightType::Spot, 10.0f, 60.0f, Vector4(225, 245, 169, 1.0f));

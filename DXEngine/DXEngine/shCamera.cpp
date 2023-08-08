@@ -15,7 +15,7 @@ namespace sh
 		CameraType = type;
 		renderer::cameras.push_back(cameraCont);
 
-		filmingPos = Vector3(0, 1.0, -7);
+		filmingPos = Vector3(0, 0.0, -7);
 	}
 	Camera::~Camera()
 	{
