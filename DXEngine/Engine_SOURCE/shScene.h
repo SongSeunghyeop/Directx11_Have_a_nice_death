@@ -2,6 +2,8 @@
 #include "shEntity.h"
 #include "shLayer.h"
 #include "../DXEngine/shCamera.h"
+#include "../DXEngine/shPlayer.h"
+
 namespace sh
 {
 	class Scene : public Entity
@@ -48,9 +50,19 @@ namespace sh
 		{
 			return activeCamera;
 		}
+		static void LoadMainPlayer();
+
+		static Player* GetMainPlayer()
+		{
+			return mainPlayer;
+		}
+
+		static void PlayerResetTransform();
+
 	private:
 		std::vector<Layer> mLayers;
-
 		Camera* activeCamera;
+
+		static Player* mainPlayer;
 	};
 }

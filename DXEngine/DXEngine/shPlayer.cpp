@@ -1,9 +1,7 @@
 #include "shPlayer.h"
 #include "shMeshRenderer.h"
 #include "shTransform.h"
-#include "shInput.h"
-#include "shTime.h"
-#include "shCameraController.h"
+#include "shPlayerController.h"
 #include "shLight.h"
 
 namespace sh
@@ -19,11 +17,11 @@ namespace sh
 	void Player::Initialize()
 	{
 		//this->AddComponent<Collider2D>();
-		animator = this->AddComponent<Animator>();
+		Animator* animator = this->AddComponent<Animator>();
 		Rigidbody *rigid = this->AddComponent<Rigidbody>();
 		Collider2D* collider = this->AddComponent<Collider2D>();
-		controller = this->AddComponent<PlayerController>();
-		meshrenderer = this->GetComponent<MeshRenderer>();
+		PlayerController* controller = this->AddComponent<PlayerController>();
+		MeshRenderer* meshrenderer = this->GetComponent<MeshRenderer>();
 
 		Light* lightComp = this->AddComponent<Light>();
 		lightComp->SetType(eLightType::Point);

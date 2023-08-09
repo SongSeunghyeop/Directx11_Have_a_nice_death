@@ -46,8 +46,8 @@ namespace sh
 		animator->SetAnimations(L"..\\Resources\\Texture\\Idle\\Idle4");
 		animator->SetAnimations(L"..\\Resources\\Texture\\Waiting");
 		animator->SetAnimations(L"..\\Resources\\Texture\\Run");
-		animator->SetAnimations(L"..\\Resources\\Texture\\Jump", 0.04f);
-		animator->SetAnimations(L"..\\Resources\\Texture\\Falling", 0.05f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Jump", 0.07f);
+		animator->SetAnimations(L"..\\Resources\\Texture\\Falling", 0.1f);
 		animator->CreateAnimations();
 
 		{
@@ -74,8 +74,6 @@ namespace sh
 		{
 			animator->CompleteEvent(L"TextureJumpL") = std::bind(&PlayerController::Fall, this);
 			animator->CompleteEvent(L"TextureJumpR") = std::bind(&PlayerController::Fall, this);
-			animator->CompleteEvent(L"TextureFallingR") = std::bind(&PlayerController::JumpEnd, this);
-			animator->CompleteEvent(L"TextureFallingL") = std::bind(&PlayerController::JumpEnd, this);
 
 			animator->CompleteEvent(L"TextureWaitingR") = std::bind(&PlayerController::Idle1Motion, this);
 			animator->CompleteEvent(L"TextureWaitingL") = std::bind(&PlayerController::Idle1Motion, this);
@@ -131,23 +129,24 @@ namespace sh
 			moveState = eMoveState::Run;
 			animator->PlayAnimation(L"TextureRunL", true);
 		}
-		if (Input::GetKeyDown(moveKeys[1])) // key D
+		else if (Input::GetKeyDown(moveKeys[1])) // key D
 		{
 			moveState = eMoveState::Run;
 			animator->PlayAnimation(L"TextureRunR", true);
 		}
-		if (Input::GetKeyDown(moveKeys[2])) // key Space
+		else if (Input::GetKeyDown(moveKeys[2])) // key Space
 		{
 			moveState = eMoveState::Attack;
 			Attack1Motion();
 		}
-		if (Input::GetKeyDown(moveKeys[3])) // E
+		else if (Input::GetKeyDown(moveKeys[3])) // E
 		{
-			if (!jumped) //2단 점프 불가
+			if (playerRG->GetState() == true) //2단 점프 불가
 			{
 				Jump();
 			}
 		}
+	
 	}
 	void PlayerController::Attack()
 	{
@@ -182,28 +181,16 @@ namespace sh
 	void PlayerController::Fall()
 	{
 		jumped = false;
+
 		JumpPos = 0.0f;
 
 		if (Direction_Right)
-			animator->PlayAnimation(L"TextureFallingR", true);
-		else if (Direction_Left)
-			animator->PlayAnimation(L"TextureFallingL", true);
-	}
-	void PlayerController::JumpEnd()
-	{
-		if (moveState == eMoveState::Run)
 		{
-			if (Direction_Right)
-				animator->PlayAnimation(L"TextureRunR", true);
-			else
-				animator->PlayAnimation(L"TextureRunL", true);
+				animator->PlayAnimation(L"TextureFallingR", true);
 		}
-		else
+		else if (Direction_Left)
 		{
-			if (Direction_Right)
-				animator->PlayAnimation(L"IdleIdle1R", true);
-			else
-				animator->PlayAnimation(L"IdleIdle1L", true);
+				animator->PlayAnimation(L"TextureFallingL", true);
 		}
 	}
 	void PlayerController::Run()
@@ -211,8 +198,11 @@ namespace sh
 		if ((!Input::GetKeyDown(eKeyCode::A)) && (!Input::GetKey(eKeyCode::A))&&
 			(!Input::GetKeyDown(eKeyCode::D)) && (!Input::GetKey(eKeyCode::D)))
 		{
-			moveState = eMoveState::Idle;
+			if (playerRG->GetState() == false)
+				Fall();
+			else
 			Idle1Motion();
+			
 		}
 		else if (Input::GetKeyDown(eKeyCode::LEFT_SHIFT))
 		{
@@ -327,6 +317,12 @@ namespace sh
 				if (jumped)
 				{
 					playerRG->SetGround(false);
+
+					if (moveState == eMoveState::Run)
+					{
+						playerRG->SetGround(true);
+						jumped = false;
+					}
 				}
 				else
 					playerRG->SetGround(true);
@@ -334,6 +330,18 @@ namespace sh
 	}
 	void PlayerController::OnCollisionStay(Collider2D* other)
 	{
+		if (other->GetOwner()->GetName() == L"Rope")
+		{
+			if (Input::GetKey(eKeyCode::W))
+			{
+				Vector3 pos = playerTR->GetPosition();
+
+				pos.y += 30.0f * Time::DeltaTime();
+				
+				playerTR->SetPosition(pos);
+			}
+		}
+
 		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
 		{
 			if(jumped)
@@ -344,7 +352,7 @@ namespace sh
 			float y1 = this->GetOwner()->GetComponent<Collider2D>()->GetPosition().y - this->GetOwner()->GetComponent<Collider2D>()->GetScale().y / 2;
 			float y2 = other->GetOwner()->GetComponent<Collider2D>()->GetPosition().y + other->GetOwner()->GetComponent<Collider2D>()->GetScale().y / 2;
 
-			if (y1 < y2 - fabs(y2 * 0.01f))
+			if (y1 < y2 - 0.08f)
 			{
 				Vector3 pos = this->GetOwner()->GetComponent<Transform>()->GetPosition();
 				pos.y += 10.0f * Time::DeltaTime();

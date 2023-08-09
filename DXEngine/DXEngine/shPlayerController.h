@@ -43,7 +43,6 @@ namespace sh
 		void Attack();
 		void Jump();
 		void Fall();
-		void JumpEnd();
 
 		void Looking_Right()
 		{

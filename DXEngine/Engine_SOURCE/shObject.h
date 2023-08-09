@@ -1,11 +1,12 @@
 #pragma once
 #include "shGameObject.h"
-#include "shScene.h"
-#include "shSceneManager.h"
 #include "shTransform.h"
 #include "shMeshRenderer.h"
-#include "shCamera.h"
+#include "../DXEngine/shCamera.h"
+#include "../DXEngine/shPlayer.h"
 #include "shLight.h"
+#include "shScene.h"
+#include "shSceneManager.h"
 
 namespace sh::object
 {
@@ -49,6 +50,29 @@ namespace sh::object
 		camera->SetFilmingPos(pos);
 		camera->Initialize();
 		return camera;
+	};
+
+	template <typename Player>
+	static inline Player* newMainPlayer(Vector4 pos_size, std::wstring materialName)
+	{
+		Player* gameObj = new Player();
+
+		MeshRenderer* mr = gameObj->AddComponent<MeshRenderer>();
+		mr->SetMaterial(Resources::Find<Material>(materialName));
+
+		if (mr->GetMaterial()->GetTexture())
+		{
+			Vector2 size = mr->GetTextureSize();
+			gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * pos_size.w, size.y / 100.0f * pos_size.w, 1.0f);
+		}
+
+		gameObj->SetDrainage(Vector2(pos_size.w, pos_size.w));
+		gameObj->GetComponent<Transform>()->SetPosition(pos_size.x, pos_size.y, pos_size.z);
+		gameObj->setLayerType(eLayerType::Player);
+		gameObj->SetMaterialName(materialName);
+		gameObj->Initialize();
+
+		return gameObj;
 	};
 
 	template <typename T>

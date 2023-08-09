@@ -21,13 +21,10 @@ namespace sh
 	{
 
 	}
-
-	void Camera::SetTarget(GameObject* target)
-	{
-		Target = target;
-	}
 	void Camera::Initialize()
 	{
+		Target = Scene::GetMainPlayer();
+
 		if (CameraType == L"UI")
 		{
 			cameraCont->TurnLayerMask(eLayerType::UI, true);

@@ -15,7 +15,6 @@ namespace sh
 		virtual void LateUpdate();
 		virtual void Render();
 		
-		void SetTarget(GameObject* target);
 		void SetFilmingPos(Vector3 pos)
 		{
 			filmingPos = pos;

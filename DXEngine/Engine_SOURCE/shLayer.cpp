@@ -13,8 +13,8 @@ namespace sh
 			if (gameObj == nullptr)
 				continue;
 
-			delete gameObj;
 			gameObj = nullptr;
+			delete gameObj;
 		}
 	}
 	void Layer::Initialize()

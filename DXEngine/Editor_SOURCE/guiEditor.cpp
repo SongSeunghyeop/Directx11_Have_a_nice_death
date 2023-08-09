@@ -102,9 +102,11 @@ namespace gui
 
 		tr->LateUpdate();
 
+
 		sh::CameraController* mainCamara = renderer::mainCamera;
 		sh::CameraController::SetGpuViewMatrix(mainCamara->GetViewMatrix());
 		sh::CameraController::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
+
 
 		debugObj->Render();
 	}

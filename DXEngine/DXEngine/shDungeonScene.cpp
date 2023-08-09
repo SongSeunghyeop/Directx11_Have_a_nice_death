@@ -1,13 +1,13 @@
 #include "shDungeonScene.h"
 #include "shDungeonLobby.h"
 #include "shGhostBoxes.h"
-#include "shTransform.h"
 #include "shCameraController.h"
 #include "shCamera.h"
 #include "shSceneManager.h"
 #include "shObject.h"
 #include "shD_Floors.h"
 #include "shStoneLoads.h"
+#include "shStoneLoad.h"
 #include "shDungeonColumns.h"
 #include "shMeshRenderer.h"
 #include "shInput.h"
@@ -28,12 +28,11 @@ namespace sh
 	}
 	void DungeonScene::Initialize()
 	{
-		Death
-			= object::Instantiate<Player>(Vector4(0.0f, 3.0f, object::zPlayer, 0.4f), eLayerType::Player, L"SpriteAnimaionMaterial");
+		AddGameObject(eLayerType::Player, Scene::GetMainPlayer());
 
 		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
-		mCamera->SetTarget(Death);
 		this->SetActiveCamera(mCamera);
+		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 
 		{	//12.2
 			GameObject* BackGround_Pattern0
@@ -80,9 +79,13 @@ namespace sh
 			= object::Instantiate<StoneLoads>(Vector4(15.0f, -5.2f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 		stonLoads->AddComponent<Collider2D>();
 
-		Rope* rope1
-			= object::Instantiate<Rope>(Vector3(42.0f, -4.0f, object::zBackGround), Vector2(0.3f, 0.8f), eLayerType::Structure_F, L"RopeMaterial");
-		rope1->GetComponent<MeshRenderer>()->SetColor(Vector4(255, 0, 0, 1.0f));
+		{
+			StoneLoad* stoneLoad
+				= object::Instantiate<StoneLoad>(Vector3(42.0f, -0.1f, object::zBackGround), Vector2(0.6f, 0.4f), eLayerType::Ground, L"SquareStone1Material");
+			Rope* rope1
+				= object::Instantiate<Rope>(Vector3(42.0f, -4.0f, object::zBackGround), Vector2(0.3f, 0.8f), eLayerType::Structure_F, L"RopeMaterial");
+			rope1->GetComponent<MeshRenderer>()->SetColor(Vector4(255, 0, 0, 1.0f));
+		}
 
 		DungeonColumns *dungeonColumns
 			= object::Instantiate<DungeonColumns>(Vector3(40.0, -7.2f, object::zBackGround), Vector2(0.5f, 0.9f), eLayerType::Structure_B, L"Column2Material");
@@ -108,6 +111,7 @@ namespace sh
 			AddGameObject(eLayerType::Light, light);
 			Transform* Tr = light->GetComponent<Transform>();
 			Tr->SetPosition(Vector3(-1.8f, -2.2f, object::zBackGround));
+
 			Light* lightComp = light->AddComponent<Light>();
 			lightComp->SetType(eLightType::Point);
 			lightComp->SetColor(Vector4(169, 245, 225, 1.0f));
@@ -139,10 +143,12 @@ namespace sh
 	void DungeonScene::OnEnter()
 	{
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
-
-		Death->GetComponent<Transform>()->SetPosition(0.0f, 2.0f, object::zPlayer);
-
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true); // Rope
+
+	}
+	void DungeonScene::OnExit()
+	{
+		Scene::PlayerResetTransform();
 	}
 }

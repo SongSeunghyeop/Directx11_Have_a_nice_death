@@ -93,8 +93,8 @@ namespace sh
 
 		// 이 구간에서만 흔들림 발생
 		{
-			/*StoneLoad* stoneLoad4
-				= object::Instantiate<StoneLoad>(Vector4(62.8f, -2.0f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone3Material");*/
+			StoneLoad* stoneLoad4
+				= object::Instantiate<StoneLoad>(Vector4(62.8f, -2.0f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone3Material");
 			StoneLoad* stoneLoad5
 				= object::Instantiate<StoneLoad>(Vector3(64.7f, -0.3f, object::zBackGround) , Vector2(0.7f, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 			StoneLoad* stoneLoad6

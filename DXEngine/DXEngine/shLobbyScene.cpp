@@ -14,7 +14,6 @@
 #include "shLightingLogo.h"
 #include "shCollisionManager.h"
 #include "shRenderer.h"
-#include "shTime.h"
 #include "shElevator_NPC.h"
 #include "shComputeShader.h"
 #include "shPaintShader.h"
@@ -32,6 +31,8 @@ namespace sh
 	}
 	void LobbyScene::Initialize()
 	{
+		AddGameObject(eLayerType::Player, Scene::GetMainPlayer());
+
 		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
 		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");
 		paintShader->SetTarget(paintTexture);
@@ -39,10 +40,6 @@ namespace sh
 
 		Light* light1 = object::newLight<Light>(Vector3(12.5f, 3.5f, object::zBackGround), eLightType::Spot, 10.0f, 30.0f);
 		Light* light2 = object::newLight<Light>(Vector3(3.6f, -5.7f, object::zBackGround), eLightType::Point, 1.0f, 40.0f, Vector4(-60, -60, -60,1.0f));
-
-		Death
-			= object::Instantiate<Player>(Vector4(0.0f, 0.0f, object::zPlayer, 1.0f), eLayerType::Player, L"SpriteAnimaionMaterial");
-
 		{
 			GameObject* player = new GameObject();
 			player->SetName(L"Particle");
@@ -54,8 +51,8 @@ namespace sh
 
 	
 		mainCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
-		mainCamera->SetTarget(Death);
 		this->SetActiveCamera(mainCamera);
+		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 
 		Floors *floors
 			= object::Instantiate<Floors>(Vector4(60.5f, -6.5f, object::zPlayer, 1.5f), eLayerType::Ground, L"GroundMaterial");
@@ -158,6 +155,10 @@ namespace sh
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true); // Rope
-		Death->GetComponent<Transform>()->SetPosition(0.0f, 2.0f, object::zPlayer);
+	}
+
+	void LobbyScene::OnExit()
+	{
+		Scene::PlayerResetTransform();
 	}
 }

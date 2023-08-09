@@ -1,7 +1,11 @@
 #include "shScene.h"
+#include "shObject.h"
+#include "../DXEngine/shPlayerController.h"
 
 namespace sh
 {
+	Player* Scene::mainPlayer;
+
 	Scene::Scene()
 	{
 		mLayers.resize((int)sh::enums::eLayerType::End);
@@ -54,5 +58,17 @@ namespace sh
 	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
 	{
 		mLayers[(int)type].AddGameObject(gameObj);
+	}
+
+	void Scene::LoadMainPlayer()
+	{
+		mainPlayer
+			= object::newMainPlayer<Player>(Vector4(0.0f, 1.0f, object::zPlayer, 1.0f), L"SpriteAnimaionMaterial");
+	}
+	void Scene::PlayerResetTransform()
+	{
+		mainPlayer->GetComponent<Transform>()->SetPosition(0.0f,1.0f,object::zPlayer);
+		mainPlayer->GetComponent<PlayerController>()->Fall();
+		mainPlayer->GetComponent<Rigidbody>()->SetGround(false);
 	}
 }
