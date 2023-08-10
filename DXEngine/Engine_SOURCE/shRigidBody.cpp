@@ -13,7 +13,7 @@ namespace sh
 		, mVelocity(Vector3::Zero)
 	{
 		mLimitedVelocity.x = 200.0f;
-		mLimitedVelocity.y = 120.0f;
+		mLimitedVelocity.y = 100.0f;
 		mbGround = false;
 		mGravity = Vector3(0.0f, -90.0f, 0.0f);
 	}
