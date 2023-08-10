@@ -27,6 +27,8 @@ namespace sh
 		}
 
 		void ForceReset() { mForce = Vector3::Zero; }
+
+	
 	private:
 		float mMass;
 		Vector3 mForce;

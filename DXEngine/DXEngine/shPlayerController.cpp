@@ -174,15 +174,10 @@ namespace sh
 		jumped = true;
 		Vector3 pos = playerTR->GetPosition();
 
-		playerRG->AddForce(Vector3(0.0f, 550.0f, 0.0f));
-
-		jumpTime += Time::DeltaTime();
-
-		if (jumpTime > 0.05f)
-		{
+		if(playerTR->GetPosition().y - ground_posY < 3.3f)
+			playerRG->AddForce(Vector3(0.0f, 30000.0f * Time::DeltaTime(), 0.0f));
+		else
 			Transforming_moveState(eMoveState::Fall);
-			jumpTime = 0.0f;
-		}
 	}
 	void PlayerController::Fall()
 	{
@@ -257,17 +252,20 @@ namespace sh
 		jumped = true;
 		Vector3 pos = playerTR->GetPosition();
 
-		if(Direction_Right)
-			playerRG->AddForce(Vector3(100.0f, 550.0f, 0.0f));
-		if (Direction_Left)
-			playerRG->AddForce(Vector3(-100.0f, 550.0f, 0.0f));
+		if (playerTR->GetPosition().y - ground_posY < 3.3f)
+		{
+			if(Direction_Right)
+				playerRG->AddForce(Vector3(100.0f, 550.0f, 0.0f));
+			else if (Direction_Left)
+				playerRG->AddForce(Vector3(-100.0f, 550.0f, 0.0f));
+		}
+		else
+			Transforming_moveState(eMoveState::Fall);
 
-		jumpTime += Time::DeltaTime();
 
-		if (jumpTime > 0.05f)
+		if (playerTR->GetPosition().y - ground_posY > 10.0f)
 		{
 			Transforming_moveState(eMoveState::Fall);
-			jumpTime = 0.0f;
 		}
 	}
 
@@ -390,6 +388,9 @@ namespace sh
 				}
 				else
 					playerRG->SetGround(true);
+
+
+				ground_posY = other->GetPosition().y;
 			}
 	}
 	void PlayerController::OnCollisionStay(Collider2D* other)
@@ -422,6 +423,8 @@ namespace sh
 				pos.y += 10.0f * Time::DeltaTime();
 				this->GetOwner()->GetComponent<Transform>()->SetPosition(pos);
 			}
+
+			ground_posY = other->GetPosition().y;
 		}
 	}
 	void PlayerController::OnCollisionExit(Collider2D* other)

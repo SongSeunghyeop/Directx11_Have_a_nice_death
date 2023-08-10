@@ -167,7 +167,6 @@ namespace sh
 		Rigidbody* playerRG;
 
 		bool jumped = false;
-		float jumpTime = 0.0f;
 		float DashTime = 0.0f;
 
 		int Playing = 0;
@@ -175,5 +174,6 @@ namespace sh
 		eMoveState activeState;
 		eMoveState prevState = eMoveState::Prev;
 
+		float ground_posY = 0.0f;
 	};
 }
