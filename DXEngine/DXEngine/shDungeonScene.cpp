@@ -28,8 +28,6 @@ namespace sh
 	}
 	void DungeonScene::Initialize()
 	{
-		AddGameObject(eLayerType::Player, Scene::GetMainPlayer());
-
 		Camera* mCamera = object::newCamera<Camera>(eLayerType::Camera, L"MAIN");
 		this->SetActiveCamera(mCamera);
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
@@ -144,8 +142,8 @@ namespace sh
 	{
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true); // Rope
-
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::NPC, true);
 	}
 	void DungeonScene::OnExit()
 	{

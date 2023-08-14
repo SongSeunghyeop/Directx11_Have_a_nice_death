@@ -28,7 +28,7 @@ namespace sh::enums
 		Ground_Fill,
 		Light,
 		Structure_F,
-		Ground_F,
+		NPC,
 		UI,
 		Camera,
 		End = 16,

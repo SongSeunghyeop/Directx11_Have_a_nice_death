@@ -37,6 +37,16 @@ namespace sh
 		{
 			mPosition = pos;
 		}
+
+		std::wstring GetColliderName()
+		{
+			return ColliderName;
+		}
+
+		void SetColliderName(std::wstring Name)
+		{
+			ColliderName = Name;
+		}
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -48,5 +58,6 @@ namespace sh
 		Vector3 mScale;
 		Vector2 mCenter;
 
+		std::wstring ColliderName;
 	};
 }

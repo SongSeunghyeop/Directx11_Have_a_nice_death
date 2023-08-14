@@ -4,6 +4,7 @@
 #include "shMeshRenderer.h"
 #include "../DXEngine/shCamera.h"
 #include "../DXEngine/shPlayer.h"
+#include "../DXEngine/shFootHold.h"
 #include "shLight.h"
 #include "shScene.h"
 #include "shSceneManager.h"
@@ -65,12 +66,23 @@ namespace sh::object
 			Vector2 size = mr->GetTextureSize();
 			gameObj->GetComponent<Transform>()->SetScale(size.x / 100.0f * pos_size.w, size.y / 100.0f * pos_size.w, 1.0f);
 		}
-
+		// ¹ßÆÇ
+		FootHold* footHold = new FootHold();
+		footHold->Initialize();
+		//
 		gameObj->SetDrainage(Vector2(pos_size.w, pos_size.w));
 		gameObj->GetComponent<Transform>()->SetPosition(pos_size.x, pos_size.y, pos_size.z);
 		gameObj->setLayerType(eLayerType::Player);
 		gameObj->SetMaterialName(materialName);
+		gameObj->SetFootHold(footHold);
 		gameObj->Initialize();
+		footHold->SetPlayer(gameObj);
+		//
+		SceneManager::FindScene(L"LobbyScene")->AddGameObject(eLayerType::Player, gameObj);
+		SceneManager::FindScene(L"DungeonScene")->AddGameObject(eLayerType::Player, gameObj);
+
+		SceneManager::FindScene(L"LobbyScene")->AddGameObject(eLayerType::Player, footHold);
+		SceneManager::FindScene(L"DungeonScene")->AddGameObject(eLayerType::Player, footHold);
 
 		return gameObj;
 	};

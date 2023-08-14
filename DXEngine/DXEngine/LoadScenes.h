@@ -19,11 +19,11 @@ namespace sh
 {
 	void InitializeScenes()
 	{
-		Scene::LoadMainPlayer();
-
 		SceneManager::CreateScene<DungeonScene>(L"DungeonScene");
 		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
 		SceneManager::CreateScene<MenuScene>(L"MenuScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
+
+		Scene::LoadMainPlayer();
 	}
 }

@@ -29,6 +29,7 @@ namespace sh
 			return true;
 		}
 		static Scene* LoadScene(std::wstring name);
+		static Scene* FindScene(std::wstring name);
 		static Scene* GetActiveScene() { return mActiveScene; }
 
 	private:

@@ -35,16 +35,22 @@ namespace sh
 		scale.x = this->GetDrainage().x;
 		scale.y = this->GetDrainage().y;
 
-		animator->PlayAnimation(L"Elevator_NPCAppear1R", true);
+		animator->PlayAnimation(L"Elevator_NPCIdle1L", true);
 
-		/*GameObject* Elevator
-			= object::Instantiate<GameObject>(Vector3(Tr->GetPosition().x, Tr->GetPosition().y + 0.2f, Tr->GetPosition().z), Vector2(scale.x, scale.y), type, L"Elevator_Material");*/
+		Tr->SetScale(4.8f, 4.8f, 1.0f);
+
+		Light* lightComp = this->AddComponent<Light>();
+		lightComp->SetType(eLightType::Point);
+		lightComp->SetColor(Vector4(169, 245, 225, 1.0f));
+		lightComp->SetRadius(3.0f);
+
+		Collider2D* collider = this->AddComponent<Collider2D>();
+
 
 		GameObject::Initialize();
 	}
 	void Elevator_NPC::Update()
 	{
-		this->GetComponent<Transform>()->SetScale(Vector3(2.0f, 2.0f,1.0f));
 		GameObject::Update();
 	}
 	void Elevator_NPC::LateUpdate()

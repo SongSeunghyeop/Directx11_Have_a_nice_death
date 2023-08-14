@@ -1,10 +1,7 @@
 #include "shLobbyScene.h"
 #include "shInput.h"
-#include "shTransform.h"
 #include "shCameraController.h"
-#include "shPlayerController.h"
 #include "shCamera.h"
-#include "shSceneManager.h"
 #include "shObject.h"
 #include "shLobbyColumns.h"
 #include "shFloors.h"
@@ -31,8 +28,6 @@ namespace sh
 	}
 	void LobbyScene::Initialize()
 	{
-		AddGameObject(eLayerType::Player, Scene::GetMainPlayer());
-
 		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
 		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");
 		paintShader->SetTarget(paintTexture);
@@ -97,12 +92,11 @@ namespace sh
 			GameObject* circlestair
 				= object::Instantiate<GameObject>(Vector4(40.4f, -5.6f, object::zBackGround, 0.45f), eLayerType::Structure_F, L"CircleStairMaterial");
 			
-		
 			{
 				Light* light1 =
 					object::newLight<Light>(Vector3(40.4f, -0.9f, object::zBackGround), eLightType::Point, 5.0f);
 				Light* light2 =
-					object::newLight<Light>(Vector3(40.4f, -1.0f, object::zBackGround), eLightType::Spot, 7.0f, 34.0f);
+					object::newLight<Light>(Vector3(40.4f, -0.95f, object::zBackGround), eLightType::Spot, 7.0f, 34.0f);
 				GameObject* lamp1
 					= object::Instantiate<GameObject>(Vector4(40.4f, 0.0f, object::zBackGround, 0.9f), eLayerType::Structure_F, L"lamp2Material");
 				lamp1->GetComponent<MeshRenderer>()->SetColor(Vector4(169, 245, 225, 1.0f));
@@ -114,8 +108,9 @@ namespace sh
 			{
 				GameObject* pillar
 					= object::Instantiate<GameObject>(Vector3(72.0f, -2.6f, object::zBackGround), Vector2(0.6f, 0.6f), eLayerType::Structure_F, L"PillarMaterial");
+				
 				Elevator_NPC *mElevator
-					= object::Instantiate<Elevator_NPC>(Vector3(72.0f, -4.4f, object::zBackGround - 0.00001f), Vector2(3.0f, 3.0f), eLayerType::Structure_F, L"SpriteAnimaionMaterial");
+					= object::Instantiate<Elevator_NPC>(Vector3(72.4f, -3.3f, object::zBackGround - 0.0000001f), Vector2(20.0f, 20.0f), eLayerType::NPC, L"SpriteAnimaionMaterial");
 			}
 		}
 		
@@ -127,17 +122,10 @@ namespace sh
 			lightComp->SetType(eLightType::Directional);
 			lightComp->SetColor(Vector4(0, 0, 0, 1.0f));
 		}
-
-		//Camera* uCamera = object::newCamera<Camera>(eLayerType::Camera, L"UI");
 	}
 
 	void LobbyScene::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::Q))
-		{
-			SceneManager::LoadScene(L"DungeonScene");
-		}
-
 		Scene::Update();
 	}
 
@@ -154,7 +142,8 @@ namespace sh
 	{
 		renderer::mainCamera = this->GetActiveCamera()->getCameraCont();
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true); // Rope
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Structure_F, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::NPC, true);
 	}
 
 	void LobbyScene::OnExit()

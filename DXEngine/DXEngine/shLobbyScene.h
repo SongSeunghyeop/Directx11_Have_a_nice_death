@@ -18,6 +18,11 @@ namespace sh
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
 
+		Camera* GetMainCamera()
+		{
+			return mainCamera;
+		}
+
 	private:
 		Camera* mainCamera;
 	};

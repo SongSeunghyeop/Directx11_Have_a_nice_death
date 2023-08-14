@@ -55,32 +55,14 @@ namespace sh
 	}
 	void Collider2D::OnCollisionEnter(Collider2D* other)
 	{
-		const std::vector<Script*>& scripts
-			= GetOwner()->GetComponents<Script>();
-
-		for (Script* script : scripts)
-		{
-			script->OnCollisionEnter(other);
-		}
+		this->GetOwner()->OnCollisionEnter(other);
 	}
 	void Collider2D::OnCollisionStay(Collider2D* other)
 	{
-		const std::vector<Script*>& scripts
-			= GetOwner()->GetComponents<Script>();
-
-		for (Script* script : scripts)
-		{
-			script->OnCollisionStay(other);
-		}
+		this->GetOwner()->OnCollisionStay(other);
 	}
 	void Collider2D::OnCollisionExit(Collider2D* other)
 	{
-		const std::vector<Script*>& scripts
-			= GetOwner()->GetComponents<Script>();
-
-		for (Script* script : scripts)
-		{
-			script->OnCollisionExit(other);
-		}
+		this->GetOwner()->OnCollisionExit(other);
 	}
 }

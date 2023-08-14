@@ -10,7 +10,6 @@ namespace sh
 	Camera::Camera(std::wstring type)
 	{
 		this->SetName(L"Camera");
-		Target = NULL;
 		cameraCont = this->AddComponent<CameraController>();
 		CameraType = type;
 		renderer::cameras.push_back(cameraCont);
@@ -23,8 +22,6 @@ namespace sh
 	}
 	void Camera::Initialize()
 	{
-		Target = Scene::GetMainPlayer();
-
 		if (CameraType == L"UI")
 		{
 			cameraCont->TurnLayerMask(eLayerType::UI, true);
@@ -48,7 +45,7 @@ namespace sh
 		{
 			Transform* Tr = this->GetComponent<Transform>();
 
-			Vector3 TargetPos = Target->GetComponent<Transform>()->GetPosition();
+			Vector3 TargetPos = Scene::GetMainPlayer()->GetComponent<Transform>()->GetPosition();
 
 			Tr->SetPosition(TargetPos + filmingPos);
 			GameObject::Update();

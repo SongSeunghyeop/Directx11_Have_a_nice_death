@@ -27,8 +27,6 @@ namespace sh
 		std::wstring CameraType;
 		CameraController* cameraCont;
 
-		GameObject* Target;
-
 		Vector3 filmingPos;
 	};
 }

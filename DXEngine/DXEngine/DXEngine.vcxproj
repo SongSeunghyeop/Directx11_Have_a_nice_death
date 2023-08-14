@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="shElevator_NPC.h" />
+    <ClInclude Include="shFootHold.h" />
     <ClInclude Include="shLightingLogo.h" />
     <ClInclude Include="shDungeonColumns.h" />
     <ClInclude Include="shLobbyColumns.h" />
@@ -158,7 +159,6 @@
     <ClInclude Include="shD_Floors.h" />
     <ClInclude Include="shGhostBoxes.h" />
     <ClInclude Include="shPlayer.h" />
-    <ClInclude Include="shPlayerController.h" />
     <ClInclude Include="shDungeonLobby.h" />
     <ClInclude Include="shDungeonScene.h" />
     <ClInclude Include="shBigColumn.h" />
@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="shElevator_NPC.cpp" />
+    <ClCompile Include="shFootHold.cpp" />
     <ClCompile Include="shLightingLogo.cpp" />
     <ClCompile Include="shDungeonColumns.cpp" />
     <ClCompile Include="shLobbyColumns.cpp" />
@@ -185,7 +186,6 @@
     <ClCompile Include="shD_Floors.cpp" />
     <ClCompile Include="shGhostBoxes.cpp" />
     <ClCompile Include="shPlayer.cpp" />
-    <ClCompile Include="shPlayerController.cpp" />
     <ClCompile Include="shDungeonLobby.cpp" />
     <ClCompile Include="shDungeonScene.cpp" />
     <ClCompile Include="shBigColumn.cpp" />

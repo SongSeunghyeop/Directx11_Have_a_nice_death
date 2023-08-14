@@ -15,9 +15,9 @@ namespace sh
 	void StoneLoads::Initialize()
 	{
 		StoneLoad* stoneLoad1
-			= object::Instantiate<StoneLoad>(Vector4(15.0f, -5.2f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
+			= object::Instantiate<StoneLoad>(Vector4(15.1f, -5.2f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 		StoneLoad* stoneLoad2
-			= object::Instantiate<StoneLoad>(Vector3(16.85f, -6.3f, object::zBackGround), Vector2(0.4f, 0.25f), eLayerType::Ground, L"SquareStone2Material");
+			= object::Instantiate<StoneLoad>(Vector3(16.9f, -6.0f, object::zBackGround), Vector2(0.4f, 0.25f), eLayerType::Ground, L"SquareStone2Material");
 		StoneLoad* stoneLoad3
 			= object::Instantiate<StoneLoad>(Vector4(19.2, -7.4f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 		StoneLoad* stoneLoad4
@@ -25,7 +25,7 @@ namespace sh
 		StoneLoad* stoneLoad5
 			= object::Instantiate<StoneLoad>(Vector4(27.2f, -7.4f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 		StoneLoad* stoneLoad6
-			= object::Instantiate<StoneLoad>(Vector3(29.1f, -8.0f, object::zBackGround), Vector2(0.4, 0.17f), eLayerType::Ground, L"SquareStone2Material");
+			= object::Instantiate<StoneLoad>(Vector3(29.1f, -7.9f, object::zBackGround), Vector2(0.4, 0.2f), eLayerType::Ground, L"SquareStone2Material");
 		StoneLoad* stoneLoad7
 			= object::Instantiate<StoneLoad>(Vector4(31.0, -8.4f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 		StoneLoad* stoneLoad8
@@ -58,12 +58,12 @@ namespace sh
 		}
 
 		StoneLoad* stoneLoad12
-			= object::Instantiate<StoneLoad>(Vector3(49.5, -8.5f, object::zBackGround), Vector2(0.4f, 0.17f), eLayerType::Ground, L"SquareStone3Material");
+			= object::Instantiate<StoneLoad>(Vector3(49.4, -8.0f, object::zBackGround), Vector2(0.4f, 0.21f), eLayerType::Ground, L"SquareStone3Material");
 		StoneLoad* stoneLoad13
 			= object::Instantiate<StoneLoad>(Vector3(52.2f, -7.43f, object::zBackGround), Vector2(0.6f, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 
 		StoneLoad* stoneLoad14
-			= object::Instantiate<StoneLoad>(Vector3(55.0f, -5.8f, object::zBackGround), Vector2(0.4f, 0.35f), eLayerType::Ground, L"SquareStone3Material");
+			= object::Instantiate<StoneLoad>(Vector3(55.0f, -5.8f, object::zBackGround), Vector2(0.4f, 0.41f), eLayerType::Ground, L"SquareStone3Material");
 		StoneLoad* stoneLoad15
 			= object::Instantiate<StoneLoad>(Vector4(56.7f, -4.21f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 		StoneLoad* stoneLoad16
@@ -94,13 +94,13 @@ namespace sh
 		// 이 구간에서만 흔들림 발생
 		{
 			StoneLoad* stoneLoad4
-				= object::Instantiate<StoneLoad>(Vector4(62.8f, -2.0f, object::zBackGround, 0.4f), eLayerType::Ground, L"SquareStone3Material");
+				= object::Instantiate<StoneLoad>(Vector3(61.3f, -2.2f, object::zBackGround), Vector2(0.4f, 0.47f), eLayerType::Ground, L"SquareStone3Material");
 			StoneLoad* stoneLoad5
 				= object::Instantiate<StoneLoad>(Vector3(64.7f, -0.3f, object::zBackGround) , Vector2(0.7f, 0.4f), eLayerType::Ground, L"SquareStone1Material");
 			StoneLoad* stoneLoad6
 				= object::Instantiate<StoneLoad>(Vector3(70.7f, -0.3f, object::zBackGround), Vector2(0.7f, 0.4f) , eLayerType::Ground, L"SquareStone1Material");
 			StoneLoad* stoneLoad8
-				= object::Instantiate<StoneLoad>(Vector3(74.7f, -3.55f, object::zBackGround), Vector2(0.4f, 0.7f), Vector2(1.0f, 1.0f), eLayerType::Ground, L"SquareStone2Material");
+				= object::Instantiate<StoneLoad>(Vector3(74.3f, -2.8f, object::zBackGround), Vector2(0.4f, 0.59f), eLayerType::Ground, L"SquareStone2Material");
 		}
 
 		
@@ -150,7 +150,7 @@ namespace sh
 
 		{
 			StoneLoad* stoneLoad15
-				= object::Instantiate<StoneLoad>(Vector3(99.0f, -8.23f, object::zBackGround), Vector2(0.3f, 0.6f), eLayerType::Ground, L"SquareStone2Material");
+				= object::Instantiate<StoneLoad>(Vector3(99.2f, -8.21f, object::zBackGround), Vector2(0.3f, 0.6f), eLayerType::Ground, L"SquareStone2Material");
 			StoneLoad* stoneLoad16
 				= object::Instantiate<StoneLoad>(Vector3(100.0f, -9.5f, object::zBackGround), Vector2(0.2f, 0.6f), Vector2(0.4f, 1.0f), eLayerType::Ground, L"SquareStone1Material");
 			StoneLoad* stoneLoad17

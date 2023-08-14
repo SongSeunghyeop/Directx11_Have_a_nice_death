@@ -19,7 +19,7 @@ namespace sh
 			floor2->AddComponent<Collider2D>();
 			GameObject* floor1_Under
 				= object::Instantiate<GameObject>(Vector4(0.5f, -5.8f, object::zBackGround, 1.6f), eLayerType::Ground, L"GroundMaterial");
-			floor1_Under->AddComponent<Collider2D>();
+		/*	floor1_Under->AddComponent<Collider2D>();*/
 			GameObject* floor2_Under
 				= object::Instantiate<GameObject>(Vector4(-17.5f, -5.8f, object::zBackGround, 1.6f), eLayerType::Ground, L"GroundMaterial");
 			GameObject* RockBG1

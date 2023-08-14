@@ -26,9 +26,6 @@
     <ClCompile Include="shDungeonLobby.cpp">
       <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
     </ClCompile>
-    <ClCompile Include="shPlayerController.cpp">
-      <Filter>Contents\Script</Filter>
-    </ClCompile>
     <ClCompile Include="shPlayer.cpp">
       <Filter>Contents\Prefabs\Player</Filter>
     </ClCompile>
@@ -71,6 +68,9 @@
     <ClCompile Include="shRope.cpp">
       <Filter>Contents\Prefabs\Structures</Filter>
     </ClCompile>
+    <ClCompile Include="shFootHold.cpp">
+      <Filter>Contents\Prefabs\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -100,9 +100,6 @@
     </ClInclude>
     <ClInclude Include="shDungeonLobby.h">
       <Filter>Contents\Prefabs\BackGrounds\DungeonScene%27s</Filter>
-    </ClInclude>
-    <ClInclude Include="shPlayerController.h">
-      <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="shPlayer.h">
       <Filter>Contents\Prefabs\Player</Filter>
@@ -145,6 +142,9 @@
     </ClInclude>
     <ClInclude Include="shRope.h">
       <Filter>Contents\Prefabs\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="shFootHold.h">
+      <Filter>Contents\Prefabs\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

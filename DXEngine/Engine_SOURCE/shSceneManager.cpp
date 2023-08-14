@@ -46,4 +46,15 @@ namespace sh
 
 		return iter->second;
 	}
+
+	Scene* SceneManager::FindScene(std::wstring name)
+	{
+		std::map<std::wstring, Scene*>::iterator iter
+			= mScenes.find(name);
+
+		if (iter == mScenes.end())
+			return nullptr;
+
+		return iter->second;
+	}
 }
