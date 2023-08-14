@@ -193,6 +193,6 @@ namespace sh
 
 		friend class FootHold;
 
-		bool prev_Dir = false;
+		int prev_Dir = 0;
 	};
 }

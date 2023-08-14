@@ -44,9 +44,8 @@ namespace sh
 		Prev_pos = playerTR->GetPosition();
 
 		this->GetComponent<Collider2D>()->SetColliderName(L"PlayerCollider");
-		this->GetComponent<Collider2D>()->SetCenter(Vector2(0.0f, -0.8f));
-		this->GetComponent<Collider2D>()->SetSize(Vector2(0.5f, 0.5f));
-
+		this->GetComponent<Collider2D>()->SetCenter(Vector2(0.0f, -0.65f));
+		this->GetComponent<Collider2D>()->SetSize(Vector2(0.45f, 0.4f));
 
 		{
 			moveKeys.push_back(eKeyCode::A);
@@ -158,7 +157,6 @@ namespace sh
 		}
 
 		GameObject::Update();
-
 	}
 	void Player::LateUpdate()
 	{
@@ -210,7 +208,7 @@ namespace sh
 		jumped = true;
 		Vector3 pos = playerTR->GetPosition();
 
-		if (playerTR->GetPosition().y - Prev_pos.y < 4.0f)
+		if (playerTR->GetPosition().y - Prev_pos.y < 3.5f)
 			playerRG->AddForce(Vector3(0.0f, 30000.0f * Time::DeltaTime(), 0.0f));
 		else
 			Transforming_moveState(eMoveState::Fall);
@@ -247,27 +245,6 @@ namespace sh
 				Transforming_moveState(eMoveState::Idle);
 
 			DashTime = 0;
-		}
-	}
-
-	void Player::OnCollisionEnter(Collider2D* other)
-	{
-		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
-		{
-		
-		}
-	}
-
-	void Player::OnCollisionStay(Collider2D* other)
-	{
-	
-	}
-
-	void Player::OnCollisionExit(Collider2D* other)
-	{
-		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
-		{
-			runSpeed = 13.0f;
 		}
 	}
 
@@ -310,7 +287,7 @@ namespace sh
 		jumped = true;
 		Vector3 pos = playerTR->GetPosition();
 
-		if (playerTR->GetPosition().y - Prev_pos.y < 4.0f)
+		if (playerTR->GetPosition().y - Prev_pos.y < 3.5f)
 		{
 			if (Direction_Right)
 				playerRG->AddForce(Vector3(100.0f, 550.0f, 0.0f));
@@ -434,5 +411,39 @@ namespace sh
 			animator->PlayAnimation(L"AttackAttack4R", true);
 		else if (Direction_Left)
 			animator->PlayAnimation(L"AttackAttack4L", true);
+	}
+	void Player::OnCollisionEnter(Collider2D* other)
+	{
+		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
+		{
+			runSpeed = 0.0f;
+
+			if (Direction_Left) 	prev_Dir = -1;
+			else	if (Direction_Right) 	prev_Dir = 1;
+		}
+	}
+
+	void Player::OnCollisionStay(Collider2D* other)
+	{
+		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
+		{
+			if ((prev_Dir == -1 && Direction_Right) ||
+				(prev_Dir == 1 && Direction_Left))
+			{
+				runSpeed = 13.0f;
+			}
+			else
+			{
+				runSpeed = 0.0f;
+			}
+		}
+	}
+
+	void Player::OnCollisionExit(Collider2D* other)
+	{
+		if (other->GetOwner()->getLayerType() == enums::eLayerType::Ground)
+		{
+			runSpeed = 13.0f;
+		}
 	}
 }
